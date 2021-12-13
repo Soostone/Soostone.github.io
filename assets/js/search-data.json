@@ -73,19 +73,19 @@
   },"12": {
     "doc": "Haddock",
     "title": "Haddock",
-    "content": " ",
+    "content": "Napkin currently exposes all internal API. However, it is recommended to import just one modules from Napkin (to write custom haskell queries): Napkin.Backends.$BACKEND, where $BACKEND can be one of: . | BigQuery | Postgres | Redshift | Sqlite | . ",
     "url": "https://soostone.github.io/haddock/",
     "relUrl": "/haddock/"
   },"13": {
     "doc": "Haddock",
     "title": "Docs for versions",
-    "content": ". | Version 0.3.8 | . ",
+    "content": " ",
     "url": "https://soostone.github.io/haddock/#docs-for-versions",
     "relUrl": "/haddock/#docs-for-versions"
   },"14": {
     "doc": "Haddock",
     "title": "Docs for branches",
-    "content": ". | last build | master | Full list of branches with haddock | . ",
+    "content": ". | master | Full list of branches | . ",
     "url": "https://soostone.github.io/haddock/#docs-for-branches",
     "relUrl": "/haddock/#docs-for-branches"
   },"15": {
