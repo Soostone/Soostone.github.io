@@ -1,0 +1,26 @@
+{
+    "bundix": {
+        "branch": "master",
+        "description": "Generates a Nix expression for your Bundler-managed application.",
+        "homepage": "",
+        "owner": "maksar",
+        "repo": "bundix",
+        "rev": "c43e8511912414feda6602f9725f8ac35ac3c5d1",
+        "sha256": "15qhxz76f615h23s8jndckq5y3mfylx93zbijhcngj25kpxcw73m",
+        "type": "tarball",
+        "url": "https://github.com/maksar/bundix/archive/c43e8511912414feda6602f9725f8ac35ac3c5d1.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs": {
+        "branch": "21.11",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a7ecde854aee5c4c7cd6177f54a99d2c1ff28a31",
+        "sha256": "162dywda2dvfj1248afxc45kcrg83appjd0nmdb541hl7rnncf02",
+        "type": "tarball",
+        "url": "https://github.com/nixos/nixpkgs/archive/a7ecde854aee5c4c7cd6177f54a99d2c1ff28a31.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    }
+}
