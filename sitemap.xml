@@ -7,11 +7,17 @@
 <loc>https://soostone.github.io/user-manual/db-connection</loc>
 </url>
 <url>
+<loc>https://soostone.github.io/user-manual/devcontainer</loc>
+</url>
+<url>
 <loc>https://soostone.github.io/docker/</loc>
 <lastmod>2021-12-02T19:15:00+00:00</lastmod>
 </url>
 <url>
 <loc>https://soostone.github.io/getting-started/</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/user-manual/github-actions</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/haddock/</loc>
