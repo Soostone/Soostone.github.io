@@ -253,7 +253,7 @@
   },"42": {
     "doc": "Installation",
     "title": "Cachix",
-    "content": "Installation via cachix is intended for NixOS users and consists of the following steps: . | Install cachix tool by following official instructions (step 2) | . nix-env -iA cachix -f https://cachix.org/api/v1/install . | Choose the version you want to install (including the latest non-released one) and OS here and follow installation instructions. | . ",
+    "content": "Installation via cachix is intended for NixOS users and consists of the following steps: . | Install cachix tool by following official instructions (step 2) | . nix-env -iA cachix -f https://cachix.org/api/v1/install . | Install latest version of Napkin | . For MacOs: . bash &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/darwin/branch/master/index.html) . For Linux: . bash &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/linux/branch/master/index.html) . To install order version of napkin, choose version and OS here and follow installation instructions. ",
     "url": "https://soostone.github.io/install/#cachix",
     "relUrl": "/install/#cachix"
   },"43": {
