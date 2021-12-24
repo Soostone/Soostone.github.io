@@ -213,9 +213,9 @@
 </code></pre></div></div> <h4 id="top-10-client_countries"> <a href="#top-10-client_countries" class="anchor-heading" aria-labelledby="top-10-client_countries"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Top 10 client_countries </h4> <p>TBD</p> <h4 id="sql" class="top-code-caption"> <a href="#sql" class="anchor-heading" aria-labelledby="sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> SQL </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">SELECT</span>
     <span class="o">*</span>
 <span class="k">FROM</span>
-    
+    <span class="err">{{</span> <span class="k">table</span> <span class="err">}}</span>
 <span class="k">ORDER</span> <span class="k">BY</span>
-     <span class="k">FETCH</span> <span class="k">FIRST</span>  <span class="k">ROWS</span> <span class="k">ONLY</span>
+    <span class="err">{{</span> <span class="n">top_by</span> <span class="err">}}</span> <span class="k">FETCH</span> <span class="k">FIRST</span> <span class="err">{{</span> <span class="n">max_limit</span> <span class="err">}}</span> <span class="k">ROWS</span> <span class="k">ONLY</span>
 </code></pre></div></div> <h4 id="spec-yaml" class="top-code-caption"> <a href="#spec-yaml" class="anchor-heading" aria-labelledby="spec-yaml"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> spec.yaml </h4> <div class="language-yaml copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># yaml-language-server: $schema=http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json</span>
 
 <span class="c1"># Connect to Sqlite database:</span>
