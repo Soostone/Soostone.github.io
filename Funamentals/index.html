@@ -246,4 +246,43 @@ tables:
           columns: 
           - billingCountry
 </code></pre>
+<h4 id="top-10-client_countries"> <a href="#top-10-client_countries" class="anchor-heading" aria-labelledby="top-10-client_countries"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Top 10 client_countries </h4> <p>TBD</p>
+<pre><code class="language-SQL">SELECT
+    *
+FROM
+    
+ORDER BY
+     FETCH FIRST  ROWS ONLY
+</code></pre>
+<pre><code class="language-YAML"># yaml-language-server: $schema=http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json
+
+# Connect to Sqlite database:
+backend: Sqlite
+db_url: sqlite:.chinook-sql.db
+
+tables:
+
+## countries have the most Invoices
+  client_countries:
+    create_action:
+      sql_file:
+        source: client_countries.sql
+    post_hooks:
+      - assert_unique:
+          table: client_countries
+          columns: 
+          - billingCountry
+
+## top 10 countries have the most Invoices
+  top10_client_countries:
+    create_action:
+      sql_file:
+        source: top_performers.sql
+        vars:
+          table: client_countries
+          max_limit: 10
+          top_by: Invoices
+
+## breakdown countries by genres
+</code></pre>
 </div> </div> <div class="main-content-rspander"></div> <div class="search-overlay"></div> </div> <footer class="site-footer"> <div class="site-footer-rows"> <div class="site-footer-r1"> <div class="white-napkin"></div> <div class="sf-box"> <div class="sfb-nav"> <div class="link-table"> <a href="#" class="">Documentation</a> <a href="#" class="">Community</a> <a href="#" class="">Features</a> </div> <div class="link-table"> <a href="#" class="">Use Cases</a> <a href="#" class="">About Napkin</a> <a href="#" class="">Contact</a> </div> </div> <div class="gradient-border"> <a href="#" class="link-button">Get Napkin</a> </div> </div> </div> <div class="media-bar"> <span class="media-pad"> <a href="#" class="logo fb-logo"></a> </span> <span class="media-pad"> <a href="#" class="logo twitter-logo"></a> </span> <span class="media-pad"> <a href="#" class="logo linked-in-logo"></a> </span> </div> <div class="site-footer-copy-right"> <div class="copyright"> Copyright 2021 ©    |    <a href="#">Privacy Policy</a> </div> <div class="made-with"> Made with <span class="heart-inline"> </span> in NYC </div> </div> </div> </footer> <div class="sortcat-shadow"> </div> <script type="text/javascript" src="/assets/js/copy.js"></script> <script type="text/javascript" src="/assets/js/highlight-active-link.js"></script> </body> </html>
