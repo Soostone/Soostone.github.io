@@ -247,13 +247,13 @@
   },"41": {
     "doc": "Installation",
     "title": "Installation",
-    "content": "There are many ways to install and use Napkin. This page will help to decide which was is easier and better suited for your need. Main installation options are: . | Pre-build binary for Linux and MacOS operating systems. This is the fastest and easiest way of getting Napkin. Just download and unpack – and you are good to go. | Docker image with Napkin and various useful utilities. Installation with this method is easy too – pull the image and extract a wrapper script out of it. | Cachix distribution for NixOS. If you use NixOS, you are probably familiar with cachix tool. Getting Napkin with cachix is a one-line command. | VSCode devcontainer actually uses the same docker image under the hood as docker installation method. The preferred way of installing Napkin, it will enable code-completion and other useful features. | . ",
+    "content": "There are many ways to install and use Napkin. This page will help to decide which was is easier and better suited for your need. Main installation options are: . | Pre-build binary for Linux and macOS operating systems. This is the fastest and easiest way of getting Napkin. Just download and unpack – and you are good to go. | Docker image with Napkin and various useful utilities. Installation with this method is easy too – pull the image and extract a wrapper script out of it. | Cachix distribution for NixOS. If you use NixOS, you are probably familiar with cachix tool. Getting Napkin with cachix is a one-line command. | VSCode devcontainer actually uses the same docker image under the hood as docker installation method. The preferred way of installing Napkin, it will enable code-completion and other useful features. | . ",
     "url": "https://soostone.github.io/install/",
     "relUrl": "/install/"
   },"42": {
     "doc": "Installation",
     "title": "Native",
-    "content": "The Napkin native binary is a self extracting archive with a binary file that does not require a docker or nix environment to be executed. The latest Linux and MacOS versions are continuously updated as being released. Due to the technical limitations, this version of Napkin does not support some advanced features, but it is perfectly fine to use for basic use-cases. Please note, that archive contains not only a binary itself, but also a folder with dynamically loaded libraries for the corresponding operating system, which should be located in the following structure. If you need to move napkin binary to the different location, move the whole napkin directory instead. napkin ├── bin │   └── napkin └── lib ├── libc++.1.0.dylib ├── libc++abi.dylib ├── libcharset.1.dylib ├── libcom_err.3.0.dylib ├── libcrypto.1.1.dylib ├── libffi.8.dylib ├── libgmp.10.dylib ├── libgssapi_krb5.2.2.dylib ├── libiconv-nocharset.dylib ├── libiconv.dylib ├── libk5crypto.3.1.dylib ├── libkrb5.3.3.dylib ├── libkrb5support.1.1.dylib ├── libncursesw.6.dylib ├── libpq.5.dylib ├── libresolv.9.dylib ├── libssl.1.1.dylib └── libz.dylib . If you need a specific version of Napkin, use directory browser in these locations. | for Linux | for MacOS | . ",
+    "content": "The Napkin native binary is a self extracting archive with a binary file that does not require a docker or nix environment to be executed. The latest Linux and macOS versions are continuously updated as being released. Due to the technical limitations, this version of Napkin does not support some advanced features, but it is perfectly fine to use for basic use-cases. Please note, that archive contains not only a binary itself, but also a folder with dynamically loaded libraries for the corresponding operating system, which should be located in the following structure. If you need to move napkin binary to the different location, move the whole napkin directory instead. napkin ├── bin │   └── napkin └── lib ├── libc++.1.0.dylib ├── libc++abi.dylib ├── libcharset.1.dylib ├── libcom_err.3.0.dylib ├── libcrypto.1.1.dylib ├── libffi.8.dylib ├── libgmp.10.dylib ├── libgssapi_krb5.2.2.dylib ├── libiconv-nocharset.dylib ├── libiconv.dylib ├── libk5crypto.3.1.dylib ├── libkrb5.3.3.dylib ├── libkrb5support.1.1.dylib ├── libncursesw.6.dylib ├── libpq.5.dylib ├── libresolv.9.dylib ├── libssl.1.1.dylib └── libz.dylib . If you need a specific version of Napkin, use directory browser in these locations. | for Linux | for macOS | . ",
     "url": "https://soostone.github.io/install/#native",
     "relUrl": "/install/#native"
   },"43": {
@@ -265,7 +265,7 @@
   },"44": {
     "doc": "Installation",
     "title": "Cachix",
-    "content": "Installation via cachix is intended for NixOS users and consists of the following steps: . | Install cachix tool by following official instructions (step 2) | . label . nix-env -iA cachix -f https://cachix.org/api/v1/install . | Install latest version of Napkin | . For MacOs: . shell . sh &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/darwin/branch/master/index.html) . For Linux: . shell . sh &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/linux/branch/master/index.html) . To install order version of napkin, choose version and OS here and follow installation instructions. ",
+    "content": "Installation via cachix is intended for NixOS users and consists of the following steps: . | Install cachix tool by following official instructions (step 2) | . label . nix-env -iA cachix -f https://cachix.org/api/v1/install . | Install latest version of Napkin | . For macOS: . shell . sh &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/darwin/branch/master/index.html) . For Linux: . shell . sh &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/linux/branch/master/index.html) . To install order version of napkin, choose version and OS here and follow installation instructions. ",
     "url": "https://soostone.github.io/install/#cachix",
     "relUrl": "/install/#cachix"
   },"45": {
@@ -373,7 +373,7 @@
   },"62": {
     "doc": "Cachix versions",
     "title": "Cachix versions",
-    "content": ". | 0.5.10 MacOS / Linux (currently in development) . | 0.5.9 MacOS / Linux (released: 2021-12-14) . | 0.5.8 MacOS / Linux (released: 2021-12-08) . | . ",
+    "content": ". | 0.5.10 macOS / Linux (currently in development) . | 0.5.9 macOS / Linux (released: 2021-12-14) . | 0.5.8 macOS / Linux (released: 2021-12-08) . | . ",
     "url": "https://soostone.github.io/cachix/versions/",
     "relUrl": "/cachix/versions/"
   }
