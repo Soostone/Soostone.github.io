@@ -107,7 +107,6 @@
 <span class="nb">cd</span> ./napkinFundamentalTutorial
 napkin init <span class="nt">--project-name</span> chinook-analytic
 </code></pre></div></div> <p>The corresponding directory structure created by Napkin’s <code class="language-plaintext highlighter-rouge">init</code> command for the <code class="language-plaintext highlighter-rouge">chinook-analytic</code> project is:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>chinook-analytic
-  ├── hie.yaml
   ├── README.md
   ├── specs
   │   └── spec.yaml
@@ -147,6 +146,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <a href="https://en.wikipedia.org/wiki/Test_assertion" target="_blank" rel="noopener noreferrer">assertions</a>, <code class="language-plaintext highlighter-rouge">post-hook</code> and <code class="language-plaintext highlighter-rouge">pre-hook</code>
 </li> <li>variable <a href="https://en.wikipedia.org/wiki/String_interpolation" target="_blank" rel="noopener noreferrer">interpolation</a>
 </li> </ul> <p>With that, we modify the<code class="language-plaintext highlighter-rouge">specs/spec.yaml</code> for the following purpose:</p> <ul> <li>SQLite back-end connection detail</li> <li>create the dependent tables, managed tables</li> </ul> <h4 id="specs-spec-yaml" class="top-code-caption"> <a href="#specs-spec-yaml" class="anchor-heading" aria-labelledby="specs-spec-yaml"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> specs/spec.yaml </h4> <div class="language-yaml copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># yaml-language-server: $schema=http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json</span>
+<span class="na">app_name</span><span class="pi">:</span> <span class="s">chinook-analytics</span>
 
 <span class="c1"># Connect to Sqlite database:</span>
 <span class="na">backend</span><span class="pi">:</span> <span class="s">Sqlite</span>
@@ -344,6 +344,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <span class="k">WHERE</span>
     <span class="n">t1</span><span class="p">.</span><span class="n">Purchases</span> <span class="o">=</span> <span class="n">t2</span><span class="p">.</span><span class="n">MaxPurchases</span>
 </code></pre></div></div> <p>Next, we’ll extend chinook-analytics Spec. Here is the <code class="language-plaintext highlighter-rouge">specs/spec.yaml</code> in its entirely</p> <h4 id="specs-spec-yaml" class="top-code-caption"> <a href="#specs-spec-yaml" class="anchor-heading" aria-labelledby="specs-spec-yaml"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> specs/spec.yaml </h4> <div class="language-yaml copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># yaml-language-server: $schema=http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json</span>
+<span class="na">app_name</span><span class="pi">:</span> <span class="s">chinook-analytics</span>
 
 <span class="c1"># Connect to Sqlite database:</span>
 <span class="na">backend</span><span class="pi">:</span> <span class="s">Sqlite</span>
@@ -362,7 +363,6 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
           <span class="pi">-</span> <span class="s">billingCountry</span>
 
   <span class="na">customers_total_purchase</span><span class="pi">:</span>
-    <span class="na">update_strategy</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">customers_total_purchase.sql</span>
@@ -418,7 +418,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
         <span class="na">period</span><span class="pi">:</span> <span class="m">84600</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">incremental_by_time</span><span class="pi">:</span>
-        <span class="na">source</span><span class="pi">:</span> <span class="s">day_totals.sql</span>
+        <span class="na">source</span><span class="pi">:</span> <span class="s">daily_total.sql</span>
         <span class="na">timestamp_column</span><span class="pi">:</span> <span class="s">InvoiceDate</span>
         <span class="na">start_day</span><span class="pi">:</span> <span class="s">2013-01-01</span>
         <span class="na">lookback_days</span><span class="pi">:</span> <span class="m">14</span>
@@ -426,7 +426,6 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 ├── chinook-sql.db
 ├── data
 │   └── napkin.v2.sqlite3
-├── hie.yaml
 ├── README.md
 ├── specs
 │   └── spec.yaml
