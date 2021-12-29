@@ -399,6 +399,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
         <span class="na">source</span><span class="pi">:</span> <span class="s">countries_popular_genres.sql</span>
         <span class="na">vars</span><span class="pi">:</span>
           <span class="na">table</span><span class="pi">:</span> <span class="s">countries_genres</span>
+
   <span class="c1">## countries monthly sales</span>
   <span class="na">countries_monthly_sales</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
@@ -408,7 +409,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
         <span class="na">rows_by</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">BillingCountry</span><span class="pi">]</span>
         <span class="na">cols_by</span><span class="pi">:</span> <span class="s">strftime('%m', "InvoiceDate")</span>
         <span class="na">value</span><span class="pi">:</span> <span class="s">Total</span>
-        <span class="na">col_prefix</span><span class="pi">:</span> <span class="s">month_</span>
+        <span class="na">col_prefix</span><span class="pi">:</span> <span class="s">month</span>
 
   <span class="c1">## daily totals from a given start date</span>
   <span class="na">daily_totals</span><span class="pi">:</span>
