@@ -116,7 +116,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 </code></pre></div></div> <div class="premonition note"> <i class="premonition pn-note"></i> <div class="content"> <p>Napkin’s CLI is the point of entry for all typical workflows of data engineering and pipeline curation. <code class="language-plaintext highlighter-rouge">napkin --help</code> provides a comprehensive list of available Napkin commands. Commands may take additional parameters. To get help with these parameters, use: <code class="language-plaintext highlighter-rouge">napkin command --help</code>. For instance to get help with the <code class="language-plaintext highlighter-rouge">init</code> command, use <code class="language-plaintext highlighter-rouge">napkin init --help</code>.</p> </div> </div> <p>Before moving to the next section, lets validate our project using Napkin’s <code class="language-plaintext highlighter-rouge">validate</code> command:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin validate <span class="nt">--spec-file</span> specs/spec.yaml
 </code></pre></div></div> <div class="premonition note"> <i class="premonition pn-note"></i> <div class="content"> <p>Napkin follows a common paradigm where source tables are not mutated by Napkin. Instead, Napkin creates a series of dependent tables, <strong>managed</strong> tables, based on the SQL files in <code class="language-plaintext highlighter-rouge">sql/</code> folder. Internally, Napkin uses <code class="language-plaintext highlighter-rouge">specs/spec.yaml</code> to create a <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph" target="_blank" rel="noopener noreferrer">DAG</a> where the edges are references to fields from managed tables. Napkin uses this DAG to drive the execution plan. In addition to DAG, Napkin <strong>Spec</strong> contains back-end connection related data for connecting to supported target databases.</p> </div> </div> <p>In this section we used <code class="language-plaintext highlighter-rouge">napkin init</code> to bootstrap the <em>chinook-analytic</em>. For additional details on how to start a napkin project, see <a href="#appendix-b">Appendix-B</a>.</p> <h2 id="adding-computations"> <a href="#adding-computations" class="anchor-heading" aria-labelledby="adding-computations"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Adding computations </h2> <p>Our goal in this section is to answer two basic questions in regards to Chinook database:</p> <ul> <li>what are the top 10 countries with the most invoices?</li> <li>what are the top 10 customers?</li> </ul> <p>We would like to do this following the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank" rel="noopener noreferrer">DRY</a> principle. Our high level tasks are:</p> <ul> <li>create ranking of Chinook sales to countries</li> <li>create ranking of Chinook customers</li> <li>use a generic <code class="language-plaintext highlighter-rouge">top-performer</code> to find the top performers</li> </ul> <p>To accomplish the above tasks we <strong>first</strong> compose the SQL statements for creating the ranking managed-tables. <strong>Next</strong>, we modify the <code class="language-plaintext highlighter-rouge">specs/spec.yaml</code> to:</p> <ul> <li>create the managed-tables</li> <li>manage the dependencies among the managed-tables</li> <li>use Napkin’s <a href="https://en.wikipedia.org/wiki/String_interpolation" target="_blank" rel="noopener noreferrer">variable interpolation</a> to craft a generalize <code class="language-plaintext highlighter-rouge">top_performers</code> query</li> </ul> <p><strong>Lastly</strong>, we exploit the Napkin CLI for:</p> <ul> <li>validating the data pipeline components syntax, <code class="language-plaintext highlighter-rouge">napkin validate --spec-file specs/spec.yaml</code>
 </li> <li>getting some intuition for: <ul> <li>data pipeline dependencies, <code class="language-plaintext highlighter-rouge">napkin dump -o myOutputFolder --spec-file ./specs/spec.yaml</code>
-</li> <li>cost and ETA of chinook-analytics data pipeline execution , <code class="language-plaintext highlighter-rouge">napkin run --dry-run --spec-file specs/spec.yaml</code>
+</li> <li>cost and ETA of chinook-analytics data pipeline execution, <code class="language-plaintext highlighter-rouge">napkin run --dry-run --spec-file specs/spec.yaml</code>
 </li> </ul> </li> <li>execute the pipeline, <code class="language-plaintext highlighter-rouge">napkin run --spec-file specs/spec.yaml</code>
 </li> </ul> <h2 id="create-the-rankings"> <a href="#create-the-rankings" class="anchor-heading" aria-labelledby="create-the-rankings"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Create the rankings </h2> <p>We’ll start by creating the SQL file to create the ranking criteria:</p> <h4 id="sql-client-countries-sql" class="top-code-caption"> <a href="#sql-client-countries-sql" class="anchor-heading" aria-labelledby="sql-client-countries-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/client_countries.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- client countries and total invoices</span>
 <span class="k">SELECT</span>
@@ -153,8 +153,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <span class="na">db_url</span><span class="pi">:</span> <span class="s">sqlite:chinook-sql.db</span>
 
 <span class="na">tables</span><span class="pi">:</span>
-
-<span class="c1">## countries have the most Invoices</span>
+  <span class="c1">## countries have the most Invoices</span>
   <span class="na">client_countries</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
@@ -162,11 +161,10 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
     <span class="na">post_hooks</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">assert_unique</span><span class="pi">:</span>
           <span class="na">table</span><span class="pi">:</span> <span class="s">client_countries</span>
-          <span class="na">columns</span><span class="pi">:</span> 
+          <span class="na">columns</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s">billingCountry</span>
 
-
-  <span class="na">cutomers_total_purchase</span><span class="pi">:</span>
+  <span class="na">customers_total_purchase</span><span class="pi">:</span>
     <span class="na">update_strategy</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
@@ -177,11 +175,11 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
       <span class="na">sql_file</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">top_performers.sql</span>
         <span class="na">vars</span><span class="pi">:</span>
-          <span class="na">table</span><span class="pi">:</span> <span class="s">cutomers_total_purchase</span>
+          <span class="na">table</span><span class="pi">:</span> <span class="s">customers_total_purchase</span>
           <span class="na">max_limit</span><span class="pi">:</span> <span class="m">10</span>
           <span class="na">top_by</span><span class="pi">:</span> <span class="s">TOTAL_PURCHASE</span>
 
-<span class="c1">## top 10 countries have the most Invoices</span>
+  <span class="c1">## top 10 countries have the most Invoices</span>
   <span class="na">top10_client_countries</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
@@ -190,10 +188,9 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
           <span class="na">table</span><span class="pi">:</span> <span class="s">client_countries</span>
           <span class="na">max_limit</span><span class="pi">:</span> <span class="m">10</span>
           <span class="na">top_by</span><span class="pi">:</span> <span class="s">Invoices</span>
-
 </code></pre></div></div> <p>Next, we proceed with the Napkin CLI to execute the project Spec.</p> <div class="premonition note"> <i class="premonition pn-note"></i> <div class="content"> <p>There is a correlation between <code class="language-plaintext highlighter-rouge">specs/spec.yaml</code> and the SQL files in <code class="language-plaintext highlighter-rouge">sql/</code> folder. Please stay consistent in regards to the file name. Our suggestion is use the same filename for all your SQL files as this tutorial has.</p> </div> </div> <h2 id="napkin-cli"> <a href="#napkin-cli" class="anchor-heading" aria-labelledby="napkin-cli"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Napkin CLI </h2> <p>In this section we’ll use the Napkin CLI to:</p> <ul> <li>validate Spec</li> <li>show the Spec’s managed tables dependencies</li> <li>execute Spec</li> </ul> <p>The <strong>validate</strong> command validates that the <code class="language-plaintext highlighter-rouge">specs/spec.yaml</code> and <code class="language-plaintext highlighter-rouge">sql/*.sql</code> files are syntactically correct:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin validate <span class="nt">--spec-file</span> specs/spec.yaml
 </code></pre></div></div> <p>Next we use the <strong>dump</strong> command to visually verify the managed-tables <a href="/dependency_graph.pdf">dependencies</a>:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">-o</span> myOutputFolder <span class="nt">--spec-file</span> specs/spec.yaml
-</code></pre></div></div> <p>Then we use <strong>dry-run</strong> to get an intuition as to what napkin is about to do in addtion to getting an ETA and const estimate:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin run <span class="nt">--dry-run</span> <span class="nt">--spec-file</span> specs/spec.yaml
+</code></pre></div></div> <p>Then we use <strong>dry-run</strong> to get an intuition as to what napkin is about to do in addition to getting an ETA and const estimate:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin run <span class="nt">--dry-run</span> <span class="nt">--spec-file</span> specs/spec.yaml
 </code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">27</span> <span class="mi">22</span><span class="o">:</span><span class="mi">45</span><span class="o">:</span><span class="mi">45</span><span class="o">][</span><span class="nc">Info</span><span class="o">]</span> <span class="nc">Determining</span> <span class="n">tables</span> <span class="k">for</span> <span class="n">update</span><span class="o">...</span>
 <span class="o">[</span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">27</span> <span class="mi">22</span><span class="o">:</span><span class="mi">45</span><span class="o">:</span><span class="mi">45</span><span class="o">][</span><span class="nc">Warning</span><span class="o">]</span> <span class="nc">Dry</span> <span class="n">run</span><span class="o">,</span> <span class="n">table</span> <span class="n">specs</span> <span class="n">and</span> <span class="n">hooks</span> <span class="n">will</span> <span class="n">not</span> <span class="n">be</span> <span class="n">executed</span><span class="o">.</span>
 <span class="o">[</span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">27</span> <span class="mi">22</span><span class="o">:</span><span class="mi">45</span><span class="o">:</span><span class="mi">45</span><span class="o">][</span><span class="nc">Info</span><span class="o">]</span> <span class="nc">Unmanaged</span> <span class="n">tables</span> <span class="n">that</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span> <span class="n">as</span> <span class="n">an</span> <span class="n">input</span> <span class="n">in</span> <span class="k">this</span> <span class="nl">run:</span>
@@ -258,7 +255,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <span class="o">[</span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">27</span> <span class="mi">22</span><span class="o">:</span><span class="mi">56</span><span class="o">:</span><span class="mi">10</span><span class="o">][</span><span class="nc">Info</span><span class="o">]</span> <span class="nc">Table</span> <span class="s">"top10_client_countries"</span> <span class="n">ran</span> <span class="n">in</span> <span class="mf">0.03</span><span class="o">:</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span>
 <span class="o">[</span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">27</span> <span class="mi">22</span><span class="o">:</span><span class="mi">56</span><span class="o">:</span><span class="mi">10</span><span class="o">][</span><span class="nc">Info</span><span class="o">]</span> <span class="nc">Table</span> <span class="s">"top10_customers"</span> <span class="n">ran</span> <span class="n">in</span> <span class="mf">0.05</span><span class="o">:</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span>
 <span class="o">[</span><span class="mi">2021</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">27</span> <span class="mi">22</span><span class="o">:</span><span class="mi">56</span><span class="o">:</span><span class="mi">10</span><span class="o">][</span><span class="nc">Info</span><span class="o">]</span> <span class="nc">Run</span> <span class="n">complete</span><span class="o">.</span> <span class="nc">Total</span> <span class="nl">cost:</span> <span class="mi">0</span> <span class="n">rows</span> <span class="n">affected</span>
-</code></pre></div></div> <p>Lets quickly verify the result from SQLite client:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlite3 ./.chinook-sql.db
+</code></pre></div></div> <p>Lets quickly verify the result from SQLite client:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sqlite3 chinook-sql.db
 </code></pre></div></div> <div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SQLite</span> <span class="k">version</span> <span class="mi">3</span><span class="p">.</span><span class="mi">31</span><span class="p">.</span><span class="mi">1</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">27</span> <span class="mi">19</span><span class="p">:</span><span class="mi">55</span><span class="p">:</span><span class="mi">54</span>
 <span class="n">Enter</span> <span class="nv">".help"</span> <span class="k">for</span> <span class="k">usage</span> <span class="n">hints</span><span class="p">.</span>
 <span class="n">sqlite</span><span class="o">&gt;</span> <span class="p">.</span><span class="n">header</span> <span class="k">on</span>
@@ -295,7 +292,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <span class="mi">54</span><span class="o">|</span><span class="n">steve</span><span class="p">.</span><span class="n">murray</span><span class="o">@</span><span class="n">yahoo</span><span class="p">.</span><span class="n">uk</span><span class="o">|</span><span class="n">Steve</span><span class="o">|</span><span class="n">Murray</span><span class="o">|</span><span class="mi">37</span><span class="p">.</span><span class="mi">62</span>
 <span class="n">sqlite</span><span class="o">&gt;</span>
 </code></pre></div></div> <h2 id="napkin-remembers"> <a href="#napkin-remembers" class="anchor-heading" aria-labelledby="napkin-remembers"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Napkin remembers </h2> <p>Napkin internally keeps track of your application state. You might find it helpful to spend some time with:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history </span>list <span class="nt">--spec-file</span> specs/spec.yaml
-</code></pre></div></div> <p>As always, <code class="language-plaintext highlighter-rouge">napkin history --help</code> will provide a comprehensive list of <em>history parameters</em></p> <h2 id="aggregations"> <a href="#aggregations" class="anchor-heading" aria-labelledby="aggregations"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Aggregations </h2> <p>We continue extending the chinook-analytics Spec to provide additional functionalities:</p> <ul> <li>daily total sales for Chinook</li> <li>counties ranking of genres</li> </ul> <p>The corresponding <code class="language-plaintext highlighter-rouge">SQL</code> files are:</p> <ul> <li><code class="language-plaintext highlighter-rouge">sql/daily_total.sql</code></li> </ul> <h4 id="sql-daily-total-sql" class="top-code-caption"> <a href="#sql-daily-total-sql" class="anchor-heading" aria-labelledby="sql-daily-total-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/daily_total.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- incremental table</span>
+</code></pre></div></div> <p>As always, <code class="language-plaintext highlighter-rouge">napkin history --help</code> will provide a comprehensive list of <em>history parameters</em></p> <h2 id="aggregations"> <a href="#aggregations" class="anchor-heading" aria-labelledby="aggregations"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Aggregations </h2> <p>We continue extending the chinook-analytics Spec to provide additional functionalities:</p> <ul> <li>daily total sales for Chinook</li> <li>counties ranking of genres</li> </ul> <p>The corresponding <code class="language-plaintext highlighter-rouge">SQL</code> files are:</p> <h4 id="sql-daily-total-sql" class="top-code-caption"> <a href="#sql-daily-total-sql" class="anchor-heading" aria-labelledby="sql-daily-total-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/daily_total.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- incremental table</span>
 <span class="c1">-- compute daily total sales</span>
 <span class="c1">--</span>
 <span class="k">SELECT</span>
@@ -304,10 +301,10 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <span class="k">FROM</span>
     <span class="nv">"Invoice"</span>
 <span class="k">WHERE</span>
-    <span class="nv">"InvoiceDate"</span> <span class="o">&gt;</span> <span class="err">{{{</span><span class="n">cutoff</span><span class="err">}}}</span> 
+    <span class="nv">"InvoiceDate"</span> <span class="o">&gt;</span> <span class="err">{{{</span><span class="n">cutoff</span><span class="err">}}}</span>
 <span class="k">GROUP</span> <span class="k">BY</span>
     <span class="n">strftime</span><span class="p">(</span><span class="s1">'%d'</span><span class="p">,</span> <span class="nv">"InvoiceDate"</span><span class="p">)</span>
-</code></pre></div></div> <ul> <li><code class="language-plaintext highlighter-rouge">sql/countries_genres.sql</code></li> </ul> <h4 id="sql-countries-genres-sql" class="top-code-caption"> <a href="#sql-countries-genres-sql" class="anchor-heading" aria-labelledby="sql-countries-genres-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/countries_genres.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- genres by country</span>
+</code></pre></div></div> <h4 id="sql-countries-genres-sql" class="top-code-caption"> <a href="#sql-countries-genres-sql" class="anchor-heading" aria-labelledby="sql-countries-genres-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/countries_genres.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- genres by country</span>
 <span class="c1">--</span>
 <span class="k">SELECT</span>
     <span class="k">COUNT</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">InvoiceId</span><span class="p">)</span> <span class="n">Purchases</span><span class="p">,</span>
@@ -326,7 +323,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <span class="k">ORDER</span> <span class="k">BY</span>
     <span class="k">c</span><span class="p">.</span><span class="n">Country</span><span class="p">,</span>
     <span class="n">Purchases</span> <span class="k">DESC</span>
-</code></pre></div></div> <ul> <li><code class="language-plaintext highlighter-rouge">sql/countries_popular_genres.sql</code></li> </ul> <h4 id="sql-countries-genres-sql" class="top-code-caption"> <a href="#sql-countries-genres-sql" class="anchor-heading" aria-labelledby="sql-countries-genres-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/countries_genres.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- most popular genres for each country</span>
+</code></pre></div></div> <h4 id="sql-countries-popular-genres-sql" class="top-code-caption"> <a href="#sql-countries-popular-genres-sql" class="anchor-heading" aria-labelledby="sql-countries-popular-genres-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/countries_popular_genres.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- most popular genres for each country</span>
 <span class="k">SELECT</span>
     <span class="n">t1</span><span class="p">.</span><span class="n">purchases</span> <span class="k">as</span> <span class="n">MaxPurchases</span><span class="p">,</span>
     <span class="n">t1</span><span class="p">.</span><span class="n">country</span> <span class="k">as</span> <span class="n">Country</span><span class="p">,</span>
@@ -353,8 +350,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
 <span class="na">db_url</span><span class="pi">:</span> <span class="s">sqlite:chinook-sql.db</span>
 
 <span class="na">tables</span><span class="pi">:</span>
-
-<span class="c1">## countries have the most Invoices</span>
+  <span class="c1">## countries have the most Invoices</span>
   <span class="na">client_countries</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
@@ -362,11 +358,10 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
     <span class="na">post_hooks</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">assert_unique</span><span class="pi">:</span>
           <span class="na">table</span><span class="pi">:</span> <span class="s">client_countries</span>
-          <span class="na">columns</span><span class="pi">:</span> 
+          <span class="na">columns</span><span class="pi">:</span>
           <span class="pi">-</span> <span class="s">billingCountry</span>
 
-
-  <span class="na">cutomers_total_purchase</span><span class="pi">:</span>
+  <span class="na">customers_total_purchase</span><span class="pi">:</span>
     <span class="na">update_strategy</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
@@ -377,11 +372,11 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
       <span class="na">sql_file</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">top_performers.sql</span>
         <span class="na">vars</span><span class="pi">:</span>
-          <span class="na">table</span><span class="pi">:</span> <span class="s">cutomers_total_purchase</span>
+          <span class="na">table</span><span class="pi">:</span> <span class="s">customers_total_purchase</span>
           <span class="na">max_limit</span><span class="pi">:</span> <span class="m">10</span>
           <span class="na">top_by</span><span class="pi">:</span> <span class="s">TOTAL_PURCHASE</span>
 
-<span class="c1">## top 10 countries have the most Invoices</span>
+  <span class="c1">## top 10 countries have the most Invoices</span>
   <span class="na">top10_client_countries</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
@@ -391,21 +386,21 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
           <span class="na">max_limit</span><span class="pi">:</span> <span class="m">10</span>
           <span class="na">top_by</span><span class="pi">:</span> <span class="s">Invoices</span>
 
-<span class="c1">## breakdown countries by genres</span>
+  <span class="c1">## breakdown countries by genres</span>
   <span class="na">countries_genres</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">countries_genres.sql</span>
 
-<span class="c1">## most popular genres in each country</span>
-  <span class="na">countries_popluar_genres</span><span class="pi">:</span>
+  <span class="c1">## most popular genres in each country</span>
+  <span class="na">countries_popular_genres</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">countries_popular_genres.sql</span>
         <span class="na">vars</span><span class="pi">:</span>
           <span class="na">table</span><span class="pi">:</span> <span class="s">countries_genres</span>
-<span class="c1">## Countries monthly sales</span>
-  <span class="na">countries_montly_sales</span><span class="pi">:</span>
+  <span class="c1">## countries monthly sales</span>
+  <span class="na">countries_monthly_sales</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">long_to_wide</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">Invoice</span>
@@ -415,7 +410,7 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
         <span class="na">value</span><span class="pi">:</span> <span class="s">Total</span>
         <span class="na">col_prefix</span><span class="pi">:</span> <span class="s">month_</span>
 
-<span class="c1">## daily totals from a given start date</span>
+  <span class="c1">## daily totals from a given start date</span>
   <span class="na">daily_totals</span><span class="pi">:</span>
     <span class="na">update_strategy</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">type</span><span class="pi">:</span> <span class="s">if_missing</span>
@@ -427,17 +422,12 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
         <span class="na">timestamp_column</span><span class="pi">:</span> <span class="s">InvoiceDate</span>
         <span class="na">start_day</span><span class="pi">:</span> <span class="s">2013-01-01</span>
         <span class="na">lookback_days</span><span class="pi">:</span> <span class="m">14</span>
-</code></pre></div></div> <p>And the final chinook-analytics project directory structure is:</p> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> tree <span class="nb">.</span>
-<span class="nb">.</span>
+</code></pre></div></div> <p>And the final chinook-analytics project directory structure is:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">.</span>
 ├── chinook-sql.db
 ├── data
 │   └── napkin.v2.sqlite3
-├── <span class="nb">dir</span>
 ├── hie.yaml
 ├── README.md
-├── scripts
-│   ├── chinook-sql.db
-│   └── run-sqlite.sh
 ├── specs
 │   └── spec.yaml
 └── sql
@@ -447,11 +437,9 @@ napkin init <span class="nt">--project-name</span> chinook-analytic
     ├── customers_total_purchase.sql
     ├── daily_total.sql
     └── top_performers.sql
-
-5 directories, 13 files
-</code></pre></div></div> <p>Finally, it is time to use the Napkin CLI to interrogate and execute the chinook-analytics Spec:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin  <span class="nt">--spec-file</span> specs/spec.yaml
+</code></pre></div></div> <p>Finally, it is time to use the Napkin CLI to interrogate and execute the chinook-analytics Spec:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nt">--spec-file</span> specs/spec.yaml
 napkin dump <span class="nt">-o</span> myOutputFolder <span class="nt">--spec-file</span> specs/spec.yaml
 napkin run <span class="nt">--spec-file</span> specs/spec.yaml
-</code></pre></div></div> <h2 id="saving-our-work"> <a href="#saving-our-work" class="anchor-heading" aria-labelledby="saving-our-work"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Saving our work </h2> <p>In addition to bootstrapping our project, the <code class="language-plaintext highlighter-rouge">intit</code> command initialized an empty <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> repository that we may use to add or push or code to a remote Git repository.</p> <h2 id="summary"> <a href="#summary" class="anchor-heading" aria-labelledby="summary"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Summary </h2> <p>In this tutorial we:</p> <ul> <li>bootstrapped a data pipeline, Spec</li> <li>declaratively manged dependencies among Spec components</li> <li>used assertions to verify Specs execution meets the given criteria</li> <li>execute our Spec, data pipeline</li> <li>Stored our work</li> </ul> <p>Please stay tuned for future Napkin tutorial.</p> <h2 id="appendices"> <a href="#appendices" class="anchor-heading" aria-labelledby="appendices"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Appendices </h2> <h3 id="appendix-a"> <a href="#appendix-a" class="anchor-heading" aria-labelledby="appendix-a"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Appendix-A </h3> <p>Installing <a href="https://github.com/lerocha/chinook-database" target="_blank" rel="noopener noreferrer">Chinook</a> on <a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener noreferrer">SQLite</a> back-end</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> <span class="nt">-o</span> .chinook-sql.db https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
-</code></pre></div></div> <p>To verify the Chinook database SQLite install:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"SELECT * FROM Artist"</span> | sqlite3 .chinook-sql.db
+</code></pre></div></div> <h2 id="saving-our-work"> <a href="#saving-our-work" class="anchor-heading" aria-labelledby="saving-our-work"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Saving our work </h2> <p>In addition to bootstrapping our project, the <code class="language-plaintext highlighter-rouge">init</code> command initialized an empty <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer">Git</a> repository that we may use to add or push or code to a remote Git repository.</p> <h2 id="summary"> <a href="#summary" class="anchor-heading" aria-labelledby="summary"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Summary </h2> <p>In this tutorial we:</p> <ul> <li>bootstrapped a data pipeline, Spec</li> <li>declaratively manged dependencies among Spec components</li> <li>used assertions to verify Specs execution meets the given criteria</li> <li>execute our Spec, data pipeline</li> <li>Stored our work</li> </ul> <p>Please stay tuned for future Napkin tutorial.</p> <h2 id="appendices"> <a href="#appendices" class="anchor-heading" aria-labelledby="appendices"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Appendices </h2> <h3 id="appendix-a"> <a href="#appendix-a" class="anchor-heading" aria-labelledby="appendix-a"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Appendix-A </h3> <p>Installing <a href="https://github.com/lerocha/chinook-database" target="_blank" rel="noopener noreferrer">Chinook</a> on <a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener noreferrer">SQLite</a> back-end</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-L</span> <span class="nt">-o</span> chinook-sql.db https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite
+</code></pre></div></div> <p>To verify the Chinook database SQLite install:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"SELECT * FROM Artist"</span> | sqlite3 chinook-sql.db
 </code></pre></div></div> <h3 id="appendix-b"> <a href="#appendix-b" class="anchor-heading" aria-labelledby="appendix-b"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Appendix-B </h3> <p>Napkin allows for generating the project structure based on existing SQL files. We opted out on feature in favor of <code class="language-plaintext highlighter-rouge">init</code> to provide a basic intuition of Napkin projects. <code class="language-plaintext highlighter-rouge">napkin gen-spec --help</code> for additional information.</p> </div> </div> <div class="main-content-rspander"></div> <div class="search-overlay"></div> </div> <footer class="site-footer"> <div class="site-footer-rows"> <div class="site-footer-r1"> <div class="white-napkin"></div> <div class="sf-box"> <div class="sfb-nav"> <div class="link-table"> <a href="#" class="">Documentation</a> <a href="#" class="">Community</a> <a href="#" class="">Features</a> </div> <div class="link-table"> <a href="#" class="">Use Cases</a> <a href="#" class="">About Napkin</a> <a href="#" class="">Contact</a> </div> </div> <div class="gradient-border"> <a href="#" class="link-button">Get Napkin</a> </div> </div> </div> <div class="media-bar"> <span class="media-pad"> <a href="#" class="logo fb-logo"></a> </span> <span class="media-pad"> <a href="#" class="logo twitter-logo"></a> </span> <span class="media-pad"> <a href="#" class="logo linked-in-logo"></a> </span> </div> <div class="site-footer-copy-right"> <div class="copyright"> Copyright 2021 ©    |    <a href="#">Privacy Policy</a> </div> <div class="made-with"> Made with <span class="heart-inline"> </span> in NYC </div> </div> </div> </footer> <div class="sortcat-shadow"> </div> <script type="text/javascript" src="/assets/js/copy.js"></script> <script type="text/javascript" src="/assets/js/highlight-active-link.js"></script> </body> </html>
