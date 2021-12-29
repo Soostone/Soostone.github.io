@@ -6,434 +6,440 @@
     "relUrl": "/changelog/"
   },"1": {
     "doc": "Changelog",
-    "title": "0.5.10 (currently in development)",
-    "content": ". | &lt;nixpkgs&gt; path in docker now points to the github commit instead of intermediate file. | Is is now possible to specify timeout for google BigQuery in the backend_options. | Napkin will report an error when sql file used with incremental_by_time strategy does not consume cutoff variable. | Fix: SQLite remove extra parents from SQL INSERT INTO SELECT Statement. | Change PostgreSQL parser dialect from ANSI to Postgres. | Fix: Napkin was using incorrect pipeline name for backends (was always “rs”). | Fix: Change CAST operator rendering to be ANSI complainant. | Docker image now uses napkin user by default, it has nicer bash and zsh prompts. | Docker image working directory changed from /project to /home/napkin/project. | Dev-container settings (produced by napkin init) now specify zsh as a default shell. | . | CI builds is DAG now (overall pipeline time reduced). | Meta arguments handling in programs is more consistent: . | Reader MetaArguments is now Input MetaArguments in SpecProgram and HookProgram. | Input SpecMetaArgs is now Input MetaArguments in SpecPreprocessor. | Input MetaArguments helpers are now located in Napkin.Run.Effects.MetaArguments. | . | incrementalByTime now accepts incremental_reset as string or bool (--arg incremental_reset=true will work again). | napkin auth uses now subcommands to show (napkin auth show) and reset (napkin auth reset). | napkin auth show displays output in human-friendly format. | Fix: namespaceAllTables will no longer rename CTEs and break queries. | Fix: renaming tables will no longer affect aliases. | Fix: table aliases were not rendered correctly in JOIN queries (Postgres, Redshift). | Extensions to table_namespace and table_prefix preprocessors: . | added scope parameter that can be either all, managed (default) or unmanaged to control which tables are renamed, | added only and except parameters for fine-grained control on which tables are renamed, | table_namespace has extra on_existing parameter that can be overwrite (default) or keep_original, which allows to keep original namespace if it has been explicitly provided in the spec. | . | Fix: tables now can be moved between schemas (Postgres, Redshift). | Fix: checkTableExists does not assume that default schema is public (Postgres, Redshift). | . ",
-    "url": "https://soostone.github.io/changelog/#0510-currently-in-development",
-    "relUrl": "/changelog/#0510-currently-in-development"
+    "title": "0.5.11 (currently in development)",
+    "content": ". ",
+    "url": "https://soostone.github.io/changelog/#0511-currently-in-development",
+    "relUrl": "/changelog/#0511-currently-in-development"
   },"2": {
     "doc": "Changelog",
-    "title": "0.5.9 (released 2021-12-14)",
-    "content": ". | Napkin now support different log formats though --log-format CLI option. | Added Napkin static binary (does not fully support haskell interpretation) for easier installation. | Renamed live validation option from ‘-l’ (–live) to ‘-i’ (–interactive) to avoid collision with –log-level. | Fix: Interactive validation now doesn’t complain on absent folders. | Added S3 bucket monitoring page. | Consistent log-level setting via command line options: one can use either -v or --log-level (-l). Options can be applied to all commands now. | Error reporting is more consistent. | Improved CLI UI (napkin run -p) look and feel. | Fix: CLI UI did not display query statistics properly when spec execution has been terminated by the user. | Fix: CLI UI did not terminate spec execution. | Napkin will print the information on execution plan (managed tables to be updated, unmanaged tables used as an input, managed tables used as an input, but not scheduled for updated) as well as ETA. | Skipped tables will no longer block dependent tables execution. | Fix: Haskell spec has now access to meta arguments. | Number of concurrent DB operations can be set with backend_options in YAML specs. Use concurrent_queries for Big Query or connection_pool for Postgres and Redshift. The setting defaults to 100. | #253 Support SQLite Builtin functions | . ",
-    "url": "https://soostone.github.io/changelog/#059-released-2021-12-14",
-    "relUrl": "/changelog/#059-released-2021-12-14"
+    "title": "0.5.10 (released 2021-12-29)",
+    "content": ". | &lt;nixpkgs&gt; path in docker now points to the github commit instead of intermediate file. | Is is now possible to specify timeout for google BigQuery in the backend_options. | Napkin will report an error when sql file used with incremental_by_time strategy does not consume cutoff variable. | Fix: SQLite remove extra parents from SQL INSERT INTO SELECT Statement. | Change PostgreSQL parser dialect from ANSI to Postgres. | Fix: Napkin was using incorrect pipeline name for backends (was always “rs”). | Fix: Change CAST operator rendering to be ANSI complainant. | Docker image now uses napkin user by default, it has nicer bash and zsh prompts. | Docker image working directory changed from /project to /home/napkin/project. | Dev-container settings (produced by napkin init) now specify zsh as a default shell. | . | CI builds is DAG now (overall pipeline time reduced). | Meta arguments handling in programs is more consistent: . | Reader MetaArguments is now Input MetaArguments in SpecProgram and HookProgram. | Input SpecMetaArgs is now Input MetaArguments in SpecPreprocessor. | Input MetaArguments helpers are now located in Napkin.Run.Effects.MetaArguments. | . | incrementalByTime now accepts incremental_reset as string or bool (--arg incremental_reset=true will work again). | napkin auth uses now subcommands to show (napkin auth show) and reset (napkin auth reset). | napkin auth show displays output in human-friendly format. | Fix: namespaceAllTables will no longer rename CTEs and break queries. | Fix: renaming tables will no longer affect aliases. | Fix: table aliases were not rendered correctly in JOIN queries (Postgres, Redshift). | Extensions to table_namespace and table_prefix preprocessors: . | added scope parameter that can be either all, managed (default) or unmanaged to control which tables are renamed, | added only and except parameters for fine-grained control on which tables are renamed, | table_namespace has extra on_existing parameter that can be overwrite (default) or keep_original, which allows to keep original namespace if it has been explicitly provided in the spec. | . | Fix: tables now can be moved between schemas (Postgres, Redshift). | Fix: checkTableExists does not assume that default schema is public (Postgres, Redshift). | . ",
+    "url": "https://soostone.github.io/changelog/#0510-released-2021-12-29",
+    "relUrl": "/changelog/#0510-released-2021-12-29"
   },"3": {
     "doc": "Changelog",
+    "title": "0.5.9 (released 2021-12-14)",
+    "content": ". | Napkin now support different log formats though --log-format CLI option. | Added Napkin static binary (does not fully support haskell interpretation) for easier installation. | Renamed live validation option from ‘-l’ (–live) to ‘-i’ (–interactive) to avoid collision with –log-level. | Fix: Interactive validation now doesn’t complain on absent folders. | Added S3 bucket monitoring page. | Consistent log-level setting via command line options: one can use either -v or --log-level (-l). Options can be applied to all commands now. | Error reporting is more consistent. | Improved CLI UI (napkin run -p) look and feel. | Fix: CLI UI did not display query statistics properly when spec execution has been terminated by the user. | Fix: CLI UI did not terminate spec execution. | Napkin will print the information on execution plan (managed tables to be updated, unmanaged tables used as an input, managed tables used as an input, but not scheduled for updated) as well as ETA. | Skipped tables will no longer block dependent tables execution. | Fix: Haskell spec has now access to meta arguments. | Number of concurrent DB operations can be set with backend_options in YAML specs. Use concurrent_queries for Big Query or connection_pool for Postgres and Redshift. The setting defaults to 100. | #253 Support SQLite Builtin functions. | . ",
+    "url": "https://soostone.github.io/changelog/#059-released-2021-12-14",
+    "relUrl": "/changelog/#059-released-2021-12-14"
+  },"4": {
+    "doc": "Changelog",
     "title": "0.5.8 (released 2021-12-08)",
-    "content": ". | Improved napkin init | Docker tags are now consistent | create_action syntax has changed and it is now consistent for built-in and custom programs . | added sql_query and long_to_wide built-in spec programs | incremental combinators are now built-in programs | update_strategy now explicitly defaults to always, empty list will not fall back to always | it’s possible to call custom programs from yaml without arguments bu providing string (symbol name) instead of object | deps and hidden_deps are now attribute of table (was part of create_action previously) | . | . ",
+    "content": ". | Improved napkin init. | Docker tags are now consistent. | create_action syntax has changed and it is now consistent for built-in and custom programs. | added sql_query and long_to_wide built-in spec programs. | incremental combinators are now built-in programs. | update_strategy now explicitly defaults to always, empty list will not fall back to always. | it’s possible to call custom programs from yaml without arguments bu providing string (symbol name) instead of object. | deps and hidden_deps are now attribute of table (was part of create_action previously). | . | . ",
     "url": "https://soostone.github.io/changelog/#058-released-2021-12-08",
     "relUrl": "/changelog/#058-released-2021-12-08"
-  },"4": {
+  },"5": {
     "doc": "Connecting to the database",
     "title": "Connecting to the database",
     "content": "Napkin works with a single DB backend and connection string a time. Database connection string has to be configured in YAML spec and it has to match the selected backend. Connection string can be later overridden with --uri (-u) flag when spec is executed with napkin run command. ",
     "url": "https://soostone.github.io/user-manual/db-connection",
     "relUrl": "/user-manual/db-connection"
-  },"5": {
+  },"6": {
     "doc": "Connecting to the database",
     "title": "BigQuery",
     "content": "backend: BigQuery db_url: bigquery://bigquery.googleapis.com/PROJECT-NAME?dataset=DATASET-NAME . Database connection string (db_url in YAML or --uri) should be formatted as follows: bigquery://bigquery.googleapis.com/PROJECT-NAME. Furthermore, one can set default dataset by appending ?dataset=DATASET-NAME. Note that authentication credentials are cached for particular Spec YAML path, database connection string and app. If any of them changes you will need to authenticate again. The credentials are cached in ~/.napkin/oauthdb by default, this path can be changed with --credentials-db argument. Alternatively, one may pass credentials JSON using --credentials-file (-C) option. This option can be useful when running napkin in unattended configuration. Authenticating locally . Run napkin auth create command and follow the instructions in the web browser. Authenticating for unattended runs . First, authenticate locally. Then run napkin auth show and save value of OAuth2-JsonToken in a JSON file. The credentials JSON can be later passed to napkin run using --credentials-file (-C) option. It may be then stored in secret store of CI/CD platform of choice. Please refer to GitHub Actions example for further reference. ",
     "url": "https://soostone.github.io/user-manual/db-connection#bigquery",
     "relUrl": "/user-manual/db-connection#bigquery"
-  },"6": {
+  },"7": {
     "doc": "Connecting to the database",
     "title": "Postgresql and Redshift",
     "content": "backend: Postgres db_url: postgresql://user@db/napkin_db . Connection for Postgres and Redshift, which uses Postgres protocol, can be configured with connection string and/or environment variables. Connection strings use standard syntax from libpq and can be summarized with the following examples: . postgresql:// postgresql://localhost postgresql://localhost:5433 postgresql://localhost/mydb postgresql://user@localhost postgresql://user:secret@localhost . Values that are not provided in connection string will be sourced from environment variables if available. If postgresql:// connection string is used whole database connection configuration will be sourced from environment variables. This can be useful in unattended environments. For more examples and further reference on connection string and environment variables please visit libpq manual. We do not recommend storing password in the YAML spec. Instead, one can: . | store password in a file, then pass the file location with --credentials-file (-C) option, | store password in a file, then pass the file location with PGPASSFILE environment variable, | provide password with PGPASSWORD environment variable. | . ",
     "url": "https://soostone.github.io/user-manual/db-connection#postgresql-and-redshift",
     "relUrl": "/user-manual/db-connection#postgresql-and-redshift"
-  },"7": {
+  },"8": {
     "doc": "Connecting to the database",
     "title": "Sqlite",
     "content": "backend: Sqlite db_url: sqlite:some-folder/dbfile.db . Connection string is a path to the database file (with sqlite: prefix): . ",
     "url": "https://soostone.github.io/user-manual/db-connection#sqlite",
     "relUrl": "/user-manual/db-connection#sqlite"
-  },"8": {
+  },"9": {
     "doc": "Devcontainer",
     "title": "Devcontainer",
     "content": "Devcontainer is a Visual Studio Code feature that enables to do development in Docker containers. Since IDE has native support for Docker-based development environments the usual drawbacks of such environments have been eliminated. The IDE will launch the necessary docker image that contains a comprehensive development environment, as well as will mount all the necessary volumes. Since the devcontainer configuration can be checked into the Git repo, it can be easily maintained in a team environment. The Docker host can be either the local machine (including Docker Desktop on macOS) or remote docker host (e.g. powerful cloud VM, or a server running in a private network). ",
     "url": "https://soostone.github.io/user-manual/devcontainer",
     "relUrl": "/user-manual/devcontainer"
-  },"9": {
+  },"10": {
     "doc": "Devcontainer",
     "title": "Using devcontainer enabled projects",
     "content": "The Napkin Docker image uses VSCode devcontainer as a base. It is based on Ubuntu Hirsute and includes napkin, Git and other common utilities. If other tools are necessary, one can further extend by adding extra layers with Dockerfile as described in this document. First, clone your Git repo as usual. Next, select “Reopen folder in container” when prompted. IDE will reload and open your project in Docker-based environment with Napkin and other development tools available. ",
     "url": "https://soostone.github.io/user-manual/devcontainer#using-devcontainer-enabled-projects",
     "relUrl": "/user-manual/devcontainer#using-devcontainer-enabled-projects"
-  },"10": {
+  },"11": {
     "doc": "Devcontainer",
     "title": "Configuring the devcontainer in a new project",
     "content": "If you have used napkin init to create your project all necessary files have already been created for you. Minimal setup . Add .devcontainer.json file to the project root, then select “Reopen folder in Container”.devcontainer.json . { \"name\": \"Napkin Project\", \"image\": \"soostone/napkin-exe\", \"settings\": { \"yaml.schemas\": {\"/usr/share/napkin/spec-schema.json\": \"spec*.yaml\"} }, \"extensions\": [ \"haskell.haskell\", \"redhat.vscode-yaml\", \"eamodio.gitlens\", \"ms-azuretools.vscode-docker\", \"shinichi-takii.sql-bigquery\", \"ms-ossdata.vscode-postgresql\" ], \"forwardPorts\": [9901], // optional, can rely on auto forward, needed only for BigQuery \"remoteUser\": \"napkin\" } . Advanced setup with extra development tools . Should extra development tools be necessary, you can extend your development environment by extending Napkin image with extra layers. Remember to select “Rebuild container” whenever you update .devcontainer.json or Dockerfile. Please refer to the manual for more information.devcontainer.json . { \"name\": \"Napkin Project\", \"build\": { \"dockerfile\": \"Dockerfile\", \"context\": \"../\", // Update 'NAPKIN_DOCKER_TAG' to upgrade napkin \"args\": { \"NAPKIN_DOCKER_TAG\": \"v1.2.3\" } }, // Set *default* container specific settings.json values on container create. \"settings\": { \"yaml.schemas\": {\"/usr/share/napkin/spec-schema.json\": \"spec*.yaml\"} }, // Add the IDs of extensions you want installed when the container is created. \"extensions\": [ \"haskell.haskell\", \"redhat.vscode-yaml\", \"eamodio.gitlens\", \"ms-azuretools.vscode-docker\", \"shinichi-takii.sql-bigquery\", \"ms-ossdata.vscode-postgresql\" ], // Use 'forwardPorts' to make a list of ports inside the container available locally. \"forwardPorts\": [9901], // Use 'postCreateCommand' to run commands after the container is created. // \"postCreateCommand\": \"uname -a\", // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root. \"remoteUser\": \"vscode\" } . Dockerfile . ARG NAPKIN_DOCKER_TAG FROM soostone/napkin-exe:$NAPKIN_DOCKER_TAG ## You can extend your development environment by installing extra packages from ubuntu # RUN apt-get update &amp;&amp; apt-get install -y extra-package ## Or from nixos # RUN nix-env -f \"&lt;nixpkgs&gt;\" -iA extra-package . ",
     "url": "https://soostone.github.io/user-manual/devcontainer#configuring-the-devcontainer-in-a-new-project",
     "relUrl": "/user-manual/devcontainer#configuring-the-devcontainer-in-a-new-project"
-  },"11": {
+  },"12": {
     "doc": "Docker",
     "title": "Docker",
     "content": " ",
     "url": "https://soostone.github.io/docker/#docker",
     "relUrl": "/docker/#docker"
-  },"12": {
+  },"13": {
     "doc": "Docker",
     "title": "Basic usage",
     "content": "The idea behind the docker wrapper script is simple: usage patterns should be indistinguishable from regular Napkin usage. It is possible to invoke any Napkin command, for example: . sh &lt;(docker run --rm soostone/napkin-exe cat /bin/napkin-docker) init --project-name example sh &lt;(docker run --rm soostone/napkin-exe cat /bin/napkin-docker) validate --spec-file example/specs/spec.yaml --interactive sh &lt;(docker run --rm soostone/napkin-exe cat /bin/napkin-docker) haddock sh &lt;(docker run --rm soostone/napkin-exe cat /bin/napkin-docker) version . ",
     "url": "https://soostone.github.io/docker/#basic-usage",
     "relUrl": "/docker/#basic-usage"
-  },"13": {
+  },"14": {
     "doc": "Docker",
     "title": "Advanced usage",
     "content": "If your Napkin project requires some extra haskell packages, which is usually specified in spec.yaml file: . spec.yaml . haskell_packages: - cassava - cassava-embed . It is still possible to use docker wrapper script like so: . shell . NAPKIN_EXTRA_PACKAGES=\"cassava cassava-embed\" sh &lt;(docker run --rm soostone/napkin-exe cat /bin/napkin-docker) validate . Building custom napkin image with extra cassava cassava-embed packages, it can take a minute... sha256:707aab0cdce3d14929134cad2d8102bb463ef4377cdad3e1c59afa62d5342689 OK . Under the hood, wrapper script will build an extra layer to the base image with extra packages installed, so Napkin can see and use them with the following Nix expression: . nixpkgs.nix . '(import https://github.com/NixOS/nixpkgs/archive/$NAPKIN_NIX_REVISION.tar.gz {}) .haskell.packages.$NAPKIN_GHC_VERSION_COMPACT .ghcWithPackages (p: with p; [$NAPKIN_EXTRA_PACKAGES]) . Note, that packages, specified with NAPKIN_EXTRA_PACKAGES variable, are pulled from Nix, so every package should exist in Nix, for example: cassava). ",
     "url": "https://soostone.github.io/docker/#advanced-usage",
     "relUrl": "/docker/#advanced-usage"
-  },"14": {
+  },"15": {
     "doc": "Docker",
     "title": "Technical details",
     "content": "Assumptions and internals . Docker wrapper script provides a way to run Napkin inside a container. Being executed inside a container, it needs access to the project files you are working on. Wrapper script makes an assumption, that it will be executed from the project root folder and mounts current folder from the host machine to the /project folder inside a container: --volume $PWD:/project. Since Napkin uses user’s $HOME folder to cache BigQuery credentials in SQLite database, wrapper script also needs to mount .napkin folder from the host to the container: --volume $HOME/.napkin:/home/napkin/.napkin. Occasionally, Napkin wants to open some links in the user’s browser (docs, BigQuery oAuth flow, etc.). Since there is no access to the host’s browser from the running container, wrapper scripts mounts a host-container pipe (temp folder based), sets up own tiny browser wrapper inside a container --volume $open:/tmp/open --volume $inbox:/tmp/inbox, listens to any invocations on the host, and opens host’s browser normally with help of standard open (on Mac) or xdg-open (on Linux) utilities. It is also possible to specify preferred browser with BROWSER environment variable. BigQuery oAuth flow requires program to have a valid HTTP callback (has to be on localhost in case of standalone desktop program). But since Napkin in being run inside a container, wrapper script publishes the port from a container to host machine --publish $oauth_port:9901, which possible to override with corresponding environment variable: oauth_port=\"${NAPKIN_OAUTH_PORT:=9901}\". Commit policy . Wrapper script, extracted out of docker container to the host filesystem, contains exact versions of Napkin, nixpkgs and GHC compiler. napkin-docker . image=\"soostone/napkin-exe:v0.5.7-9db950fa\" NAPKIN_GHC_VERSION_COMPACT=\"ghc8107\" NAPKIN_GHC_VERSION=\"ghc-8.10.7\" . That is precisely why on first use you see such output from docker in your terminal (but on on subsequent invocations): . shell . sh &lt;(docker run --rm soostone/napkin-exe cat /bin/napkin-docker) version . Unable to find image 'soostone/napkin-exe:v0.5.7-9db950fa' locally v0.5.7-9db950fa: Pulling from soostone/napkin-exe Digest: sha256:cccb09930b22216a7ab97f0eef0d4299d4a62a3e44928d23e88085eb25d98159 Status: Downloaded newer image for soostone/napkin-exe:v0.5.7-9db950fa Napkin version: 0.5.7 Git commit hash: 9db950fad2469ed88522976f700c3f7446eb5176 Built at: 2021-12-02 17:35:21.03233944 UTC . Since wrapper script has docker image tag as soostone/napkin-exe:v0.5.7-9db950fa and not just soostone/napkin-exe:latest, it does an extra pull, but quickly realize then images are the same. Is is recommended to commit the wrapper script to the project git repository, so that other team members will use it. ",
     "url": "https://soostone.github.io/docker/#technical-details",
     "relUrl": "/docker/#technical-details"
-  },"15": {
+  },"16": {
     "doc": "Docker",
     "title": "Docker",
     "content": ". | Docker . | Basic usage | Advanced usage | Technical details . | Assumptions and internals | Commit policy | . | . | . ",
     "url": "https://soostone.github.io/docker/",
     "relUrl": "/docker/"
-  },"16": {
+  },"17": {
     "doc": "Fundamentals",
     "title": "Napkin fundamentals tutorial",
     "content": "This is the first of a series of tutorials to get up and running with Napkin development. We do this through the example of building a simple Napkin data pipeline. The goal is that by the end of this tutorial, you’ll have a good idea of: . | How to start a Napkin project | How to modify, verify, and execute Napkin projects | How Napkin helps you build a real-life application quickly | . With that, let’s get started! . ",
     "url": "https://soostone.github.io/fundamentals/#napkin-fundamentals-tutorial",
     "relUrl": "/fundamentals/#napkin-fundamentals-tutorial"
-  },"17": {
+  },"18": {
     "doc": "Fundamentals",
     "title": "Getting started",
     "content": "Preliminaries: . | System requirements . | Linux or macOS | SQLite | . | Installs . | Napkin | Chinook database | . | . With the preliminaries out of the way, we are ready to proceed with bootstrapping our first Napkin data pipeline. ",
     "url": "https://soostone.github.io/fundamentals/#getting-started",
     "relUrl": "/fundamentals/#getting-started"
-  },"18": {
+  },"19": {
     "doc": "Fundamentals",
     "title": "Bootstrapping napkin",
     "content": "The most intuitive way of initiating a Napkin project is to use the init CLI command. By default, init creates a new project skeleton from Napkin’s :basic default template. shell . mkdir ./napkinFundamentalTutorial cd ./napkinFundamentalTutorial napkin init --project-name chinook-analytic . The corresponding directory structure created by Napkin’s init command for the chinook-analytic project is: . shell . chinook-analytic ├── README.md ├── specs │ └── spec.yaml └── sql └── example.sql . Napkin’s CLI is the point of entry for all typical workflows of data engineering and pipeline curation. napkin --help provides a comprehensive list of available Napkin commands. Commands may take additional parameters. To get help with these parameters, use: napkin command --help. For instance to get help with the init command, use napkin init --help. Before moving to the next section, lets validate our project using Napkin’s validate command: . shell . napkin validate --spec-file specs/spec.yaml . Napkin follows a common paradigm where source tables are not mutated by Napkin. Instead, Napkin creates a series of dependent tables, managed tables, based on the SQL files in sql/ folder. Internally, Napkin uses specs/spec.yaml to create a DAG where the edges are references to fields from managed tables. Napkin uses this DAG to drive the execution plan. In addition to DAG, Napkin Spec contains back-end connection related data for connecting to supported target databases. In this section we used napkin init to bootstrap the chinook-analytic. For additional details on how to start a napkin project, see Appendix-B. ",
     "url": "https://soostone.github.io/fundamentals/#bootstrapping-napkin",
     "relUrl": "/fundamentals/#bootstrapping-napkin"
-  },"19": {
+  },"20": {
     "doc": "Fundamentals",
     "title": "Adding computations",
     "content": "Our goal in this section is to answer two basic questions in regards to Chinook database: . | what are the top 10 countries with the most invoices? | what are the top 10 customers? | . We would like to do this following the DRY principle. Our high level tasks are: . | create ranking of Chinook sales to countries | create ranking of Chinook customers | use a generic top-performer to find the top performers | . To accomplish the above tasks we first compose the SQL statements for creating the ranking managed-tables. Next, we modify the specs/spec.yaml to: . | create the managed-tables | manage the dependencies among the managed-tables | use Napkin’s variable interpolation to craft a generalize top_performers query | . Lastly, we exploit the Napkin CLI for: . | validating the data pipeline components syntax, napkin validate --spec-file specs/spec.yaml | getting some intuition for: . | data pipeline dependencies, napkin dump -o myOutputFolder --spec-file ./specs/spec.yaml | cost and ETA of chinook-analytics data pipeline execution, napkin run --dry-run --spec-file specs/spec.yaml | . | execute the pipeline, napkin run --spec-file specs/spec.yaml | . ",
     "url": "https://soostone.github.io/fundamentals/#adding-computations",
     "relUrl": "/fundamentals/#adding-computations"
-  },"20": {
+  },"21": {
     "doc": "Fundamentals",
     "title": "Create the rankings",
     "content": "We’ll start by creating the SQL file to create the ranking criteria: . sql/client_countries.sql . -- client countries and total invoices SELECT BillingCountry AS billingCountry, COUNT(*) AS Invoices FROM Invoice GROUP BY BillingCountry . sql/customers_total_purchase.sql . SELECT C.Customerid, C.email, C.FirstName, C.LastName, SUM(I.TOTAL) AS Total_purchase FROM Customer C JOIN Invoice I ON C.Customerid = I.Customerid GROUP BY C.CustomerId . Then we create our top_performers query: . sql/customers_total_purchase.sql . SELECT * FROM {{table}} ORDER BY {{top_by}} FETCH FIRST {{max_limit}} ROWS ONLY . Next, we exploit Napkin’s Spec to declaratively describe the projects data pipelines and dependencies through specs/spec.yaml file. ",
     "url": "https://soostone.github.io/fundamentals/#create-the-rankings",
     "relUrl": "/fundamentals/#create-the-rankings"
-  },"21": {
+  },"22": {
     "doc": "Fundamentals",
     "title": "specs/spec.yaml",
     "content": "Data pipelines in Napkin are called Specs. Napkin uses a high level DSL in YAML configuration language to declaratively describe Specs. In this section we’ll utilize the following Spec functionalities: . | automatic dependency discovery among managed, dependent, tables | assertions, post-hook and pre-hook | variable interpolation | . With that, we modify thespecs/spec.yaml for the following purpose: . | SQLite back-end connection detail | create the dependent tables, managed tables | . specs/spec.yaml . # yaml-language-server: $schema=http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json app_name: chinook-analytics # Connect to Sqlite database: backend: Sqlite db_url: sqlite:chinook-sql.db tables: ## countries have the most Invoices client_countries: create_action: sql_file: source: client_countries.sql post_hooks: - assert_unique: table: client_countries columns: - billingCountry customers_total_purchase: update_strategy: create_action: sql_file: source: customers_total_purchase.sql top10_customers: create_action: sql_file: source: top_performers.sql vars: table: customers_total_purchase max_limit: 10 top_by: TOTAL_PURCHASE ## top 10 countries have the most Invoices top10_client_countries: create_action: sql_file: source: top_performers.sql vars: table: client_countries max_limit: 10 top_by: Invoices . Next, we proceed with the Napkin CLI to execute the project Spec. There is a correlation between specs/spec.yaml and the SQL files in sql/ folder. Please stay consistent in regards to the file name. Our suggestion is use the same filename for all your SQL files as this tutorial has. ",
     "url": "https://soostone.github.io/fundamentals/#specsspecyaml",
     "relUrl": "/fundamentals/#specsspecyaml"
-  },"22": {
+  },"23": {
     "doc": "Fundamentals",
     "title": "Napkin CLI",
     "content": "In this section we’ll use the Napkin CLI to: . | validate Spec | show the Spec’s managed tables dependencies | execute Spec | . The validate command validates that the specs/spec.yaml and sql/*.sql files are syntactically correct: . shell . napkin validate --spec-file specs/spec.yaml . Next we use the dump command to visually verify the managed-tables dependencies: . shell . napkin dump -o myOutputFolder --spec-file specs/spec.yaml . Then we use dry-run to get an intuition as to what napkin is about to do in addition to getting an ETA and const estimate: . shell . napkin run --dry-run --spec-file specs/spec.yaml . [2021-12-27 22:45:45][Info] Determining tables for update... [2021-12-27 22:45:45][Warning] Dry run, table specs and hooks will not be executed. [2021-12-27 22:45:45][Info] Unmanaged tables that will be used as an input in this run: - Customer - Invoice [2021-12-27 22:45:45][Info] Managed tables that will be used as an input in this run, but will not be updated: [] [2021-12-27 22:45:45][Info] Managed tables that will be updated in this run: - client_countries - customers_total_purchase - top10_client_countries - top10_customers [2021-12-27 22:45:45][Info] Estimated runtime: 0s [2021-12-27 22:45:45][Warning] Dry run, aborting execution. And finally, once we’re satisfied with the previous commands, we execute the Spec using the Napkin run command: . shell . napkin run --spec-file specs/spec.yaml . [2021-12-27 22:56:10][Info] Unmanaged tables that will be used as an input in this run: - Customer - Invoice [2021-12-27 22:56:10][Info] Managed tables that will be used as an input in this run, but will not be updated: [] [2021-12-27 22:56:10][Info] Managed tables that will be updated in this run: - client_countries - customers_total_purchase - top10_client_countries - top10_customers [2021-12-27 22:56:10][Info] Estimated runtime: 0s [2021-12-27 22:56:10][Info] Running table hooks (Pre) [2021-12-27 22:56:10][Info] Executing table's action [2021-12-27 22:56:10][Info] Running table hooks (Pre) [2021-12-27 22:56:10][Info] Executing table's action [2021-12-27 22:56:10][Info] Table's action complete. [2021-12-27 22:56:10][Info] Running table hooks (Post) [2021-12-27 22:56:10][Info] Table' processing complete. [2021-12-27 22:56:10][Info] TableSpec \"client_countries\" server stats: 0 rows affected [2021-12-27 22:56:10][Info] Table's action complete. [2021-12-27 22:56:10][Info] Running table hooks (Post) [2021-12-27 22:56:10][Info] Table' processing complete. [2021-12-27 22:56:10][Info] Running table hooks (Pre) [2021-12-27 22:56:10][Info] Executing table's action [2021-12-27 22:56:10][Info] TableSpec \"customers_total_purchase\" server stats: 0 rows affected [2021-12-27 22:56:10][Info] Running table hooks (Pre) [2021-12-27 22:56:10][Info] Executing table's action [2021-12-27 22:56:10][Info] Table's action complete. [2021-12-27 22:56:10][Info] Running table hooks (Post) [2021-12-27 22:56:10][Info] Table' processing complete. [2021-12-27 22:56:10][Info] TableSpec \"top10_client_countries\" server stats: 0 rows affected [2021-12-27 22:56:10][Info] Table's action complete. [2021-12-27 22:56:10][Info] Running table hooks (Post) [2021-12-27 22:56:10][Info] Table' processing complete. [2021-12-27 22:56:10][Info] TableSpec \"top10_customers\" server stats: 0 rows affected [2021-12-27 22:56:10][Info] Execution completed. Please see below for a summary. [2021-12-27 22:56:10][Info] ---------------------------------------------------------- [2021-12-27 22:56:10][Info] Table \"client_countries\" ran in 0.02: 0 rows affected [2021-12-27 22:56:10][Info] Assertion client_countries / Post / 1 / assertUniqueBy: client_countries: OK [2021-12-27 22:56:10][Info] Table \"customers_total_purchase\" ran in 0.01: 0 rows affected [2021-12-27 22:56:10][Info] Table \"top10_client_countries\" ran in 0.03: 0 rows affected [2021-12-27 22:56:10][Info] Table \"top10_customers\" ran in 0.05: 0 rows affected [2021-12-27 22:56:10][Info] Run complete. Total cost: 0 rows affected . Lets quickly verify the result from SQLite client: . shell . sqlite3 chinook-sql.db . SQLite version 3.31.1 2020-01-27 19:55:54 Enter \".help\" for usage hints. sqlite&gt; .header on sqlite&gt; .tables Album Invoice Track Artist InvoiceLine client_countries Customer MediaType customers_total_purchase Employee Playlist top10_client_countries Genre PlaylistTrack top10_customers sqlite&gt; select * from top10_client_countries; billingCountry|Invoices Argentina|7 Australia|7 Austria|7 Belgium|7 Chile|7 Denmark|7 Finland|7 Hungary|7 Ireland|7 Italy|7 sqlite&gt; select * from top10_customers; CustomerId|Email|FirstName|LastName|Total_purchase 59|puja_srivastava@yahoo.in|Puja|Srivastava|36.64 8|daan_peeters@apple.be|Daan|Peeters|37.62 12|roberto.almeida@riotur.gov.br|Roberto|Almeida|37.62 16|fharris@google.com|Frank|Harris|37.62 21|kachase@hotmail.com|Kathy|Chase|37.62 23|johngordon22@yahoo.com|John|Gordon|37.62 29|robbrown@shaw.ca|Robert|Brown|37.62 33|ellie.sullivan@shaw.ca|Ellie|Sullivan|37.62 50|enrique_munoz@yahoo.es|Enrique|Muñoz|37.62 54|steve.murray@yahoo.uk|Steve|Murray|37.62 sqlite&gt; . ",
     "url": "https://soostone.github.io/fundamentals/#napkin-cli",
     "relUrl": "/fundamentals/#napkin-cli"
-  },"23": {
+  },"24": {
     "doc": "Fundamentals",
     "title": "Napkin remembers",
     "content": "Napkin internally keeps track of your application state. You might find it helpful to spend some time with: . shell . napkin history list --spec-file specs/spec.yaml . As always, napkin history --help will provide a comprehensive list of history parameters . ",
     "url": "https://soostone.github.io/fundamentals/#napkin-remembers",
     "relUrl": "/fundamentals/#napkin-remembers"
-  },"24": {
+  },"25": {
     "doc": "Fundamentals",
     "title": "Aggregations",
     "content": "We continue extending the chinook-analytics Spec to provide additional functionalities: . | daily total sales for Chinook | counties ranking of genres | . The corresponding SQL files are: . sql/daily_total.sql . -- incremental table -- compute daily total sales -- SELECT strftime('%d', \"InvoiceDate\") AS \"InvoiceDate\", SUM(\"Total\") AS \"Total\" FROM \"Invoice\" WHERE \"InvoiceDate\" &gt; {{{cutoff}}} GROUP BY strftime('%d', \"InvoiceDate\") . sql/countries_genres.sql . -- genres by country -- SELECT COUNT(i.InvoiceId) Purchases, c.Country, g.Name, g.GenreId FROM Invoice i JOIN Customer c ON i.CustomerId = c.CustomerId JOIN InvoiceLine il ON il.Invoiceid = i.InvoiceId JOIN Track t ON t.TrackId = il.Trackid JOIN Genre g ON t.GenreId = g.GenreId GROUP BY c.Country, g.Name ORDER BY c.Country, Purchases DESC . sql/countries_popular_genres.sql . -- most popular genres for each country SELECT t1.purchases as MaxPurchases, t1.country as Country, t1.name as Genres FROM {{ table }} as t1 JOIN ( SELECT MAX(Purchases) AS MaxPurchases, Country, Name, GenreId FROM {{ table }} GROUP BY country ) t2 ON t1.Country = t2.Country WHERE t1.Purchases = t2.MaxPurchases . Next, we’ll extend chinook-analytics Spec. Here is the specs/spec.yaml in its entirely . specs/spec.yaml . # yaml-language-server: $schema=http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json app_name: chinook-analytics # Connect to Sqlite database: backend: Sqlite db_url: sqlite:chinook-sql.db tables: ## countries have the most Invoices client_countries: create_action: sql_file: source: client_countries.sql post_hooks: - assert_unique: table: client_countries columns: - billingCountry customers_total_purchase: create_action: sql_file: source: customers_total_purchase.sql top10_customers: create_action: sql_file: source: top_performers.sql vars: table: customers_total_purchase max_limit: 10 top_by: TOTAL_PURCHASE ## top 10 countries have the most Invoices top10_client_countries: create_action: sql_file: source: top_performers.sql vars: table: client_countries max_limit: 10 top_by: Invoices ## breakdown countries by genres countries_genres: create_action: sql_file: source: countries_genres.sql ## most popular genres in each country countries_popular_genres: create_action: sql_file: source: countries_popular_genres.sql vars: table: countries_genres ## countries monthly sales countries_monthly_sales: create_action: long_to_wide: source: Invoice aggregate: sum rows_by: [BillingCountry] cols_by: strftime('%m', \"InvoiceDate\") value: Total col_prefix: month_ ## daily totals from a given start date daily_totals: update_strategy: - type: if_missing - type: periodically period: 84600 create_action: incremental_by_time: source: daily_total.sql timestamp_column: InvoiceDate start_day: 2013-01-01 lookback_days: 14 . And the final chinook-analytics project directory structure is: . shell . ├── chinook-sql.db ├── data │   └── napkin.v2.sqlite3 ├── README.md ├── specs │   └── spec.yaml └── sql ├── client_countries.sql ├── countries_genres.sql ├── countries_popular_genres.sql ├── customers_total_purchase.sql ├── daily_total.sql └── top_performers.sql . Finally, it is time to use the Napkin CLI to interrogate and execute the chinook-analytics Spec: . shell . napkin --spec-file specs/spec.yaml napkin dump -o myOutputFolder --spec-file specs/spec.yaml napkin run --spec-file specs/spec.yaml . ",
     "url": "https://soostone.github.io/fundamentals/#aggregations",
     "relUrl": "/fundamentals/#aggregations"
-  },"25": {
+  },"26": {
     "doc": "Fundamentals",
     "title": "Saving our work",
     "content": "In addition to bootstrapping our project, the init command initialized an empty Git repository that we may use to add or push or code to a remote Git repository. ",
     "url": "https://soostone.github.io/fundamentals/#saving-our-work",
     "relUrl": "/fundamentals/#saving-our-work"
-  },"26": {
+  },"27": {
     "doc": "Fundamentals",
     "title": "Summary",
     "content": "In this tutorial we: . | bootstrapped a data pipeline, Spec | declaratively manged dependencies among Spec components | used assertions to verify Specs execution meets the given criteria | execute our Spec, data pipeline | Stored our work | . Please stay tuned for future Napkin tutorial. ",
     "url": "https://soostone.github.io/fundamentals/#summary",
     "relUrl": "/fundamentals/#summary"
-  },"27": {
+  },"28": {
     "doc": "Fundamentals",
     "title": "Appendices",
     "content": "Appendix-A . Installing Chinook on SQLite back-end . shell . curl -L -o chinook-sql.db https://github.com/lerocha/chinook-database/raw/master/ChinookDatabase/DataSources/Chinook_Sqlite.sqlite . To verify the Chinook database SQLite install: . shell . echo \"SELECT * FROM Artist\" | sqlite3 chinook-sql.db . Appendix-B . Napkin allows for generating the project structure based on existing SQL files. We opted out on feature in favor of init to provide a basic intuition of Napkin projects. napkin gen-spec --help for additional information. ",
     "url": "https://soostone.github.io/fundamentals/#appendices",
     "relUrl": "/fundamentals/#appendices"
-  },"28": {
+  },"29": {
     "doc": "Fundamentals",
     "title": "Fundamentals",
     "content": " ",
     "url": "https://soostone.github.io/fundamentals/",
     "relUrl": "/fundamentals/"
-  },"29": {
+  },"30": {
     "doc": "Running scheduled job on GitHub Actions",
     "title": "Running scheduled job on GitHub Actions",
     "content": "Docker distribution of Napkin makes it easy to deploy it in unattended environments, such as CI/CD platform. In examples below, we will execute Napkin Spec on daily basis using GitHub Actions. This approach can be easily adapted by the user for a CI/CD platform of choice. ",
     "url": "https://soostone.github.io/user-manual/github-actions",
     "relUrl": "/user-manual/github-actions"
-  },"30": {
+  },"31": {
     "doc": "Running scheduled job on GitHub Actions",
     "title": "BigQuery",
     "content": "In order to pass DB credentials to unattended job, you need to generated credentials file as described in Connecting to the database document. Next, you need to add it as NAPKIN_CREDS secret in GitHub repository settings. name: Napkin on: push: branches: - master schedule: # trigger the workflow daily at 3am # * is a special character in YAML so you have to quote this string - cron: '0 3 * * *' jobs: napkin: runs-on: ubuntu-20.04 container: image: soostone/napkin-exe:v0.5.10 steps: - uses: actions/checkout@v2 - name: Get branch name id: branch-name uses: tj-actions/branch-names@v5 - shell: bash env: NAPKIN_CREDS: ${{ secrets.NAPKIN_CREDS }} run: echo \"$NAPKIN_CREDS\" &gt; creds.json - run: napkin run --log-format Server -C creds.json --arg branch=${{ steps.branch-name.outputs.current_branch }} . ",
     "url": "https://soostone.github.io/user-manual/github-actions#bigquery",
     "relUrl": "/user-manual/github-actions#bigquery"
-  },"31": {
+  },"32": {
     "doc": "Running scheduled job on GitHub Actions",
     "title": "Postgres/Redshift",
     "content": "Credentials to the database have to be provided, so Napkin is able to connect to the database. In this example, we assume that full connection string is present in the YAML Spec except of DB password. When you add it as PGPASSWORD secret in GitHub repository settings it will be reexported as PGPASSWORD variable that will be consumed by Postgres client. name: Napkin on: push: branches: - master schedule: # trigger the workflow daily at 3am # * is a special character in YAML so you have to quote this string - cron: '0 3 * * *' jobs: napkin: runs-on: ubuntu-20.04 container: image: soostone/napkin-exe:v0.5.10 steps: - uses: actions/checkout@v2 - name: Get branch name id: branch-name uses: tj-actions/branch-names@v5 - shell: bash env: PGPASSWORD: ${{ secrets.PGPASSWORD }} - run: napkin run --log-format Server --arg branch=${{ steps.branch-name.outputs.current_branch }} . ",
     "url": "https://soostone.github.io/user-manual/github-actions#postgresredshift",
     "relUrl": "/user-manual/github-actions#postgresredshift"
-  },"32": {
+  },"33": {
     "doc": "API Reference",
     "title": "API Reference",
     "content": "Napkin currently exposes all internal APIs. However, it is recommended to import just one modules from Napkin (to write custom haskell queries): Napkin.Backends.$BACKEND, where $BACKEND can be one of: . | BigQuery | Postgres | Redshift | Sqlite | . ",
     "url": "https://soostone.github.io/haddock/",
     "relUrl": "/haddock/"
-  },"33": {
+  },"34": {
     "doc": "API Reference",
     "title": "Haddocs for versions",
-    "content": ". | 0.5.10 Currently in development Changelog . | 0.5.9 Release date: 2021-12-14 Changelog . | 0.5.8 Release date: 2021-12-08 Changelog . | . ",
+    "content": ". | 0.5.11 Currently in development Changelog . | 0.5.10 Release date: 2021-12-29 Changelog . | 0.5.9 Release date: 2021-12-14 Changelog . | 0.5.8 Release date: 2021-12-08 Changelog . | . ",
     "url": "https://soostone.github.io/haddock/#haddocs-for-versions",
     "relUrl": "/haddock/#haddocs-for-versions"
-  },"34": {
+  },"35": {
     "doc": "IDE Support",
     "title": "IDE Support",
     "content": "Visual Studio Code is the recommended IDE to develop data processing pipelines with Napkin. Visual Studio Code . However, some configuration is required to get the best experience. In this document, we describe what features can increase productivity and how they can be configured. We recommend installing the following extentions: . | YAML | Advanced meta programming support . | Haskell | . | SQL editing . | Postgres | SQL (BigQuery) | . | Devcontainer support . | Remote - Containers | Docker | . | . YAML Schema . Editing Specs in YAML format can be assisted by IDE with instant validation and autocomplete. Note that schema validation does not replace the napkin validate command which performs a dry-run check and evaluates all referenced programs and queries. Once YAML extension is installed you need to configure Napkin Spec schema. If you have used napkin init the appropriate line has been already added to spec.yaml. Otherwise, you need to add the following line to your spec.yaml. spec.yaml . # yaml-language-server: $schema=https://soostone-napkin-public.s3.us-east-1.amazonaws.com/schema/schema.json . Alternatively, one may configure the schema path in the VSCode configuration file (.vscode/settings.json or in global settings): .vscode/settings.json . \"yaml.schemas\": { \"https://soostone-napkin-public.s3.us-east-1.amazonaws.com/schema/schema.json\": \"spec*.yaml\", } . The above snippets will use Spec schema for the last release of Napkin. In some cases, the use of the latest and greatest schema may not be desired. We also publish tagged schema versions at https://soostone-napkin-public.s3.us-east-1.amazonaws.com/schema/app-version/X.Y.Z/schema.json. Alternatively, one can refer local schema file and check it in the Git repository. The schema file can be either downloaded or generated by the napkin yaml-schema spec-schema.json command. The schema file is also already in Docker image at \"/usr/share/napkin/spec-schema.json. Tasks . We provide a .vscode/tasks.json for the most frequent tasks: validate, validate (interactive), dump, and run commands.vscode/tasks.json . { // See https://go.microsoft.com/fwlink/?LinkId=733558 // for the documentation about the tasks.json format \"version\": \"2.0.0\", \"tasks\": [ { \"label\": \"dump\", \"type\": \"shell\", \"command\": \"napkin dump -o dump\" }, { \"label\": \"validate\", \"type\": \"shell\", \"command\": \"napkin validate\" }, { \"label\": \"validate interactive\", \"type\": \"shell\", \"command\": \"napkin validate --interactive\", \"isBackground\": true }, { \"label\": \"run\", \"type\": \"shell\", \"command\": \"napkin run\" }, ] } . Metaprogramming: Haskell Language Server . Note: this feature is not available if you are using standalone Napkin binary, either Docker or Nix setup is required . Metaprogramming in Haskell can be supported by Haskell Language Server and Haskell extension. Haskell Language Server will make the feedback loop shorter by displaying errors and warnings, as well as presenting information about types in tooltips. It will also speed up Spec development by providing autocompletion. All necessary binaries are included in Docker and Nix distributions of Napkin. However, the hie.yaml file has to be created in the project root directory. If you have used the napkin init command to create your project the necessary file is already there. hie-bios.yaml . cradle: bios: shell: napkin hie-bios --spec-file specs/spec.yaml . ",
     "url": "https://soostone.github.io/ide",
     "relUrl": "/ide"
-  },"35": {
+  },"36": {
     "doc": "IDE Support",
     "title": "Other Editors",
     "content": "Both YAML and Haskell language servers provide support for numerous editors. YAML schema support can be enabled according to YAML Language Server documentation. Alternatively, Spec YAMLs can be validated with yajsv. For metaprogramming assistance, please refer to Haskell Language Server docs for further information. ",
     "url": "https://soostone.github.io/ide#other-editors",
     "relUrl": "/ide#other-editors"
-  },"36": {
+  },"37": {
     "doc": "About",
     "title": "What is Napkin",
     "content": "Napkin is a command line application that executes data pipelines of all sizes, backed by a feature-rich Haskell library offering programmatic freedom. It’s lightweight, offers a quick start for new projects and yet scales to massive data pipelines with powerful meta-programming possibilities. Napkin has a broad vision in making life easier for data scientists and engineers, encapsulating a large portion of the data engineering landscape. It therefore bundles several key features together: . | A consumer-grade Command Line Interface (CLI) that acts as the single point of entry for all typical workflows of data engineering and pipeline curation. The napkin app can refresh entire data pipelines, re-create individual tables, validate/typecheck pipelines in seconds, export dependency graphs and more. | A multi-backend (w.g. BigQuery and Redshift) database runtime environment that provides for all key capabilities in executing a modern data pipeline, including interacting the database (see what’s there, query tables, create/recreate/update tables, etc.), performing runtime unit-tests/assertions, logging, timing and interacting with the outside world. | A built-in DAG orchestrator that can automatically detect all the dependency relationships in a data pipeline (e.g. 30+ tables) and perform the pipeline updates in the correct order. Data pipelines are called “Spec”s in napkin and ship with all batteries included: Ability to rewrite table destinations into different schemas/datasets for different environments (e.g. devel vs. prod), mass-prefixing/renaming tables, setting different “Refresh Strategies” for each table (e.g. update daily vs. only update when missing), a wide range of data unit-tests (e.g. table must be unique by columns X+Y) that are automatically performed each time the table is updated. | For the power user, a SQL wrapper DSL in Haskell that stays as close as possible to SQL, without any intermediary object or relational mappings. This DSL looks almost like regular SQL, but allows sophisticated programmatic manipulation and composition of SQL queries and statements. Napkin can parse regular SQL into this internal DSL, perform any desired manipulations and render it back out as regular SQL. | A sophisticated SQL meta-programming environment that accelerates modern data engineering efforts. Napkin users can interweave several options for crafting SQL as they see fit, even in the same file. These options include: . | Writing plain SQL files without any low-grade templating noise. Napkin will still auto-detect all dependencies and make the pipeline “just work”. | Using lightweight variable substitutions in .sql files via Mustache templates. | Using sophisticated #{sexp} ... #{/sexp} splices directly in .sql files to write Haskell code that dynamically generates SQL fragments on the fly. | Expressing entire queries directly using napkin’s Haskell DSL, often used for dynamic generation of SQL code based on complex logic. For example, prediction trees can be rendered into SQL this way, sometimes generated 100K LOC SQL files from a single model. | . | . ",
     "url": "https://soostone.github.io/#what-is-napkin",
     "relUrl": "/#what-is-napkin"
-  },"37": {
+  },"38": {
     "doc": "About",
     "title": "Napkin’s Philosophy",
     "content": "Napkin was created to capitalize on an opportunity we noticed back in 2015 to (massively) accelerate our team’s data engineering capabilities and yet make the resulting code-bases way more sustainable/maintainable. At the time, we were drowning in the complexity of custom Hadoop MapReduce programs, Spark programs and repositories of ad-hoc SQL scripts targeted on Redshift/Hive/etc at the time. We created napkin because we sorely needed something more practical and reliable for our own work. Over time, the opportunities we saw got crystallized into a set of philosophies we can articulate about what napkin is trying to achieve and whether it may be the huge catalyst for your team that it has been for us. ",
     "url": "https://soostone.github.io/#napkins-philosophy",
     "relUrl": "/#napkins-philosophy"
-  },"38": {
+  },"39": {
     "doc": "About",
     "title": "Base as much data compute as possible on SQL",
     "content": "Despite its age and missed opportunities, SQL code is declarative, functional and highly expressive. It’s easy to construct even for non-engineer data scientists/analysts and tends to offer good “equational reasoning”. It’s constrained just the right amount that business logic does not go “off the hook” like it can in typical programming languages like Python, R, Scala, etc. Once written and tested, SQL tends to produce reliable results. Over the years, we have found almost all data engineering efforts outside of SQL to be error-prone, hard to grow and expensive (e.g. needs data engineers) to maintain over time. If you can imagine how a table should be structured and express that table as a query in SQL, you can use napkin to engineer a pipeline. ",
     "url": "https://soostone.github.io/#base-as-much-data-compute-as-possible-on-sql",
     "relUrl": "/#base-as-much-data-compute-as-possible-on-sql"
-  },"39": {
+  },"40": {
     "doc": "About",
     "title": "Do as much compute as possible on modern analytics DBs like BigQuery/Redshift/Snowflake",
     "content": "Napkin aims to be a data engineering superpower even for very small teams. This is accomplished in large part by leaning on the amazing compute capabilities of modern analytics databases like BigQuery. Napkin’s creation goes back to our realization that if we could express even a very complex computation in SQL on these databases, no matter how convoluted, they would get the work done in astonishingly little time for minimal cost. In our work, we have produced numerous 200,000+ LOC SQL queries using napkin’s meta-programming capabilities that run within minutes on databases like Amazon Redshift and Google’s BigQuery. Fun fact: BigQuery has a ~1M character limit on queries, which we sometimes bypass by breaking complex queries into parts and joining them up / unioning them later. Even this transformation can be done automatically for you by napkin in certain cases! . ",
     "url": "https://soostone.github.io/#do-as-much-compute-as-possible-on-modern-analytics-dbs-like-bigqueryredshiftsnowflake",
     "relUrl": "/#do-as-much-compute-as-possible-on-modern-analytics-dbs-like-bigqueryredshiftsnowflake"
-  },"40": {
+  },"41": {
     "doc": "About",
     "title": "Abstract and reuse complex transformations where possible",
     "content": " ",
     "url": "https://soostone.github.io/#abstract-and-reuse-complex-transformations-where-possible",
     "relUrl": "/#abstract-and-reuse-complex-transformations-where-possible"
-  },"41": {
+  },"42": {
     "doc": "About",
     "title": "Data pipelines should be declarative and managed on Git",
     "content": " ",
     "url": "https://soostone.github.io/#data-pipelines-should-be-declarative-and-managed-on-git",
     "relUrl": "/#data-pipelines-should-be-declarative-and-managed-on-git"
-  },"42": {
+  },"43": {
     "doc": "About",
     "title": "Data pipelines should be regenerative",
     "content": " ",
     "url": "https://soostone.github.io/#data-pipelines-should-be-regenerative",
     "relUrl": "/#data-pipelines-should-be-regenerative"
-  },"43": {
+  },"44": {
     "doc": "About",
     "title": "Data pipeline dev should be lightweight on bare laptops",
     "content": " ",
     "url": "https://soostone.github.io/#data-pipeline-dev-should-be-lightweight-on-bare-laptops",
     "relUrl": "/#data-pipeline-dev-should-be-lightweight-on-bare-laptops"
-  },"44": {
+  },"45": {
     "doc": "About",
     "title": "Doctrine of extreme convenience",
     "content": "With napkin, we aim to make various data engineering and data science workflows so easy to perform that practitioners change their behavior to lean on them more frequently. We believe that speed and convenience without sacrificing correctness and reliability makes a huge difference in sustaining data ecosystem effectiveness. ",
     "url": "https://soostone.github.io/#doctrine-of-extreme-convenience",
     "relUrl": "/#doctrine-of-extreme-convenience"
-  },"45": {
+  },"46": {
     "doc": "About",
     "title": "Napkin’s Benefits",
     "content": "Here’s our best description of benefits you can expect after you’ve gotten a hang of napkin: . | You’ll be able to see and manage your entire data pipeline in a simple codebase, in declarative fashion and in source control - just like any modern software project. | You’ll always be able to “blow away and fully refresh” your entire pipeline from raw data at the push of a button - recovering from mistakes will be a breeze. | Your data pipeline will entirely rely on the power of your backend database, whatever it may be. The likes of BigQuery for large datasets or Postgres (or even Sqlite) when you can get away with it on small data. You won’t rely on error prone Python pandas code, your own custom data processing application and similar constructs that are hard to grow/maintain and ensure correctness over time. | Your data will have actual unit tests that will confirm correctness with each update. (Example: Making sure you don’t double count sales) . | You’ll benefit from tens of combinators we ship with napkin, such as incrementally updating large tables, column-to-row transformations, union-in same-structured tables into one, etc. As we improve napkin, you’ll get all that for free. | You’ll be able to implement your own clever SQL meta-programming to express logic that’d be too tedious to do in plain SQL. Yet the result will still have all the benefits of declarative SQL running on modern analytics databases, instead of your custom Python/R/Scala scripting machine. You’ll be able to create your own mini programs that produce 10-table “purchasing funnel” computations that connect just the right way based on configuration parameters supplied. | . ",
     "url": "https://soostone.github.io/#napkins-benefits",
     "relUrl": "/#napkins-benefits"
-  },"46": {
+  },"47": {
     "doc": "About",
     "title": "Napkin’s Future",
     "content": "Napkin is utilized heavily in commercial projects both at Soostone and at our clients. We improve napkin all the time and have a long backlog of major features we will realize in the future. We would like to be transparent with our roadmap and are looking for ways to best communicate our plans. We’re currently maintaining a Trello board with our roadmap where we would love to hear your reactions and feedback. You can access our roadmap board at Napkin Roadmap . ",
     "url": "https://soostone.github.io/#napkins-future",
     "relUrl": "/#napkins-future"
-  },"47": {
+  },"48": {
     "doc": "About",
     "title": "Next Steps",
     "content": "Continue with Tutorial . ",
     "url": "https://soostone.github.io/#next-steps",
     "relUrl": "/#next-steps"
-  },"48": {
+  },"49": {
     "doc": "About",
     "title": "About",
     "content": ". | What is Napkin | Napkin’s Philosophy . | Base as much data compute as possible on SQL | Do as much compute as possible on modern analytics DBs like BigQuery/Redshift/Snowflake | Abstract and reuse complex transformations where possible | Data pipelines should be declarative and managed on Git | Data pipelines should be regenerative | Data pipeline dev should be lightweight on bare laptops | Doctrine of extreme convenience | . | Napkin’s Benefits | Napkin’s Future | Next Steps | . ",
     "url": "https://soostone.github.io/",
     "relUrl": "/"
-  },"49": {
+  },"50": {
     "doc": "User Manual",
     "title": "User Manual",
     "content": " ",
     "url": "https://soostone.github.io/user-manual/",
     "relUrl": "/user-manual/"
-  },"50": {
+  },"51": {
     "doc": "Installation",
     "title": "Installation",
     "content": "There are many ways to install and use Napkin. This page will help to decide which was is easier and better suited for your need. Main installation options are: . | Pre-build binary for Linux and macOS operating systems. This is the fastest and easiest way of getting Napkin. Just download and unpack – and you are good to go. | Homebrew on macOS. | Docker image with Napkin and various useful utilities. Installation with this method is easy too – pull the image and extract a wrapper script out of it. | Cachix distribution for NixOS. If you use NixOS, you are probably familiar with cachix tool. Getting Napkin with cachix is a one-line command. | VSCode devcontainer actually uses the same docker image under the hood as docker installation method. The preferred way of installing Napkin, it will enable code-completion and other useful features. | . ",
     "url": "https://soostone.github.io/install/",
     "relUrl": "/install/"
-  },"51": {
+  },"52": {
     "doc": "Installation",
     "title": "Native",
     "content": "The Napkin native binary is a self extracting archive with a binary file that does not require a docker or nix environment to be executed. The latest Linux and macOS versions are continuously updated as being released. Due to the technical limitations, this version of Napkin does not support some advanced features, but it is perfectly fine to use for basic use-cases. Please note, that archive contains not only a binary itself, but also a folder with dynamically loaded libraries for the corresponding operating system, which should be located in the following structure. If you need to move napkin binary to the different location, move the whole napkin directory instead. napkin ├── bin │   └── napkin └── lib ├── libc++.1.0.dylib ├── libc++abi.dylib ├── libcharset.1.dylib ├── libcom_err.3.0.dylib ├── libcrypto.1.1.dylib ├── libffi.8.dylib ├── libgmp.10.dylib ├── libgssapi_krb5.2.2.dylib ├── libiconv-nocharset.dylib ├── libiconv.dylib ├── libk5crypto.3.1.dylib ├── libkrb5.3.3.dylib ├── libkrb5support.1.1.dylib ├── libncursesw.6.dylib ├── libpq.5.dylib ├── libresolv.9.dylib ├── libssl.1.1.dylib └── libz.dylib . If you need a specific version of Napkin, use directory browser in these locations. | for Linux | for macOS | . ",
     "url": "https://soostone.github.io/install/#native",
     "relUrl": "/install/#native"
-  },"52": {
+  },"53": {
     "doc": "Installation",
     "title": "Homebrew",
     "content": "The Napkin native binary can be also installed on macOS with the help of Homebrew package manager. Napin can be installed by running these commands in the terminal: . shell . brew tap soostone/napkin brew install napkin . Due to the technical limitations, this version of Napkin does not support some advanced features, but it is perfectly fine to use for basic use-cases. ",
     "url": "https://soostone.github.io/install/#homebrew",
     "relUrl": "/install/#homebrew"
-  },"53": {
+  },"54": {
     "doc": "Installation",
     "title": "Docker",
     "content": "Napkin docker image contains a wrapper script, which is suited for better integration with your host computer while running Napkin (opening browser window, accessing settings, etc.). To install napkin and extract the wrapper script, execute following command: . shell . docker run --rm --pull=always soostone/napkin-exe cat /bin/napkin-docker &gt; ./napkin-docker &amp;&amp; chmod +x ./napkin-docker . Extracted ./napkin-docker script can be used the same way as Napkin native binary: . shell ./napkin-docker version . Napkin version: 0.5.10 Git commit hash: b8c0506dde5ed71b415e884f2b735a923a620813 Built at: 2021-12-23 17:01:34.628557302 UTC . If you need to use different version of Napkin, docker has the following naming theme: . | soostone/napkin-exe:latest - Released latest version (note, that soostone/napkin-exe and soostone/napkin-exe:latest are semantically equivalent). | soostone/napkin-exe:v$VERSION - Napkin from $VERSION version (for example, v0.5.9). | soostone/napkin-exe:v$VERSION-dev - Latest Napkin build for not yet released $VERSION version. | . So this command will download and the v0.5.9 version of Napkin and update the wrapper script in the current folder: . docker run --rm --pull=always soostone/napkin-exe:v0.5.9 cat /bin/napkin-docker &gt; ./napkin-docker &amp;&amp; chmod +x ./napkin-docker . Since docker image contains the wrapper script itself, update procedure is trivial, just pull the newer image and extract the script: . shell . docker run --pull=always --rm soostone/napkin-exe cat /bin/napkin-docker &gt; ./napkin-docker &amp;&amp; chmod +x ./napkin-docker . Docker manual contains all technical details about using Napkin from docker container. ",
     "url": "https://soostone.github.io/install/#docker",
     "relUrl": "/install/#docker"
-  },"54": {
+  },"55": {
     "doc": "Installation",
     "title": "Cachix",
     "content": "Installation via cachix is intended for NixOS users and consists of the following steps: . | Install cachix tool by following official instructions (step 2) | . label . nix-env -iA cachix -f https://cachix.org/api/v1/install . | Install latest version of Napkin | . For macOS: . shell . sh &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/darwin/branch/master/index.html) . For Linux: . shell . sh &lt;(curl -sL http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/cachix/linux/branch/master/index.html) . To install order version of napkin, choose version and OS here and follow installation instructions. ",
     "url": "https://soostone.github.io/install/#cachix",
     "relUrl": "/install/#cachix"
-  },"55": {
+  },"56": {
     "doc": "Multi-environment pipelines in a team setting",
     "title": "Multi-environment pipelines in a team setting",
     "content": "Napkin provides a variety of ways environments can be segregated. Typically, a production-grade project will have at least two environments: production and development. It may be also desired to separate development environments of multiple developers. Recommended data organization is as follows: . | There should be at least two datasets in a project (e.g. BigQuery) or schemas in a database (e.g. Postgres): production and* development. | Raw dataset input tables used by the pipeline can either be shared between environments or separated by environment as well. In either case, we recommend placing raw inputs into their own dataset/schema for clarity. For example: raw_data or raw_data_development and raw_data_production for cases where they are separated. | . If desirable, tables in development environment should be prefixed by developer user name to avoid clashes as team members do work simultaneously. Below we present example Spec snippet: . preprocessors: - table_namespace: value: development override_with_arg: environment - table_prefix: override_with_arg: developer separator: _ . Defaults can be changed by providing --arg environment=production and --arg developer=kate. Production runs should be ran with --arg developer= to disable developer prefix. Note that napkin will fail if table_prefix arg is not provided. By default table_prefix and table_namespace are applied to all tables that are managed by napkin. In projects that need to used different input data sets for production and development environments, input namespace can be also specified with renamers by changing scope from managed (default) to unmanaged: . preprocessors: # ... - table_namespace: value: development override_with_arg: input_dataset scope: unmanaged . ",
     "url": "https://soostone.github.io/user-manual/multi-environment",
     "relUrl": "/user-manual/multi-environment"
-  },"56": {
+  },"57": {
     "doc": "Tips and Tricks",
     "title": "Introduction",
     "content": "The purpose of this page is to give capture a selection of napkin usage examples that occur very frequently in the day-to-day development and maintenance of a data pipeline. ",
     "url": "https://soostone.github.io/tips-and-tricks/#introduction",
     "relUrl": "/tips-and-tricks/#introduction"
-  },"57": {
+  },"58": {
     "doc": "Tips and Tricks",
     "title": "napkin run",
     "content": " ",
     "url": "https://soostone.github.io/tips-and-tricks/#napkin-run",
     "relUrl": "/tips-and-tricks/#napkin-run"
-  },"58": {
+  },"59": {
     "doc": "Tips and Tricks",
     "title": "Running only a single table in a spec",
     "content": "It’s very common when iteratively working on a given table to update it repeatedly and in isolation. Disable all tables, force-update any table with word “uplift” in it: . shell . napkin run -s specs/myspec1.yaml -D -f '.*(uplift).*' . Notice the pattern is a proper Regular Expression. ",
     "url": "https://soostone.github.io/tips-and-tricks/#running-only-a-single-table-in-a-spec",
     "relUrl": "/tips-and-tricks/#running-only-a-single-table-in-a-spec"
-  },"59": {
+  },"60": {
     "doc": "Tips and Tricks",
     "title": "napkin validate",
     "content": " ",
     "url": "https://soostone.github.io/tips-and-tricks/#napkin-validate",
     "relUrl": "/tips-and-tricks/#napkin-validate"
-  },"60": {
+  },"61": {
     "doc": "Tips and Tricks",
     "title": "Continuously validating codebase on every change",
     "content": "Keeping a validating screen open is invaluable in rapid iteration. Napkin will notice every change on every file that’s touched by a given spec and automatically re-validate the entire project. This will catch obvious structural errors in SQL files, mistakes in templates and any compilation errors in custom Haskell code. shell . napkin validate -s specs/myspec1.yaml --interactive . ",
     "url": "https://soostone.github.io/tips-and-tricks/#continuously-validating-codebase-on-every-change",
     "relUrl": "/tips-and-tricks/#continuously-validating-codebase-on-every-change"
-  },"61": {
+  },"62": {
     "doc": "Tips and Tricks",
     "title": "Tips and Tricks",
     "content": ". | Introduction | napkin run . | Running only a single table in a spec | . | napkin validate . | Continuously validating codebase on every change | . | . ",
     "url": "https://soostone.github.io/tips-and-tricks/",
     "relUrl": "/tips-and-tricks/"
-  },"62": {
+  },"63": {
     "doc": "Tutorial",
     "title": "Tutorial",
     "content": "Napkin is a data pipeline automation tool, designed to execute a series of .SQL queries where the resultant data is utilized to create downstream tables. Napkin currently supported backends are: . | BigQuery | Redshift | Postgres | SQLite | . In this hands-on tutorial we first use Napkin’s intuitive interface, Spec, to bootstrap and execute a simple SQL data pipeline. Next, we modify Napkin Spec to add additional computations to the data pipeline. ",
     "url": "https://soostone.github.io/tutorial/#tutorial",
     "relUrl": "/tutorial/#tutorial"
-  },"63": {
+  },"64": {
     "doc": "Tutorial",
     "title": "Prerequisites",
     "content": ". | Napkin should be installed | Access to PostgreSQL instance | . ",
     "url": "https://soostone.github.io/tutorial/#prerequisites",
     "relUrl": "/tutorial/#prerequisites"
-  },"64": {
+  },"65": {
     "doc": "Tutorial",
     "title": "Interacting with Napkin - The Spec",
     "content": "Spec, a high level DSL in YAML configuration language, is the interface to Napkin. In other words, Napkin Spec is simply a yaml-file. Napkin follows a common paradigm where source tables are never mutated. Instead, Napkin can continuously execute and create a series of dependent tables as new data comes into one or many source tables. The sql files/tables in the Napkin Spec comprise an implicit DAG, where edges are references to fields from other tables. A common use case is as follows: . | Source tables are created or updated manually via a data extract or automatically by a piece of software | .SQL files are written to mutate the data into the desired shape that is fit for use in new, downstream tables (never modifying the source data) | A Napkin Spec is created to execute these .SQL files automatically, repeatedly and in the correct dependency order | As new data comes in, the Napkin Spec can be manually or automatically run to recreate the dependent tables with the new data for ongoing use | . In this tutorial, first, we utilize Napkin to author a SQL processing pipelines by: . | creating the necessary source tables and corresponding data | bootstrapping a napkin project | authoring and executing Napkin Spec | . We then make incremental enhancements to our SQL workflow and modify the Napkin Spec accordingly to execute the pipeline. ",
     "url": "https://soostone.github.io/tutorial/#interacting-with-napkin---the-spec",
     "relUrl": "/tutorial/#interacting-with-napkin---the-spec"
-  },"65": {
+  },"66": {
     "doc": "Tutorial",
     "title": "Create a minimal napkin project",
     "content": "shell . napkin init --project-name sales-db . Initialized empty Git repository in /home/soostone/dev/napkin-projects/sales-db-2/tmp/napkin-dev/sales-db/.git/ . Note: napkin generate-spec is capable of generating the Napkin Spec from existing SQL workflow. For the purpose of this tutorial, we opt out on this capability in favor of napkin init command. This will allow us to build the Napkin Spec incrementally while building our intuition on Napkin and Napkin workflow. The napkin init command creates a new Napkin project with the following directory structure: . sales-db ├── README.md ├── specs │   └── spec.yaml └── sql └── example.sql . Next, we execute our minimal Napkin Spec . shell . cd sales-db napkin run --spec-file ./specs/spec.yaml . [2021-12-03 19:13:43][combo][Info][soostone-XPS-15-7590][PID 3511168][ThreadId 15][table:\"example\"] Executing table's action [2021-12-03 19:13:43][combo][Error][soostone-XPS-15-7590][PID 3511168][ThreadId 15][Error:NapkinEffectError_FatalError \"libpq: failed (could not translate host name \\\"host\\\" to address: Temporary failure in name resolution\\n)\"][table:\"example\"] Table's action raised an error. [2021-12-03 19:13:43][combo][Info][soostone-XPS-15-7590][PID 3511168][ThreadId 4] Execution completed. Please see below for a summary. [2021-12-03 19:13:43][combo][Info][soostone-XPS-15-7590][PID 3511168][ThreadId 4] ---------------------------------------------------------- [2021-12-03 19:13:43][combo][Error][soostone-XPS-15-7590][PID 3511168][ThreadId 4] Table \"example\" raised an error: libpq: failed (could not translate host name \"host\" to address: Temporary failure in name resolution ) [2021-12-03 19:13:43][combo][Info][soostone-XPS-15-7590][PID 3511168][ThreadId 4] Run complete. Total cost: . The expected error indicates that Napkin could not connect to the database. To resolve the error, we’ll modify the Napkin Spec, specs/spec.yaml, with the correct database connection URL: . spec.yaml . db_url: postgresql://myUserId:myPassword@localhost/salesdb . Next we Validate the spec file, . shell . napkin validate --spec-file ./specs/spec.yaml . OK . And finally, we are ready to execute our Napkin project: . shell . napkin run --spec-file ./specs/spec.yaml . [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 15][table:\"example\"] Executing table's action [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 15] Command performed in 0.01. [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 15] Command performed in 0.00. [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 15] Command performed in 0.00. [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 15][table:\"example\"] Table's action complete. [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 15] TableSpec \"example\" server stats: 50 rows affected [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 4] Execution completed. Please see below for a summary. [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 4] ---------------------------------------------------------- [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 4] Table \"example\" ran in 0.02: 50 rows affected [2021-12-03 19:41:57][combo][Info][soostone-XPS-15-7590][PID 3527014][ThreadId 4] Run complete. Total cost: 50 rows affected . Assumption . You have all required privileges to PostgreSQL database salesdb . ",
     "url": "https://soostone.github.io/tutorial/#create-a-minimal-napkin-project",
     "relUrl": "/tutorial/#create-a-minimal-napkin-project"
-  },"66": {
+  },"67": {
     "doc": "Tutorial",
     "title": "Workflow",
     "content": "In this section we’ll extend our Napkin Spec to create a SQL data pipeline. This will require: . | create source tables | create dependent queries to set up the data pipeline | extend spec/spec.yaml to execute pipelines | . We start by creating the source tables first. Assumption . The upcoming sections assume you have installed and configure psql . Source tables and corresponding data . Source tables are input to the Napkin SQL pipeline and are not mutated. Napkin utilizes them to create downstream tables. To create the source tables: . input-schema.sql . CREATE TABLE product ( id INT PRIMARY KEY, price INT NOT NULL, name TEXT NOT NULL); CREATE TABLE sale( id INT PRIMARY KEY, quantity INT NOT NULL, product_id INT NOT NULL); . shell . psql -f input-schema.sql salesDb . CREATE TABLE CREATE TABLE . Next, we add some data to the tables: . input-data.sql . INSERT INTO product VALUES (1, 2, 'chocolate bar'), (2, 3, 'coke'), (3, 50, 'kale'); INSERT INTO sale VALUES (1, 1000, 1), (2, 2, 3), (3, 300, 2), (4, 10, 3); . shell . psql -f input-data.sql salesDb . INSERT 0 3 INSERT 0 4 . Then, we create the SQL query files, ./sql/best-seller.sql and ./sql/best-revenue.sql in the ./sql/ folder: . sql/best-seller.sql . SELECT product_id, sum(quantity) FROM sale GROUP BY product_id ORDER BY sum(quantity) DESC; . sql/best-revenue.sql . SELECT product_id, sum(p.price * s.quantity) FROM sale s INNER JOIN product p ON (s.product_id = p.id) GROUP BY product_id ORDER BY 2 DESC; . Our project directory structure should resemble: . shell . sales-db ├── data │   └── napkin.v2.sqlite3 ├── hie.yaml ├── README.md ├── specs │   └── spec.yaml └── sql ├── best-revenue.sql ├── best-seller.sql └── example.sql . We are now ready to extend Napkin Spec to create our SQL data pipelines. Extending Napkin Spec . To extend Napkin for executing the pipeline, we’ll modify ./specs/spec.yaml from: . spec.yaml . # yaml-language-server: $schema=https://soostone-napkin-public.s3.us-east-1.amazonaws.com/schema/schema.json # Connect to database: backend: Postgres db_url: postgresql://myUserName:myPassword@localhost/salesdb # set your password by providing it using --uri or set PGPASSWORD variable # backend: BigQuery # db_url: bigquery://google/project_name?dataset=default_dataset_name # Run `napkin auth` to obtain authentication token tables: example: create_action: type: sql_file source: example.sql . to: . spec.yaml . # yaml-language-server: $schema=https://soostone-napkin-public.s3.us-east-1.amazonaws.com/schema/schema.json # Connect to database: backend: Postgres db_url: postgresql://myUserName:myPassword@localhost/salesdb # set your password by providing it using --uri or set PGPASSWORD variable sql_folder: ../sql tables: best-seller: create_action: type: sql_file source: best-seller.sql best-revenue: create_action: type: sql_file source: best-revenue.sql . We then validate the Spec to make sure we didn’t make any mistakes: . shell . napkin validate --spec-file ./specs/spec.yaml . OK . Next we execute the Spec, and hence the SQL pipeline: . shell . napkin run --spec-file ./specs/spec.yaml . [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 17][table:\"best-revenue\"] Executing table's action [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 18][table:\"best-seller\"] Executing table's action [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 17] Command performed in 0.02. NOTICE: table \"best-revenue\" does not exist, skipping [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 17] Command performed in 0.00. [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 17] Command performed in 0.00. [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 17][table:\"best-revenue\"] Table's action complete. [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 18] Command performed in 0.01. NOTICE: table \"best-seller\" does not exist, skipping [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 18] Command performed in 0.00. [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 18] Command performed in 0.00. [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 18][table:\"best-seller\"] Table's action complete. [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 17] TableSpec \"best-revenue\" server stats: 3 rows affected [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 18] TableSpec \"best-seller\" server stats: 3 rows affected [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 4] Execution completed. Please see below for a summary. [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 4] ---------------------------------------------------------- [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 4] Table \"best-revenue\" ran in 0.03: 3 rows affected [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 4] Table \"best-seller\" ran in 0.02: 3 rows affected [2021-12-03 22:23:57][combo][Info][soostone-XPS-15-7590][PID 3604842][ThreadId 4] Run complete. Total cost: 6 rows affected . And finally we verify the pipeline results: . shell . echo 'select * from \"best-seller\";' | psql . product_id | sum ------------+------ 1 | 1000 2 | 300 3 | 12 (3 rows) . shell . echo 'select * from \"best-revenue\";' | psql . product_id | sum ------------+------ 1 | 2000 2 | 900 3 | 600 (3 rows) . Now we’re all set! We have a working SQL pipeline. In the next section, we’ll do a quick walk thru of how Napkin processes new ingested data. Processing new incoming data . As we ingest incoming data into the source tables, we will continuously execute the Napkin run command to recreate the target tables. Let’s quickly demonstrate this capability by: . | insert some new data in our source table, data ingestion: | . shell . echo 'INSERT INTO sale VALUES (5, 999, 3);' | psql . INSERT 0 1 . | execute the Napkin pipeline: | . shell . napkin run --spec-file ./specs/spec.yaml . [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 17][table:\"best-revenue\"] Executing table's action [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 18][table:\"best-seller\"] Executing table's action [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 17] Command performed in 0.01. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 17] Command performed in 0.00. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 17] Command performed in 0.00. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 17][table:\"best-revenue\"] Table's action complete. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 18] Command performed in 0.01. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 18] Command performed in 0.00. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 18] Command performed in 0.00. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 18][table:\"best-seller\"] Table's action complete. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 17] TableSpec \"best-revenue\" server stats: 3 rows affected [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 18] TableSpec \"best-seller\" server stats: 3 rows affected [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 4] Execution completed. Please see below for a summary. [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 4] ---------------------------------------------------------- [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 4] Table \"best-revenue\" ran in 0.01: 3 rows affected [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 4] Table \"best-seller\" ran in 0.01: 3 rows affected [2021-12-03 23:38:30][combo][Info][soostone-XPS-15-7590][PID 3644391][ThreadId 4] Run complete. Total cost: 6 rows affected . | verify pipeline execution: . | by napkin history command: | . | . shell . napkin history show --spec-file ./specs/spec.yaml . Table best-seller started at 2021-12-03 23:38:30 and finished at 2021-12-03 23:38:30 successfully affecting 3 rows Table best-revenue started at 2021-12-03 23:38:30 and finished at 2021-12-03 23:38:30 successfully affecting 3 rows . | by psql command: | . shell . echo 'SELECT * FROM \"best-seller\";' | psql . product_id | sum ------------+------ 3 | 1011 1 | 1000 2 | 300 (3 rows) . shell . echo 'SELECT * FROM \"best-revenue\";' | psql . product_id | sum ------------+------- 3 | 50550 1 | 2000 2 | 900 (3 rows) . As expected, the updated target tables reflect the change in source data and the best-seller table is updated with the new row with the value ‘kale’ in it on top. Thus far, we’ve managed to create and execute a Napkin SQL data pipeline. We also showed how our pipeline may continuously execute to accommodate newly ingested data. In the next we touch on Napkin templates and template variable interpolation capabilities. ",
     "url": "https://soostone.github.io/tutorial/#workflow",
     "relUrl": "/tutorial/#workflow"
-  },"67": {
+  },"68": {
     "doc": "Tutorial",
     "title": "Using Templates and Variable Interpolation",
     "content": "The next step in extending Napkin Spec is to utilize templates to parameterize our queries. This is an extremely important feature because it can be used for everything from handling different table or variable names in development vs production datasets or simply reusing the same query for multiple purposes. Template variables may be set in a Spec file or may be overridden globally with command line options. Template variables hold text to be used in substitution for the variable name in a template query. The final query should always be a valid SQL expression. Let’s work through an example. There are 2 versions of STDDEV functions in Postgres. Let’s compare them by computing the results in dedicated tables, but reusing a single parameterized query. to this: . | create the new query for the resulting table | create the new parameterized STDDEV query | update Napkin Spec, spec/spec.yaml, for the new queries | validate Napkin Spec | napkin --dry-run, this will give us the Napkin recipe for satisfying the pipeline execution | execute Napkin Spec | . First we create the required queries in ./sql/ folder as such: . sql/stddev.sql . SELECT p.name, {{stddev}}(s.{{column_name}}) FROM {{table_name}} s INNER JOIN product p ON (p.id = s.product_id) GROUP BY p.name; . sql/compare-sale-stddev-quantity.sql . SELECT s.name, stddev_pop, stddev_samp FROM sale_stddev_pop_quantity p, sale_stddev_sam_quantity s WHERE s.name = p.name; . Second we modify the Napkin Spec, specs/spec.yaml . spec.yaml . # yaml-language-server: $schema=https://soostone-napkin-public.s3.us-east-1.amazonaws.com/schema/schema.json # Connect to database: backend: Postgres db_url: postgresql://myUserName:myPassword@localhost/salesdb # set your password by providing it using --uri or set PGPASSWORD variable # backend: BigQuery # db_url: bigquery://google/project_name?dataset=default_dataset_name # Run `napkin auth` to obtain authentication token sql_folder: ../sql tables: best-seller: create_action: type: sql_file source: best-seller.sql best-revenue: create_action: type: sql_file source: best-revenue.sql sale_stddev_sam_quantity: create_action: source: stddev.sql type: sql_file vars: column_name: quantity table_name: sale stddev\": stddev_pop target_type: table compare_sale_stddev_quantity: create_action: source: compare-sale-stddev-quantity.sql type: sql_file target_type: table sale_stddev_pop_quantity: create_action: source: stddev.sql type: sql_file vars: column_nam\": quantity, table_name: sale, stddev: stddev_samp, target_type: table . Third we validate the Napkin Spec: . shell . napkin validate --spec-file ./specs/spec.yaml . OK . Next we Napkin run --dry-run sub-command. Note that this is an informative command and doesn’t change the database state. shell . napkin run --spec-file ./specs/spec.yaml --dry-run . [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 26][table:\"sale_stddev_pop_quantity\"] Executing table's action [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 27][table:\"sale_stddev_sam_quantity\"] Executing table's action [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 24][table:\"best-seller\"] Executing table's action [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 23][table:\"best-revenue\"] Executing table's action [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 25][table:\"compare_sale_stddev_quantity\"] Executing table's action [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] Execution completed. Please see below for a summary. [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] ---------------------------------------------------------- [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] Table \"best-revenue\" ran in 0.00: [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] Table \"best-seller\" ran in 0.00: [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] Table \"compare_sale_stddev_quantity\" ran in 0.00: [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] Table \"sale_stddev_pop_quantity\" ran in 0.00: [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] Table \"sale_stddev_sam_quantity\" ran in 0.00: [2021-12-04 01:55:49][combo][Info][soostone-XPS-15-7590][PID 3718175][ThreadId 4] Run complete. Total cost: . And finally, we execute the Napkin Spec . shell . napkin run --spec-file ./specs/spec.yaml . [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 27][table:\"sale_stddev_sam_quantity\"] Executing table's action [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 24][table:\"best-seller\"] Executing table's action [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 23][table:\"best-revenue\"] Executing table's action [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 26][table:\"sale_stddev_pop_quantity\"] Executing table's action [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 24] Command performed in 0.02. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 23] Command performed in 0.02. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 24] Command performed in 0.00. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 23] Command performed in 0.00. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 24] Command performed in 0.00. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 24][table:\"best-seller\"] Table's action complete. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 23] Command performed in 0.00. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 23][table:\"best-revenue\"] Table's action complete. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 26] Command performed in 0.02. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 27] Command performed in 0.03. NOTICE: table \"sale_stddev_pop_quantity\" does not exist, skipping [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 26] Command performed in 0.00. NOTICE: table \"sale_stddev_sam_quantity\" does not exist, skipping [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 27] Command performed in 0.00. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 24] TableSpec \"best-seller\" server stats: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 26] Command performed in 0.01. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 26][table:\"sale_stddev_pop_quantity\"] Table's action complete. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 23] TableSpec \"best-revenue\" server stats: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 27] Command performed in 0.01. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 27][table:\"sale_stddev_sam_quantity\"] Table's action complete. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 26] TableSpec \"sale_stddev_pop_quantity\" server stats: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 27] TableSpec \"sale_stddev_sam_quantity\" server stats: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 25][table:\"compare_sale_stddev_quantity\"] Executing table's action [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 25] Command performed in 0.01. NOTICE: table \"compare_sale_stddev_quantity\" does not exist, skipping [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 25] Command performed in 0.00. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 25] Command performed in 0.00. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 25][table:\"compare_sale_stddev_quantity\"] Table's action complete. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 25] TableSpec \"compare_sale_stddev_quantity\" server stats: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] Execution completed. Please see below for a summary. [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] ---------------------------------------------------------- [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] Table \"best-revenue\" ran in 0.03: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] Table \"best-seller\" ran in 0.02: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] Table \"compare_sale_stddev_quantity\" ran in 0.01: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] Table \"sale_stddev_pop_quantity\" ran in 0.03: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] Table \"sale_stddev_sam_quantity\" ran in 0.06: 3 rows affected [2021-12-04 02:06:16][combo][Info][soostone-XPS-15-7590][PID 3724249][ThreadId 4] Run complete. Total cost: 15 rows affected . Verifying the results: . Note the newly created tables: . | sale_stddev_pop_quantity | sale_stddev_sam_quantity | compare_sale_stddev_quantity | . salesdb=# \\d public | best-revenue | table | soostone public | best-seller | table | soostone public | compare_sale_stddev_quantity | table | soostone public | example | table | soostone public | product | table | soostone public | sale | table | soostone public | sale_stddev_pop_quantity | table | soostone public | sale_stddev_sam_quantity | table | soostone . shell . echo 'select * from \"compare_sale_stddev_quantity\"' | psql . name | stddev_pop | stddev_samp ---------------+------------------+------------------ coke | 0 | kale | 468.116082469580 | 573.322771220540 chocolate bar | 0 | (3 rows) . ",
     "url": "https://soostone.github.io/tutorial/#using-templates-and-variable-interpolation",
     "relUrl": "/tutorial/#using-templates-and-variable-interpolation"
-  },"68": {
+  },"69": {
     "doc": "Tutorial",
     "title": "Misc",
     "content": "Unused column detection . Some table columns are introduced for debugging and development purposes. As time goes an engineer may stop using them and loose track of their existence. Meanwhile such columns continue to recruit cost and complexity. Napkin optimize command can address such use-cases. Here is an example: . | create the CTE SQL file: ./sql/cte-query.sql | . sql/cte-query.sql . with CTE as (select name, price from product) select name from CTE; . | append the following YAML snippet to the end of the spec/specs.yaml | . spec.yaml . cte-query-table: create_action: source: cte-query.sql type: sql_file target_type: table . | execute the napkin optimize command | . shell . napkin optimize --spec-file ./specs/spec.yaml . unused column CTE.g . ",
     "url": "https://soostone.github.io/tutorial/#misc",
     "relUrl": "/tutorial/#misc"
-  },"69": {
+  },"70": {
     "doc": "Tutorial",
     "title": "More resources",
     "content": "The following resources are available for learning more about Napkin: . | napkin --help | napkin version much more info about internal operations (useful for bug reports) | napkin user’s guide | Slack napkin channels | . ",
     "url": "https://soostone.github.io/tutorial/#more-resources",
     "relUrl": "/tutorial/#more-resources"
-  },"70": {
+  },"71": {
     "doc": "Tutorial",
     "title": "Conclusion",
     "content": "The purpose of this tutorial was to get you started with Napkin quickly. Consequently, we opted out on more advanced features of Napkin to keep the tutorial simple. We strongly recommend using Napkin CLI help facility, napkin --help to get an intuition for some of the more advanced features of Napkin. ",
     "url": "https://soostone.github.io/tutorial/#conclusion",
     "relUrl": "/tutorial/#conclusion"
-  },"71": {
+  },"72": {
     "doc": "Tutorial",
     "title": "Tutorial",
     "content": ". | Tutorial . | Prerequisites | Interacting with Napkin - The Spec | Create a minimal napkin project | Workflow . | Source tables and corresponding data | Extending Napkin Spec | Processing new incoming data | . | Using Templates and Variable Interpolation | Misc . | Unused column detection | . | More resources | Conclusion | . | . ",
     "url": "https://soostone.github.io/tutorial/",
     "relUrl": "/tutorial/"
-  },"72": {
+  },"73": {
     "doc": "Cachix versions",
     "title": "Cachix versions",
-    "content": ". | 0.5.10 macOS / Linux (currently in development) . | 0.5.9 macOS / Linux (released: 2021-12-14) . | 0.5.8 macOS / Linux (released: 2021-12-08) . | . ",
+    "content": ". | 0.5.11 macOS / Linux (currently in development) . | 0.5.10 macOS / Linux (released: 2021-12-29) . | 0.5.9 macOS / Linux (released: 2021-12-14) . | 0.5.8 macOS / Linux (released: 2021-12-08) . | . ",
     "url": "https://soostone.github.io/cachix/versions/",
     "relUrl": "/cachix/versions/"
   }
