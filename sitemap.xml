@@ -25,10 +25,10 @@
 <loc>https://soostone.github.io/ide</loc>
 </url>
 <url>
-<loc>https://soostone.github.io/</loc>
+<loc>https://soostone.github.io/user-manual/</loc>
 </url>
 <url>
-<loc>https://soostone.github.io/user-manual/</loc>
+<loc>https://soostone.github.io/</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/install/</loc>
@@ -47,6 +47,9 @@
 </url>
 <url>
 <loc>https://soostone.github.io/cachix/versions/</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/user-manual/yaml-reference</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/dependency_graph.pdf</loc>

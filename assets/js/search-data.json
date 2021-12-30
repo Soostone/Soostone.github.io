@@ -221,89 +221,89 @@
     "url": "https://soostone.github.io/ide#other-editors",
     "relUrl": "/ide#other-editors"
   },"37": {
-    "doc": "About",
-    "title": "What is Napkin",
-    "content": "Napkin is a command line application that executes data pipelines of all sizes, backed by a feature-rich Haskell library offering programmatic freedom. It’s lightweight, offers a quick start for new projects and yet scales to massive data pipelines with powerful meta-programming possibilities. Napkin has a broad vision in making life easier for data scientists and engineers, encapsulating a large portion of the data engineering landscape. It therefore bundles several key features together: . | A consumer-grade Command Line Interface (CLI) that acts as the single point of entry for all typical workflows of data engineering and pipeline curation. The napkin app can refresh entire data pipelines, re-create individual tables, validate/typecheck pipelines in seconds, export dependency graphs and more. | A multi-backend (w.g. BigQuery and Redshift) database runtime environment that provides for all key capabilities in executing a modern data pipeline, including interacting the database (see what’s there, query tables, create/recreate/update tables, etc.), performing runtime unit-tests/assertions, logging, timing and interacting with the outside world. | A built-in DAG orchestrator that can automatically detect all the dependency relationships in a data pipeline (e.g. 30+ tables) and perform the pipeline updates in the correct order. Data pipelines are called “Spec”s in napkin and ship with all batteries included: Ability to rewrite table destinations into different schemas/datasets for different environments (e.g. devel vs. prod), mass-prefixing/renaming tables, setting different “Refresh Strategies” for each table (e.g. update daily vs. only update when missing), a wide range of data unit-tests (e.g. table must be unique by columns X+Y) that are automatically performed each time the table is updated. | For the power user, a SQL wrapper DSL in Haskell that stays as close as possible to SQL, without any intermediary object or relational mappings. This DSL looks almost like regular SQL, but allows sophisticated programmatic manipulation and composition of SQL queries and statements. Napkin can parse regular SQL into this internal DSL, perform any desired manipulations and render it back out as regular SQL. | A sophisticated SQL meta-programming environment that accelerates modern data engineering efforts. Napkin users can interweave several options for crafting SQL as they see fit, even in the same file. These options include: . | Writing plain SQL files without any low-grade templating noise. Napkin will still auto-detect all dependencies and make the pipeline “just work”. | Using lightweight variable substitutions in .sql files via Mustache templates. | Using sophisticated #{sexp} ... #{/sexp} splices directly in .sql files to write Haskell code that dynamically generates SQL fragments on the fly. | Expressing entire queries directly using napkin’s Haskell DSL, often used for dynamic generation of SQL code based on complex logic. For example, prediction trees can be rendered into SQL this way, sometimes generated 100K LOC SQL files from a single model. | . | . ",
-    "url": "https://soostone.github.io/#what-is-napkin",
-    "relUrl": "/#what-is-napkin"
-  },"38": {
-    "doc": "About",
-    "title": "Napkin’s Philosophy",
-    "content": "Napkin was created to capitalize on an opportunity we noticed back in 2015 to (massively) accelerate our team’s data engineering capabilities and yet make the resulting code-bases way more sustainable/maintainable. At the time, we were drowning in the complexity of custom Hadoop MapReduce programs, Spark programs and repositories of ad-hoc SQL scripts targeted on Redshift/Hive/etc at the time. We created napkin because we sorely needed something more practical and reliable for our own work. Over time, the opportunities we saw got crystallized into a set of philosophies we can articulate about what napkin is trying to achieve and whether it may be the huge catalyst for your team that it has been for us. ",
-    "url": "https://soostone.github.io/#napkins-philosophy",
-    "relUrl": "/#napkins-philosophy"
-  },"39": {
-    "doc": "About",
-    "title": "Base as much data compute as possible on SQL",
-    "content": "Despite its age and missed opportunities, SQL code is declarative, functional and highly expressive. It’s easy to construct even for non-engineer data scientists/analysts and tends to offer good “equational reasoning”. It’s constrained just the right amount that business logic does not go “off the hook” like it can in typical programming languages like Python, R, Scala, etc. Once written and tested, SQL tends to produce reliable results. Over the years, we have found almost all data engineering efforts outside of SQL to be error-prone, hard to grow and expensive (e.g. needs data engineers) to maintain over time. If you can imagine how a table should be structured and express that table as a query in SQL, you can use napkin to engineer a pipeline. ",
-    "url": "https://soostone.github.io/#base-as-much-data-compute-as-possible-on-sql",
-    "relUrl": "/#base-as-much-data-compute-as-possible-on-sql"
-  },"40": {
-    "doc": "About",
-    "title": "Do as much compute as possible on modern analytics DBs like BigQuery/Redshift/Snowflake",
-    "content": "Napkin aims to be a data engineering superpower even for very small teams. This is accomplished in large part by leaning on the amazing compute capabilities of modern analytics databases like BigQuery. Napkin’s creation goes back to our realization that if we could express even a very complex computation in SQL on these databases, no matter how convoluted, they would get the work done in astonishingly little time for minimal cost. In our work, we have produced numerous 200,000+ LOC SQL queries using napkin’s meta-programming capabilities that run within minutes on databases like Amazon Redshift and Google’s BigQuery. Fun fact: BigQuery has a ~1M character limit on queries, which we sometimes bypass by breaking complex queries into parts and joining them up / unioning them later. Even this transformation can be done automatically for you by napkin in certain cases! . ",
-    "url": "https://soostone.github.io/#do-as-much-compute-as-possible-on-modern-analytics-dbs-like-bigqueryredshiftsnowflake",
-    "relUrl": "/#do-as-much-compute-as-possible-on-modern-analytics-dbs-like-bigqueryredshiftsnowflake"
-  },"41": {
-    "doc": "About",
-    "title": "Abstract and reuse complex transformations where possible",
-    "content": " ",
-    "url": "https://soostone.github.io/#abstract-and-reuse-complex-transformations-where-possible",
-    "relUrl": "/#abstract-and-reuse-complex-transformations-where-possible"
-  },"42": {
-    "doc": "About",
-    "title": "Data pipelines should be declarative and managed on Git",
-    "content": " ",
-    "url": "https://soostone.github.io/#data-pipelines-should-be-declarative-and-managed-on-git",
-    "relUrl": "/#data-pipelines-should-be-declarative-and-managed-on-git"
-  },"43": {
-    "doc": "About",
-    "title": "Data pipelines should be regenerative",
-    "content": " ",
-    "url": "https://soostone.github.io/#data-pipelines-should-be-regenerative",
-    "relUrl": "/#data-pipelines-should-be-regenerative"
-  },"44": {
-    "doc": "About",
-    "title": "Data pipeline dev should be lightweight on bare laptops",
-    "content": " ",
-    "url": "https://soostone.github.io/#data-pipeline-dev-should-be-lightweight-on-bare-laptops",
-    "relUrl": "/#data-pipeline-dev-should-be-lightweight-on-bare-laptops"
-  },"45": {
-    "doc": "About",
-    "title": "Doctrine of extreme convenience",
-    "content": "With napkin, we aim to make various data engineering and data science workflows so easy to perform that practitioners change their behavior to lean on them more frequently. We believe that speed and convenience without sacrificing correctness and reliability makes a huge difference in sustaining data ecosystem effectiveness. ",
-    "url": "https://soostone.github.io/#doctrine-of-extreme-convenience",
-    "relUrl": "/#doctrine-of-extreme-convenience"
-  },"46": {
-    "doc": "About",
-    "title": "Napkin’s Benefits",
-    "content": "Here’s our best description of benefits you can expect after you’ve gotten a hang of napkin: . | You’ll be able to see and manage your entire data pipeline in a simple codebase, in declarative fashion and in source control - just like any modern software project. | You’ll always be able to “blow away and fully refresh” your entire pipeline from raw data at the push of a button - recovering from mistakes will be a breeze. | Your data pipeline will entirely rely on the power of your backend database, whatever it may be. The likes of BigQuery for large datasets or Postgres (or even Sqlite) when you can get away with it on small data. You won’t rely on error prone Python pandas code, your own custom data processing application and similar constructs that are hard to grow/maintain and ensure correctness over time. | Your data will have actual unit tests that will confirm correctness with each update. (Example: Making sure you don’t double count sales) . | You’ll benefit from tens of combinators we ship with napkin, such as incrementally updating large tables, column-to-row transformations, union-in same-structured tables into one, etc. As we improve napkin, you’ll get all that for free. | You’ll be able to implement your own clever SQL meta-programming to express logic that’d be too tedious to do in plain SQL. Yet the result will still have all the benefits of declarative SQL running on modern analytics databases, instead of your custom Python/R/Scala scripting machine. You’ll be able to create your own mini programs that produce 10-table “purchasing funnel” computations that connect just the right way based on configuration parameters supplied. | . ",
-    "url": "https://soostone.github.io/#napkins-benefits",
-    "relUrl": "/#napkins-benefits"
-  },"47": {
-    "doc": "About",
-    "title": "Napkin’s Future",
-    "content": "Napkin is utilized heavily in commercial projects both at Soostone and at our clients. We improve napkin all the time and have a long backlog of major features we will realize in the future. We would like to be transparent with our roadmap and are looking for ways to best communicate our plans. We’re currently maintaining a Trello board with our roadmap where we would love to hear your reactions and feedback. You can access our roadmap board at Napkin Roadmap . ",
-    "url": "https://soostone.github.io/#napkins-future",
-    "relUrl": "/#napkins-future"
-  },"48": {
-    "doc": "About",
-    "title": "Next Steps",
-    "content": "Continue with Tutorial . ",
-    "url": "https://soostone.github.io/#next-steps",
-    "relUrl": "/#next-steps"
-  },"49": {
-    "doc": "About",
-    "title": "About",
-    "content": ". | What is Napkin | Napkin’s Philosophy . | Base as much data compute as possible on SQL | Do as much compute as possible on modern analytics DBs like BigQuery/Redshift/Snowflake | Abstract and reuse complex transformations where possible | Data pipelines should be declarative and managed on Git | Data pipelines should be regenerative | Data pipeline dev should be lightweight on bare laptops | Doctrine of extreme convenience | . | Napkin’s Benefits | Napkin’s Future | Next Steps | . ",
-    "url": "https://soostone.github.io/",
-    "relUrl": "/"
-  },"50": {
     "doc": "User Manual",
     "title": "User Manual",
     "content": " ",
     "url": "https://soostone.github.io/user-manual/",
     "relUrl": "/user-manual/"
+  },"38": {
+    "doc": "About",
+    "title": "What is Napkin",
+    "content": "Napkin is a command line application that executes data pipelines of all sizes, backed by a feature-rich Haskell library offering programmatic freedom. It’s lightweight, offers a quick start for new projects and yet scales to massive data pipelines with powerful meta-programming possibilities. Napkin has a broad vision in making life easier for data scientists and engineers, encapsulating a large portion of the data engineering landscape. It therefore bundles several key features together: . | A consumer-grade Command Line Interface (CLI) that acts as the single point of entry for all typical workflows of data engineering and pipeline curation. The napkin app can refresh entire data pipelines, re-create individual tables, validate/typecheck pipelines in seconds, export dependency graphs and more. | A multi-backend (w.g. BigQuery and Redshift) database runtime environment that provides for all key capabilities in executing a modern data pipeline, including interacting the database (see what’s there, query tables, create/recreate/update tables, etc.), performing runtime unit-tests/assertions, logging, timing and interacting with the outside world. | A built-in DAG orchestrator that can automatically detect all the dependency relationships in a data pipeline (e.g. 30+ tables) and perform the pipeline updates in the correct order. Data pipelines are called “Spec”s in napkin and ship with all batteries included: Ability to rewrite table destinations into different schemas/datasets for different environments (e.g. devel vs. prod), mass-prefixing/renaming tables, setting different “Refresh Strategies” for each table (e.g. update daily vs. only update when missing), a wide range of data unit-tests (e.g. table must be unique by columns X+Y) that are automatically performed each time the table is updated. | For the power user, a SQL wrapper DSL in Haskell that stays as close as possible to SQL, without any intermediary object or relational mappings. This DSL looks almost like regular SQL, but allows sophisticated programmatic manipulation and composition of SQL queries and statements. Napkin can parse regular SQL into this internal DSL, perform any desired manipulations and render it back out as regular SQL. | A sophisticated SQL meta-programming environment that accelerates modern data engineering efforts. Napkin users can interweave several options for crafting SQL as they see fit, even in the same file. These options include: . | Writing plain SQL files without any low-grade templating noise. Napkin will still auto-detect all dependencies and make the pipeline “just work”. | Using lightweight variable substitutions in .sql files via Mustache templates. | Using sophisticated #{sexp} ... #{/sexp} splices directly in .sql files to write Haskell code that dynamically generates SQL fragments on the fly. | Expressing entire queries directly using napkin’s Haskell DSL, often used for dynamic generation of SQL code based on complex logic. For example, prediction trees can be rendered into SQL this way, sometimes generated 100K LOC SQL files from a single model. | . | . ",
+    "url": "https://soostone.github.io/#what-is-napkin",
+    "relUrl": "/#what-is-napkin"
+  },"39": {
+    "doc": "About",
+    "title": "Napkin’s Philosophy",
+    "content": "Napkin was created to capitalize on an opportunity we noticed back in 2015 to (massively) accelerate our team’s data engineering capabilities and yet make the resulting code-bases way more sustainable/maintainable. At the time, we were drowning in the complexity of custom Hadoop MapReduce programs, Spark programs and repositories of ad-hoc SQL scripts targeted on Redshift/Hive/etc at the time. We created napkin because we sorely needed something more practical and reliable for our own work. Over time, the opportunities we saw got crystallized into a set of philosophies we can articulate about what napkin is trying to achieve and whether it may be the huge catalyst for your team that it has been for us. ",
+    "url": "https://soostone.github.io/#napkins-philosophy",
+    "relUrl": "/#napkins-philosophy"
+  },"40": {
+    "doc": "About",
+    "title": "Base as much data compute as possible on SQL",
+    "content": "Despite its age and missed opportunities, SQL code is declarative, functional and highly expressive. It’s easy to construct even for non-engineer data scientists/analysts and tends to offer good “equational reasoning”. It’s constrained just the right amount that business logic does not go “off the hook” like it can in typical programming languages like Python, R, Scala, etc. Once written and tested, SQL tends to produce reliable results. Over the years, we have found almost all data engineering efforts outside of SQL to be error-prone, hard to grow and expensive (e.g. needs data engineers) to maintain over time. If you can imagine how a table should be structured and express that table as a query in SQL, you can use napkin to engineer a pipeline. ",
+    "url": "https://soostone.github.io/#base-as-much-data-compute-as-possible-on-sql",
+    "relUrl": "/#base-as-much-data-compute-as-possible-on-sql"
+  },"41": {
+    "doc": "About",
+    "title": "Do as much compute as possible on modern analytics DBs like BigQuery/Redshift/Snowflake",
+    "content": "Napkin aims to be a data engineering superpower even for very small teams. This is accomplished in large part by leaning on the amazing compute capabilities of modern analytics databases like BigQuery. Napkin’s creation goes back to our realization that if we could express even a very complex computation in SQL on these databases, no matter how convoluted, they would get the work done in astonishingly little time for minimal cost. In our work, we have produced numerous 200,000+ LOC SQL queries using napkin’s meta-programming capabilities that run within minutes on databases like Amazon Redshift and Google’s BigQuery. Fun fact: BigQuery has a ~1M character limit on queries, which we sometimes bypass by breaking complex queries into parts and joining them up / unioning them later. Even this transformation can be done automatically for you by napkin in certain cases! . ",
+    "url": "https://soostone.github.io/#do-as-much-compute-as-possible-on-modern-analytics-dbs-like-bigqueryredshiftsnowflake",
+    "relUrl": "/#do-as-much-compute-as-possible-on-modern-analytics-dbs-like-bigqueryredshiftsnowflake"
+  },"42": {
+    "doc": "About",
+    "title": "Abstract and reuse complex transformations where possible",
+    "content": " ",
+    "url": "https://soostone.github.io/#abstract-and-reuse-complex-transformations-where-possible",
+    "relUrl": "/#abstract-and-reuse-complex-transformations-where-possible"
+  },"43": {
+    "doc": "About",
+    "title": "Data pipelines should be declarative and managed on Git",
+    "content": " ",
+    "url": "https://soostone.github.io/#data-pipelines-should-be-declarative-and-managed-on-git",
+    "relUrl": "/#data-pipelines-should-be-declarative-and-managed-on-git"
+  },"44": {
+    "doc": "About",
+    "title": "Data pipelines should be regenerative",
+    "content": " ",
+    "url": "https://soostone.github.io/#data-pipelines-should-be-regenerative",
+    "relUrl": "/#data-pipelines-should-be-regenerative"
+  },"45": {
+    "doc": "About",
+    "title": "Data pipeline dev should be lightweight on bare laptops",
+    "content": " ",
+    "url": "https://soostone.github.io/#data-pipeline-dev-should-be-lightweight-on-bare-laptops",
+    "relUrl": "/#data-pipeline-dev-should-be-lightweight-on-bare-laptops"
+  },"46": {
+    "doc": "About",
+    "title": "Doctrine of extreme convenience",
+    "content": "With napkin, we aim to make various data engineering and data science workflows so easy to perform that practitioners change their behavior to lean on them more frequently. We believe that speed and convenience without sacrificing correctness and reliability makes a huge difference in sustaining data ecosystem effectiveness. ",
+    "url": "https://soostone.github.io/#doctrine-of-extreme-convenience",
+    "relUrl": "/#doctrine-of-extreme-convenience"
+  },"47": {
+    "doc": "About",
+    "title": "Napkin’s Benefits",
+    "content": "Here’s our best description of benefits you can expect after you’ve gotten a hang of napkin: . | You’ll be able to see and manage your entire data pipeline in a simple codebase, in declarative fashion and in source control - just like any modern software project. | You’ll always be able to “blow away and fully refresh” your entire pipeline from raw data at the push of a button - recovering from mistakes will be a breeze. | Your data pipeline will entirely rely on the power of your backend database, whatever it may be. The likes of BigQuery for large datasets or Postgres (or even Sqlite) when you can get away with it on small data. You won’t rely on error prone Python pandas code, your own custom data processing application and similar constructs that are hard to grow/maintain and ensure correctness over time. | Your data will have actual unit tests that will confirm correctness with each update. (Example: Making sure you don’t double count sales) . | You’ll benefit from tens of combinators we ship with napkin, such as incrementally updating large tables, column-to-row transformations, union-in same-structured tables into one, etc. As we improve napkin, you’ll get all that for free. | You’ll be able to implement your own clever SQL meta-programming to express logic that’d be too tedious to do in plain SQL. Yet the result will still have all the benefits of declarative SQL running on modern analytics databases, instead of your custom Python/R/Scala scripting machine. You’ll be able to create your own mini programs that produce 10-table “purchasing funnel” computations that connect just the right way based on configuration parameters supplied. | . ",
+    "url": "https://soostone.github.io/#napkins-benefits",
+    "relUrl": "/#napkins-benefits"
+  },"48": {
+    "doc": "About",
+    "title": "Napkin’s Future",
+    "content": "Napkin is utilized heavily in commercial projects both at Soostone and at our clients. We improve napkin all the time and have a long backlog of major features we will realize in the future. We would like to be transparent with our roadmap and are looking for ways to best communicate our plans. We’re currently maintaining a Trello board with our roadmap where we would love to hear your reactions and feedback. You can access our roadmap board at Napkin Roadmap . ",
+    "url": "https://soostone.github.io/#napkins-future",
+    "relUrl": "/#napkins-future"
+  },"49": {
+    "doc": "About",
+    "title": "Next Steps",
+    "content": "Continue with Tutorial . ",
+    "url": "https://soostone.github.io/#next-steps",
+    "relUrl": "/#next-steps"
+  },"50": {
+    "doc": "About",
+    "title": "About",
+    "content": ". | What is Napkin | Napkin’s Philosophy . | Base as much data compute as possible on SQL | Do as much compute as possible on modern analytics DBs like BigQuery/Redshift/Snowflake | Abstract and reuse complex transformations where possible | Data pipelines should be declarative and managed on Git | Data pipelines should be regenerative | Data pipeline dev should be lightweight on bare laptops | Doctrine of extreme convenience | . | Napkin’s Benefits | Napkin’s Future | Next Steps | . ",
+    "url": "https://soostone.github.io/",
+    "relUrl": "/"
   },"51": {
     "doc": "Installation",
     "title": "Installation",
@@ -472,5 +472,11 @@
     "content": ". | 0.5.11 macOS / Linux (currently in development) . | 0.5.10 macOS / Linux (released: 2021-12-29) . | 0.5.9 macOS / Linux (released: 2021-12-14) . | 0.5.8 macOS / Linux (released: 2021-12-08) . | . ",
     "url": "https://soostone.github.io/cachix/versions/",
     "relUrl": "/cachix/versions/"
+  },"79": {
+    "doc": "Spec YAML reference",
+    "title": "Spec YAML reference",
+    "content": "# Enable YAML schema in IDE # yaml-language-server: $schema=http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json # We don't allow extra fields except top level fields that start with _. # They may be useful when YAML anchors are used for code reuse. _commonOptions: &amp;common some_common: options ## Application name app_name: foo bar ## Metadata configuration # Napkin maintains a database with the history of runs. It's used to estimate pipeline runtime as well as to enforce update strategies. metadata_url: sqlite:metadata.db # optional, by default metadata will be stored in Sqlite file in $PWD/data directory. # metadata_url: postgresql://db@host/nakpin_metadata # metadata can be also stored in Postgres #### Database connection configuration ## BigQuery backend: BigQuery db_url: bigquery://bigquery.googleapis.com/project-acme?dataset=acme-analytics backend_options: # backend specific options labels: # can be used to segregate costs in Google Cloud billing dashboard client: acme repo: client-acme concurrent_queries: 100 timeout: 300 ## Postgres # backend: Postgres # db_url: postgresql://user@db/napkin_db # backend_options: # backend specific options # connection_pool: 100 ## Sqlite # backend: Sqlite # db_url: sqlite:acme.db # backend_options: {} # no backend options for Sqlite ## Location of SQL files when referenced in Spec. sql_folder: ../sql # optional, this is a default value ## Location of Haskell files when referenced in Spec. haskell_folder: ../haskell # optional, this is a default value ## Meta-programming &amp; scripting configuration ## List of Haskell modules that should be imported (in a qualified way) into Mustache templating environment. # You don't need to list modules used for table specs, hooks, preprocessors, etc. here. haskell_modules: # optional, defaults to empty - ACME.Mustache # Haskell module ## Haskell function that provides function macros that can extend SQL. function_macros: ACME.macros # optional, Haskell symbol, defaults to none ## Custom validator validator: ACME.validator # optional, Haskell symbol, defaults to none ## Haskell spec # In addition to specyfing tables in YAML, tables can be also specified in Haskell program with Napkin DSL. haskell_spec: ACME.spec # optional, Haskell symbol, defaults to none ## Default extensions for Haskell interpreter haskell_default_language_extensions: - OverlappingInstances - NoOverloadedStrings # extensions enabled by default can be disabled as well ## List of extra packages to be made available in the Haskell scripting # Note: these extensions need to be present in a package DB. Please consult the user manual for directions how to add extra packages. haskell_packages: # optional, defaults to empty - fmt - yaml ## Spec preprocessors preprocessors: # defaults to empty - table_prefix: # this will prefix all tables (according to configuration) to without hardcoding the prefix directly in the Spec and queries # one or both of value and override_with_arg need to be specified value: development # prefix override_with_arg: environment # allow to override with CLI, e.g. --arg environment=production separator: _ # defaults to empty, # scope: unmanaged # scope: all # only: [foo, bar, baz] # apply renamer only to selected tables # except: [foo, bar, baz] # apply renamer to all tables except selected tables - table_namespace: # this will move all tables (according to configuration) to dataset/schema without specyfing it directly in the Spec and queries # one or both of value and override_with_arg need to be specified value: development # namespace override_with_arg: environment # allow to override with CLI, e.g. --arg environment=production scope: managed # scope: unmanaged # scope: all only: [foo, bar, baz] # apply renamer only to selected tables except: [foo, bar, baz] # apply renamer to all tables except selected tables on_existing: overwrite # default, replace namespace even if it was specified explicitly # on_existing: keep_original # keep original namespace if it has been specified explicitly in the Spec - ACME.Preprocessors.example: # Custom preprocessor with some arguments (Haskell symbol) some: arguments - ACME.Preprocessors.example # Custom preprocessor without arguments (Haskell symbol) ## Tables that are managed by Napkin tables: some_table: # Table name # Defines a method the table will be created create_action: # This table should be created with a SQL query stored in a file sql_file: source: some_query.sql # SQL file location relative to sql_dir target_type: table # default # target_type: view # create view instead of table vars: # Variables for Mustache templating, defaults to none foo: bar baz: boo # What should trigger table being updated or recreated, optional, defaults to: always update_strategy: - type: always # Update table always - type: periodically # Update table periodically (every hour = 3600 seconds). Requires metadata to be persisted between Napkin runs period: 3600 - type: with_dependency # Update table when it's older than its dependency or the dependency will update as well during this run - type: if_missing # Update table when it does not exist # List of tables that are not referenced in the query, but should be considered as a dependency when scheduling, optional, defaults to empty # Typically, Napkin will discover all dependencies automatically, so it does not have to be used. You can double check dependencies discovered with dump command deps: - some_dependency # List of tables that are referenced in the query and should not be considered as a dependency when scheduling, , optional, defaults to empty # Typically, Napkin will discover all dependencies automatically, so it does not have to be used. You can double check dependencies discovered with dump command hidden_deps: - ignored_dependency # Backend specific table options, optional table_options: # Big Query options partitioning: column: partitioning_column range: start: 1 end: 100 step: 2 write_disposition: append clustering: [clustering_column] # Table tags, can be used to selectively enable or disable table execution with CLI flags during development tags: [foo, bar, baz] ## Pre-hooks can be used to validate input data # See examples below what assertions are built-in pre_hooks: # optional, defaults to empty - assert_unique: table: source_table columns: [some_column] ## Post-hooks can be used to validate query results # The same set of assertions can be used both in pre and post hooks # See examples below what assertions are built-in post_hooks: # optional, defaults to empty - assert_unique: table: some_table columns: [result_column] # on_failure controls how hook failures are handled, this attribute applies to all hooks on_failure: fail_now # default, fail whole spec as soon hook fails # on_failure: fail_later # fail whole spec, but allows remaining hooks for this table to be executed # on_failure: warn_only # don't fail whole spec, failure will be logged in a report inline_table: create_action: # This table should be created with a SQL query inlined in YAML file sql_query: query: SELECT * FROM some_table target_type: table # default # target_type: view # create view instead of table incremental_by_time_table: create_action: # This table should be update with incremental by time strategy. Please refer to user manual for details incremental_by_time: source: incremental_query.sql # SQL file location relative to sql_dir timestamp_column: column_foo # Column that contains timestamp start_day: 2021-01-01 # Starting date, used when table is created from scratch lookback_days: 14 # Last N days slice to be updated during subsequent runts vars: # Variables for Mustache templating, this program will implicitly provide \"cutoff\" variable foo: bar baz: boo incremental_pk_table: create_action: # This table should be update with incremental by time strategy. Please refer to user manual for details incremental_by_pk: source: incremental_pk.sql # SQL file location relative to sql_dir pk: [column_foo] start_day: 2021-01-01 lookback_days: 14 custom_prog: # This table should be created by custom program # since we don't provide any arguments to the program, we can use simplified syntax create_action: ACME.custom_prog custom_prog_with_args: create_action: # This table should be created by custom program # In this case we pass some arguments to the program ACME.custom_prog: some_args: true all_hooks: create_action: sql_file: source: some.sql # Example of all hooks available, can be used as pre_hooks as well post_hooks: - assert_all_values_within: table: Invoice column: InvoiceDate type: date from: 2009-01-01 to: 2013-12-31 # on_failure controls how hook failures are handled, this attribute applies to all hooks on_failure: fail_now # default, fail whole spec as soon hook fails # on_failure: fail_later # fail whole spec, but allows remaining hooks for this table to be executed # on_failure: warn_only # don't fail whole spec, failure will be logged in a report - assert_any_values_within: table: Artist column: Count type: int from: 1 to: 25 - assert_no_values_within: table: popular_tracks_for_pink_floyd column: Name values: - Sweet Home Alabama - Brain Damage - assert_all_values_within: table: popular_tracks_for_pink_floyd column: Name values: - Time - The Great Gig In The Sky - Any Colour You Like - Brain Damage - Sweet Home Alabama - assert_unique: table: popular_tracks_for_pink_floyd columns: [Name] - assert_count: table: popular_tracks_for_pink_floyd equal: 123 - assert_count: table: popular_tracks_for_pink_floyd greater_than_or_equal: popular_tracks_for_pink_floyd - assert_count: table: popular_tracks_for_pink_floyd approximately_equal: 123 type: absolute # type: relative tolerance: 10 # we can be off by 10 and it's still ok - assert_cardinalities: table: popular_tracks_for_pink_floyd column: name equal: table: Artist column: name - assert_expression: table: popular_tracks_for_pink_floyd expression: name - assert_not_null: table: popular_tracks_for_pink_floyd columns: - some_column - expression: NULLIF (some_column, '') # custom hook without arguments - ACME.custom_hook # custom hook with arguments - ACME.custom_hook: target: artists_hashes . ",
+    "url": "https://soostone.github.io/user-manual/yaml-reference",
+    "relUrl": "/user-manual/yaml-reference"
   }
 }
