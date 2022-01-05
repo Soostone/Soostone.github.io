@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
+  <script src="https://code.highcharts.com/gantt/modules/exporting.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.js"></script>
+  <title>Napkin execution plan</title>
+</head>
+
+<body>
+  <div id="container"></div>
+
+  <script>
+    Highcharts.ganttChart('container', {
+      chart: {
+        zoomType: 'x'
+      },
+      xAxis: [{
+        grid: {
+          enabled: false
+        }
+      }],
+      title: {
+        text: 'Napkin execution results'
+      },
+      tooltip: {
+        followPointer: true,
+        pointFormatter: function () {
+          var format = function (time) { return moment(time).format("MMMM Do YYYY, hh:mm:ss.SSSS"); };
+          return [{
+            title: 'Name',
+            value: this.name,
+          }, {
+            title: 'Cost in pennies (by query)',
+            value: this.mainCost?.pennies
+          }, {
+            title: 'Hook in pennies (by hook)',
+            value: this.hookCost?.pennies
+          }, {
+            title: 'Rows affected (by query)',
+            value: this.mainCost?.rows
+          }, {
+            title: 'Bytes affected (by query)',
+            value: this.mainCost?.bytes
+          }, {
+            title: 'Rows affected (by hook)',
+            value: this.hookCost?.rows
+          }, {
+            title: 'Bytes affected (by hook)',
+            value: this.hookCost?.bytes
+          }, {
+            title: 'Start',
+            value: format(this.start)
+          }, {
+            title: 'End',
+            value: format(this.end)
+          }, {
+            title: 'Duration',
+            value: moment.duration(this.end - this.start).humanize() + ' (' + (this.end - this.start).toString() + ' ms)'
+          }].filter(function (element) { return element.value; }).reduce(function (str, line) {
+            return str + '<span><b>' + line.title + '</b>: ' + line.value + '</span><br/>';
+          }, '');
+        }
+      },
+      series: [{
+        name: 'napkin',
+        data: JSON.parse('[{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":1,"bytes":null},"start":"2022-01-04 11:07:15.642602791","name":"ns.implicit_aliases_2","dependency":[],"end":"2022-01-04 11:07:15.680458981","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":1,"bytes":null},"start":"2022-01-04 11:07:15.642338208","name":"ns.alias_shadowing","dependency":[],"end":"2022-01-04 11:07:15.68768284","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":1,"bytes":null},"start":"2022-01-04 11:07:15.642070354","name":"ns.test_1","dependency":[],"end":"2022-01-04 11:07:15.665312109","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":0,"bytes":null},"start":"2022-01-04 11:07:15.641758658","name":"ns.implicit_aliases","dependency":[],"end":"2022-01-04 11:07:15.688197248","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":1,"bytes":null},"start":"2022-01-04 11:07:15.641580544","name":"ns.cte_shadowing","dependency":[],"end":"2022-01-04 11:07:15.66525727","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":1,"bytes":null},"start":"2022-01-04 11:07:15.641399352","name":"ns.cte_aliases","dependency":[],"end":"2022-01-04 11:07:15.691064221","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":0,"bytes":null},"start":"2022-01-04 11:07:15.640877557","name":"ns.aliases_where_clause","dependency":[],"end":"2022-01-04 11:07:15.71545621","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":1,"bytes":null},"start":"2022-01-04 11:07:15.592303308","name":"ns.src_bar","dependency":[],"end":"2022-01-04 11:07:15.599407938","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":1,"bytes":null},"start":"2022-01-04 11:07:15.591815048","name":"ns.src_foo","dependency":[],"end":"2022-01-04 11:07:15.601597239","completed":{"amount":1}},{"hookCost":{"pennies":null,"rows":null,"bytes":null},"mainCost":{"pennies":null,"rows":100,"bytes":null},"start":"2022-01-04 11:07:15.591617901","name":"ns.zzz","dependency":[],"end":"2022-01-04 11:07:15.603151796","completed":{"amount":1}}]').map(function (e) { return Object.assign(e, { id: e.name, start: moment(e.start).toDate().getTime(), end: moment(e.end).toDate().getTime() }); })
+      }]
+    });
+  </script>
+</body>
+
+</html>

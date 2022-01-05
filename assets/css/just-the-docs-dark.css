@@ -133,6 +133,8 @@ code { font-family: "SFMono-Regular", Menlo, Consolas, Monospace; font-size: 0.7
 
 figure, pre { margin: 0; }
 
+figure a, pre a { font-size: inherit; cursor: pointer; }
+
 li { margin: 0.25em 0; }
 
 img { max-width: 100%; height: auto; }

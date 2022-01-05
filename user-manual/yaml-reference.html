@@ -29,6 +29,8 @@
 <a href="#" class="nav-list-expander"> <svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg> </a><a href="https://soostone.github.io/user-manual/" class="nav-list-link"> User Manual </a> <ul></ul>
 <ul class="nav-list ">
 <li class="nav-list-item active"><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link active">Spec YAML reference</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/db-connection" class="nav-list-link">Connecting to the database</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/multi-environment" class="nav-list-link">Multi-environment pipelines in a team setting</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/devcontainer" class="nav-list-link">Devcontainer</a></li>
@@ -77,6 +79,8 @@
 <a href="#" class="nav-list-expander"> <svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg> </a><a href="https://soostone.github.io/user-manual/" class="nav-list-link"> User Manual </a> <ul></ul>
 <ul class="nav-list ">
 <li class="nav-list-item active"><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link active">Spec YAML reference</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/db-connection" class="nav-list-link">Connecting to the database</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/multi-environment" class="nav-list-link">Multi-environment pipelines in a team setting</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/devcontainer" class="nav-list-link">Devcontainer</a></li>
@@ -107,7 +111,7 @@
 <span class="c1">## Metadata configuration</span>
 <span class="c1"># Napkin maintains a database with the history of runs. It's used to estimate pipeline runtime as well as to enforce update strategies.</span>
 <span class="na">metadata_url</span><span class="pi">:</span> <span class="s">sqlite:metadata.db</span> <span class="c1"># optional, by default metadata will be stored in the Sqlite file in $PWD/data directory.</span>
-<span class="c1"># metadata_url: postgresql://db@host/nakpin_metadata # metadata can be also stored in Postgres</span>
+<span class="c1"># metadata_url: postgresql://db@host/napkin_metadata # metadata can be also stored in Postgres</span>
 
 <span class="c1">#### Database connection configuration</span>
 

@@ -29,6 +29,8 @@
 <a href="#" class="nav-list-expander"> <svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg> </a><a href="https://soostone.github.io/user-manual/" class="nav-list-link"> User Manual </a> <ul></ul>
 <ul class="nav-list ">
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link">Spec YAML reference</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/db-connection" class="nav-list-link">Connecting to the database</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/multi-environment" class="nav-list-link">Multi-environment pipelines in a team setting</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/devcontainer" class="nav-list-link">Devcontainer</a></li>
@@ -77,6 +79,8 @@
 <a href="#" class="nav-list-expander"> <svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg> </a><a href="https://soostone.github.io/user-manual/" class="nav-list-link"> User Manual </a> <ul></ul>
 <ul class="nav-list ">
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link">Spec YAML reference</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/db-connection" class="nav-list-link">Connecting to the database</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/multi-environment" class="nav-list-link">Multi-environment pipelines in a team setting</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/devcontainer" class="nav-list-link">Devcontainer</a></li>
@@ -596,7 +600,6 @@ dump
 </code></pre></div></div> <h2 id="napkin-remembers"> <a href="#napkin-remembers" class="anchor-heading" aria-labelledby="napkin-remembers"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Napkin remembers </h2> <p>Napkin internally keeps track of your application state. You might find it helpful to spend some time with:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history </span>list <span class="nt">--spec-file</span> specs/spec.yaml
 </code></pre></div></div> <p>As always, <code class="language-plaintext highlighter-rouge">napkin history --help</code> will provide a comprehensive list of <em>history parameters</em></p> <h2 id="aggregations"> <a href="#aggregations" class="anchor-heading" aria-labelledby="aggregations"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Aggregations </h2> <p>We continue extending the chinook-analytics Spec to provide additional functionalities:</p> <ul> <li>daily total sales for Chinook</li> <li>counties ranking of genres</li> </ul> <p>The corresponding <code class="language-plaintext highlighter-rouge">SQL</code> files are:</p> <h4 id="sql-daily-total-sql" class="top-code-caption"> <a href="#sql-daily-total-sql" class="anchor-heading" aria-labelledby="sql-daily-total-sql"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> sql/daily_total.sql </h4> <div class="language-sql copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">-- incremental table</span>
 <span class="c1">-- compute daily total sales</span>
-<span class="c1">--</span>
 <span class="k">SELECT</span>
     <span class="n">strftime</span><span class="p">(</span><span class="s1">'%d'</span><span class="p">,</span> <span class="nv">"InvoiceDate"</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">"InvoiceDate"</span><span class="p">,</span>
     <span class="k">SUM</span><span class="p">(</span><span class="nv">"Total"</span><span class="p">)</span> <span class="k">AS</span> <span class="nv">"Total"</span>
