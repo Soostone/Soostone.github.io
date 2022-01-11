@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://soostone.github.io/install#cachix</loc>
+</url>
+<url>
 <loc>https://soostone.github.io/changelog/</loc>
 </url>
 <url>
@@ -8,6 +11,9 @@
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/devcontainer</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/install#docker</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/docker</loc>
@@ -22,10 +28,16 @@
 <loc>https://soostone.github.io/haddock/</loc>
 </url>
 <url>
+<loc>https://soostone.github.io/install#homebrew</loc>
+</url>
+<url>
 <loc>https://soostone.github.io/ide</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/fundamentals/</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/install/</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/cli-reference</loc>
@@ -37,13 +49,13 @@
 <loc>https://soostone.github.io/</loc>
 </url>
 <url>
-<loc>https://soostone.github.io/install/</loc>
-</url>
-<url>
 <loc>https://soostone.github.io/user-manual/multi-environment</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/mustache</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/install#native</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/preprocessors</loc>
