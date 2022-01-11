@@ -30,8 +30,8 @@
 <ul class="nav-list ">
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link">Spec YAML reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache</a></li>
-<li class="nav-list-item active"><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link active">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/db-connection" class="nav-list-link">Connecting to the database</a></li>
+<li class="nav-list-item active"><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link active">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/multi-environment" class="nav-list-link">Multi-environment pipelines in a team setting</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/devcontainer" class="nav-list-link">Devcontainer</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/preprocessors" class="nav-list-link">Preprocessors</a></li>
@@ -80,8 +80,8 @@
 <ul class="nav-list ">
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link">Spec YAML reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache</a></li>
-<li class="nav-list-item active"><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link active">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/db-connection" class="nav-list-link">Connecting to the database</a></li>
+<li class="nav-list-item active"><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link active">CLI reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/multi-environment" class="nav-list-link">Multi-environment pipelines in a team setting</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/devcontainer" class="nav-list-link">Devcontainer</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/preprocessors" class="nav-list-link">Preprocessors</a></li>
@@ -343,7 +343,7 @@ Global options:
 <code class="language-plaintext highlighter-rouge">-i</code>, <code class="language-plaintext highlighter-rouge">--generate-inserts</code> flag forces Napkin to generate SQL queries in form of <code class="language-plaintext highlighter-rouge">INSERT INTO __TABLE_NAME__ SELECT ...</code> instead of default <code class="language-plaintext highlighter-rouge">SELECT ...</code>
 </li> </ul> <p>Usually <code class="language-plaintext highlighter-rouge">napkin dump</code> command will create following directory structure:</p> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">-o</span> dump
 </code></pre></div></div> <h4 id="output" class="top-code-caption"> <a href="#output" class="anchor-heading" aria-labelledby="output"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> output </h4> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dump
-&gt; - `01_update_daily.sql`
+├── 01_update_daily.sql
 ├── 02_update_on_upstream.sql
 ├── 03_random.sql
 ├── 04_first_run_at.sql
@@ -371,7 +371,71 @@ Global options:
 └── dependency_graph.pdf
 </code></pre></div></div> <div class="premonition note"> <i class="premonition pn-note"></i> <div class="content"> <p>Some source sql files, like <code class="language-plaintext highlighter-rouge">day_totals.sql</code> will produce multiple output files:</p> <ul> <li>
 <code class="language-plaintext highlighter-rouge">09_day_totals.create_1.sql</code>, <code class="language-plaintext highlighter-rouge">09_day_totals.create_2.sql</code> – queries Napkin would execute in order to create <code class="language-plaintext highlighter-rouge">day_totals</code> table is it is not exists yet.</li> <li>
-<code class="language-plaintext highlighter-rouge">09_day_totals.update_1.sql</code> – query Napkin would execute in order to update already existing <code class="language-plaintext highlighter-rouge">day_totals</code> table.</li> </ul> </div> </div> <p>TODO dot files</p> <h2 id="haddock"> <a href="#haddock" class="anchor-heading" aria-labelledby="haddock"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Haddock </h2> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin haddock <span class="nt">--help</span>
+<code class="language-plaintext highlighter-rouge">09_day_totals.update_1.sql</code> – query Napkin would execute in order to update already existing <code class="language-plaintext highlighter-rouge">day_totals</code> table.</li> </ul> </div> </div> <p>Along with output SQL files, <code class="language-plaintext highlighter-rouge">napkin dump</code> command also generates dependency diagram between the tables in <a href="https://graphviz.org" target="_blank" rel="noopener noreferrer">Graphviz</a> format:</p> <h4 id="graph" class="top-code-caption"> <a href="#graph" class="anchor-heading" aria-labelledby="graph"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> graph </h4> <div class="language-dot highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">digraph</span> <span class="p">{</span>
+    <span class="mi">1</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">Album</span>
+      <span class="p">,</span><span class="n">shape</span><span class="p">=</span><span class="nv">box</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">dotted</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">Artist</span>
+      <span class="p">,</span><span class="n">shape</span><span class="p">=</span><span class="nv">box</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">dotted</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">3</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">InvoiceLine</span>
+      <span class="p">,</span><span class="n">shape</span><span class="p">=</span><span class="nv">box</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">dotted</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">4</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">Track</span>
+      <span class="p">,</span><span class="n">shape</span><span class="p">=</span><span class="nv">box</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">dotted</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">5</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">artist_album_count</span>
+      <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#59a14f"</span>
+      <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#ffffff"</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">6</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">artist_album_count_via_mustache</span>
+      <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#edc948"</span>
+      <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#000000"</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">7</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">artist_album_count_via_mustache_2</span>
+      <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#b07aa1"</span>
+      <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#ffffff"</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">8</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">artist_hex</span>
+      <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#4e79a7"</span>
+      <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#ffffff"</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">9</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">artist_track_count</span>
+      <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#f28e2b"</span>
+      <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#000000"</span>
+      <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">10</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">artist_track_count_2</span>
+       <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#e15759"</span>
+       <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#ffffff"</span>
+       <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">11</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">artist_track_count_view</span>
+       <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#76b7b2"</span>
+       <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#000000"</span>
+       <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">12</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">popular_tracks_for_pink_floyd</span>
+       <span class="p">,</span><span class="n">fillcolor</span><span class="p">=</span><span class="s2">"#59a14f"</span>
+       <span class="p">,</span><span class="n">fontcolor</span><span class="p">=</span><span class="s2">"#ffffff"</span>
+       <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">filled</span><span class="o">]</span><span class="p">;</span>
+    <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">7</span><span class="p">;</span>
+    <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">9</span><span class="p">;</span>
+    <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">11</span><span class="p">;</span>
+    <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">5</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">6</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">7</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">9</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">11</span><span class="p">;</span>
+    <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="mi">3</span> <span class="o">-&gt;</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">9</span><span class="p">;</span>
+    <span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">11</span><span class="p">;</span>
+    <span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">12</span><span class="p">;</span>
+    <span class="mi">9</span> <span class="o">-&gt;</span> <span class="mi">10</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div> <p>In PDF format, this diagram looks like that:</p> <iframe src="/user-manual/cli-reference/dependency_graph.pdf" width="100%" height="650"></iframe> <h2 id="haddock"> <a href="#haddock" class="anchor-heading" aria-labelledby="haddock"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> Haddock </h2> <h4 id="shell" class="top-code-caption"> <a href="#shell" class="anchor-heading" aria-labelledby="shell"><svg viewbox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a> shell </h4> <div class="language-sh copiable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin haddock <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin haddock 
   Opens web page with Napkin haddocks
 

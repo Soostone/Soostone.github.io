@@ -4,9 +4,6 @@
 <loc>https://soostone.github.io/changelog/</loc>
 </url>
 <url>
-<loc>https://soostone.github.io/user-manual/cli-reference</loc>
-</url>
-<url>
 <loc>https://soostone.github.io/user-manual/db-connection</loc>
 </url>
 <url>
@@ -29,6 +26,9 @@
 </url>
 <url>
 <loc>https://soostone.github.io/ide</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/user-manual/cli-reference</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/</loc>
@@ -66,6 +66,10 @@
 </url>
 <url>
 <loc>https://soostone.github.io/dependency_graph2.pdf</loc>
+<lastmod>1970-01-01T00:00:01+00:00</lastmod>
+</url>
+<url>
+<loc>https://soostone.github.io/user-manual/cli-reference/dependency_graph.pdf</loc>
 <lastmod>1970-01-01T00:00:01+00:00</lastmod>
 </url>
 <url>
