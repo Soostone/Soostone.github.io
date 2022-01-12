@@ -30,6 +30,7 @@
 <li class="nav-list-item"><a href="https://soostone.github.io/ide" class="nav-list-link">IDE Support</a></li>
 </ul> </nav> </div> <div class="site-super-header"> <div class="super-nav-box"> <div class="site-logo"></div> <div class="site-buttons"> <a class="link-button active" href="/">Documentation</a> <a class="link-button" href="#">Community</a> <a class="link-button" href="#">Features</a> <a class="link-button" href="#">Use Cases</a> <span class="gradient-border"> <a class="link-button" href="/install/">Install</a> </span> </div> </div> </div> <div class="width-ruler"></div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search " aria-label="Search " autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> </div> <div id="main-content-wrap" class="main-content-wrap"> <nav aria-label="Breadcrumb" class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="https://soostone.github.io/user-manual/">User Manual</a></li> <li class="breadcrumb-nav-list-item"><span>CLI reference</span></li> </ol> </nav> <div id="main-content" class="main-content" role="main"> <ul id="markdown-toc"> <li>
 <a href="#napkin" id="markdown-toc-napkin">Napkin</a> <ul> <li>
+<a href="#run" id="markdown-toc-run">Run</a> <ul> <li><a href="#table-selectors" id="markdown-toc-table-selectors">Table selectors</a></li> <li><a href="#meta-arguments" id="markdown-toc-meta-arguments">Meta arguments</a></li> </ul> </li> <li>
 <a href="#history" id="markdown-toc-history">History</a> <ul> <li><a href="#list" id="markdown-toc-list">List</a></li> <li><a href="#show" id="markdown-toc-show">Show</a></li> <li><a href="#gantt" id="markdown-toc-gantt">Gantt</a></li> </ul> </li> <li><a href="#validate" id="markdown-toc-validate">Validate</a></li> <li><a href="#dump" id="markdown-toc-dump">Dump</a></li> <li><a href="#haddock" id="markdown-toc-haddock">Haddock</a></li> <li><a href="#docs" id="markdown-toc-docs">Docs</a></li> <li><a href="#yaml-schema" id="markdown-toc-yaml-schema">Yaml-Schema</a></li> <li><a href="#hie-bios" id="markdown-toc-hie-bios">Hie-Bios</a></li> <li><a href="#version" id="markdown-toc-version">Version</a></li> </ul> </li> </ul> <h1 id="napkin">Napkin</h1> <p>Napkin CLI application has number of commands to develop, debug and execute specs</p> <div class="highlighter-rouge"><pre>Usage: napkin [(-v|--verbose) | (-l|--log-level LOG_LEVEL)] 
               [--log-format LOG_FORMAT] COMMAND
   CLI tool to work with Napkin
@@ -38,6 +39,7 @@ Available options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
@@ -65,10 +67,8 @@ Documentation:
 IDE integration:
   <a href="#yaml-schema">yaml-schema</a>              Stores YAML schema in a file
   <a href="#hie-bios">hie-bios</a>                 Used by Haskell Language Server
-  internal                 Runs Napkin internal command
 
 Version:
-  update                   Opens web page with Napkin update instructions
   <a href="#version">version</a>                  Prints Git SHA and version of the build
 </pre></div> <p>Napkin has number of global options, which are applicable to almost any command:</p> <p><a name="napkin--l,--log-level"></a></p> <ul> <li>
 <code class="language-plaintext highlighter-rouge">-l</code>, <code class="language-plaintext highlighter-rouge">--log-level</code> - Allows to specify log level for the Napkin execution. <a name="napkin--v,--verbose"></a>
@@ -80,7 +80,125 @@ Version:
 <a href="http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/haddock/git-hash/4cb2d92a627f4ddf6d00be2d48329be847536a7d/Napkin-Logging.html#v:simpleFormat" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">Simple</code></a> log format is a simplified version of Katip’s <code class="language-plaintext highlighter-rouge">bracketFormat</code>.</li> <li>
 <a href="https://github.com/Soostone/katip/blob/62d2f9beabc7d0d16340eb192941de306127bfbd/katip/src/Katip/Scribes/Handle.hs#L138-L144" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">Json</code></a> log format uses Katip’s <code class="language-plaintext highlighter-rouge">jsonFormat</code>. <a name="napkin--h,--help"></a>
 </li> </ul> </li> <li>
-<code class="language-plaintext highlighter-rouge">-h</code>, <code class="language-plaintext highlighter-rouge">--help</code> - Displays traditional help message screen for each command. It is usually “safe” to append <code class="language-plaintext highlighter-rouge">--help</code> to any Napkin command to know more about options it supports. Napkin will also display the <code class="language-plaintext highlighter-rouge">--help</code> screen when it meets the unfamiliar option.</li> </ul> <h2 id="history">History</h2> <p>Set of <code class="language-plaintext highlighter-rouge">napkin history</code> commands allows to display information from Napkin’s metadata database in various forms.</p> <p>When using Napkin frequently, it might be handy to know:</p> <ul> <li>When Napkin was executed last time</li> <li>What are the statuses of the tables</li> <li>How many records were updated in each table</li> <li>etc.</li> </ul> <p>Napkin assigns a <code class="language-plaintext highlighter-rouge">GUID</code> identifier to each run to uniquely identify it from other <code class="language-plaintext highlighter-rouge">napkin run</code> invocations. Along with <code class="language-plaintext highlighter-rouge">GUID</code> of the execution, Napkin stores date and time when particular <code class="language-plaintext highlighter-rouge">run</code> command was issued to Napkin.</p> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history</span> <span class="nt">--help</span>
+<code class="language-plaintext highlighter-rouge">-h</code>, <code class="language-plaintext highlighter-rouge">--help</code> - Displays traditional help message screen for each command. It is usually “safe” to append <code class="language-plaintext highlighter-rouge">--help</code> to any Napkin command to know more about options it supports. Napkin will also display the <code class="language-plaintext highlighter-rouge">--help</code> screen when it meets the unfamiliar option.</li> </ul> <h2 id="run">Run</h2> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin run <span class="nt">--help</span>
+</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin run [-s|--spec-file SPEC_YAML] 
+                  [-Q|--metadata-connection-string URI] [-u|--uri URI] 
+                  [-a|--app-name APPLICATION-NAME] 
+                  [--credentials-db CREDENTIALS-DB-PATH] 
+                  [--callback-http-port CALLBACK_HTTP_PORT] 
+                  [-C|--credentials-file FILE] 
+                  [--skip-all | --force-all | --only SELECTOR | 
+                    --force-only SELECTOR] 
+                  [--force SELECTOR | --force-with-downstream SELECTOR | 
+                    --enable SELECTOR | --skip SELECTOR] [-p|--show-progress] 
+                  [-r|--dry-run] 
+                  [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE] 
+                  [-q|--sql-dir DIR]
+  Runs Napkin specs
+
+Available options:
+  <a href="#napkin--s,--spec-file">-s,--spec-file</a> SPEC_YAML Path to the spec yaml file
+                           (default: "specs/spec.yaml")
+  <a href="#napkin--Q,--metadata-connection-string">-Q,--metadata-connection-string</a> URI
+                           An optional alternate connection string for tracking
+                           napkin operations. Currently supports SQLite3 and
+                           Postgres backends, e.g. sqlite:/some/file.sqlite3 or
+                           postgresql://user@host
+  <a href="#napkin-run--u,--uri">-u,--uri</a> URI             Connection URI to create a database connection
+                           postgres:/// # use libpq defaults
+                           postgres://user@remotehost/dbname
+                           redshift://user@remotehost/dbname
+                           bigquery://bigquery.googleapis.com/project?dataset=datasetname
+                           sqlite:///home/dev/myRepo/mySqlite.db
+  <a href="#napkin--a,--app-name">-a,--app-name</a> APPLICATION-NAME
+                           User's project or application name
+  <a href="#napkin-run---credentials-db">--credentials-db</a> CREDENTIALS-DB-PATH
+                           Path to database connection credentials directory
+  <a href="#napkin-run---callback-http-port">--callback-http-port</a> CALLBACK_HTTP_PORT
+                           Network port number for the napkin Auth server
+  <a href="#napkin-run--C,--credentials-file">-C,--credentials-file</a> FILE
+                           Path to database connection credentials file
+  <a href="#napkin-run---skip-all">--skip-all</a>               Table selector: Skip all tables, use other options to
+                           enable selected tables
+  <a href="#napkin-run---force-all">--force-all</a>              Table selector: Force-enable update of all tables, use other options to skip selected tables
+  <a href="#napkin-run---only">--only</a> SELECTOR          Table selector: Disable all tables except specified
+  <a href="#napkin-run---force-only">--force-only</a> SELECTOR    Table selector: Disable all tables except specified which will be forced
+  <a href="#napkin-run---force">--force</a> SELECTOR         Table selector: Force table update
+  <a href="#napkin-run---force-with-downstream">--force-with-downstream</a> SELECTOR
+                           Table selector: Force table update, force downstream tables too
+  <a href="#napkin-run---enable">--enable</a> SELECTOR        Table selector: Don't skip or force table, use the update strategy as specified in the Spec file
+  <a href="#napkin-run---skip">--skip</a> SELECTOR          Table selector: Skip table update
+  <a href="#napkin-run--p,--show-progress">-p,--show-progress</a>       Show a progress bar if the terminal supports it
+  <a href="#napkin-run--r,--dry-run">-r,--dry-run</a>             Simulate run and report which tables would've been
+                           updated
+  <a href="#napkin-run---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
+  <a href="#napkin-run---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
+  <a href="#napkin-run---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
+  -q,--sql-dir DIR         Directory containing SQL files
+  <a href="#napkin--h,--help">-h,--help</a>                Show this help text
+
+Global options:
+  <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
+  <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
+                           Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
+  <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
+                           Json. (default: Simple)
+
+[1mTable selectors and SELECTOR types[0m
+  
+  Table selectors allow performing partial spec runs. This can be useful during
+  spec development. All options are applied in sequence to the execution plan.
+  <a href="#napkin-run---skip-all">--skip-all</a>, --force-all, --only, and --force-only options can be specified as
+  a first table selector only. --only, --force-only, --skip, --enable, --force,
+  and --force-with-downstream options accept a SELECTOR, which can be one of:
+    * unprocessed table name, as it was defined in the spec,
+      e.g. [1m--skip spec:marketing_analytics[0m,
+    * processed table name after all preprocessors have been applied,
+      e.g. [1m--skip db:development.john_marketing_analytics[0m,
+    * table tag, e.g. [1m--enable tag:marketing[0m.
+  Table names can be filtered using three matchers:
+    * literal table name, e.g. [1m--skip spec:marketing_analytics[0m,
+    * table name pattern - an asterisk can be used as a wildcard at the
+      beginning or at the end of each table name segment,
+      e.g. [1m--force spec:prod_*.marketing_*[0m,
+    * table name regex - regex has to be surrounded with /,
+      e.g. [1m--force spec:/^marketing.*/[0m,
+  Please refer to the User Manual for further reference.
+  
+  Example:
+    napkin run --only tag:marketing --enable spec:sales_totals --skip spec:marketing_mailing_*
+</pre></div> <p><a name="napkin-run--u,--uri"></a></p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">-u</code>, <code class="language-plaintext highlighter-rouge">--uri URI</code> Connection URI to create a database connection <a name="napkin-run---credentials-db"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--credentials-db CREDENTIALS-DB-PATH</code> Path to database connection credentials directory <a name="napkin-run---callback-http-port"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--callback-http-port CALLBACK_HTTP_PORT</code> Network port number for the napkin Auth server <a name="napkin-run--C,--credentials-file"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">-C</code>, <code class="language-plaintext highlighter-rouge">--credentials-file FILE</code>Path to database connection credentials file</li> </ul> <p><a name="napkin-run--p,--show-progress"></a></p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">-p</code>, <code class="language-plaintext highlighter-rouge">--show-progress</code> Show a progress bar if the terminal supports it <a name="napkin-run--r,--dry-run"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">-r</code>, <code class="language-plaintext highlighter-rouge">--dry-run</code> Simulate run and report which tables would’ve been updated</li> </ul> <h3 id="table-selectors">Table selectors</h3> <p><a name="napkin-run---skip-all"></a></p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">--skip-all</code> Table selector: Skip all tables, use other options to enable selected tables <a name="napkin-run---force-all"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--force-all</code> Table selector: Force-enable update of all tables, use other options to skip selected tables <a name="napkin-run---only"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--only SELECTOR</code> Table selector: Disable all tables except specified <a name="napkin-run---force-only"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--force-only SELECTOR</code> Table selector: Disable all tables except specified which will be forced <a name="napkin-run---force"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--force SELECTOR</code> Table selector: Force table update <a name="napkin-run---force-with-downstream"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--force-with-downstream SELECTOR</code> Table selector: Force table update, force downstream tables too <a name="napkin-run---enable"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--enable SELECTOR</code> Table selector: Don’t skip or force table, use the update strategy as specified in the Spec file <a name="napkin-run---skip"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--skip SELECTOR</code> Table selector: Skip table update</li> </ul> <h3 id="meta-arguments">Meta arguments</h3> <p><a name="napkin-run---arg"></a></p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">--arg ARG=VALUE</code> Argument to be passed to spec <a name="napkin-run---arg-json"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--arg-json JSON</code> Spec arguments encoded as JSON object <a name="napkin-run---arg-file"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--arg-file FILE</code> Spec arguments stored in JSON file</li> </ul> <h2 id="history">History</h2> <p>Set of <code class="language-plaintext highlighter-rouge">napkin history</code> commands allows to display information from Napkin’s metadata database in various forms.</p> <p>When using Napkin frequently, it might be handy to know:</p> <ul> <li>When Napkin was executed last time</li> <li>What are the statuses of the tables</li> <li>How many records were updated in each table</li> <li>etc.</li> </ul> <p>Napkin assigns a <code class="language-plaintext highlighter-rouge">GUID</code> identifier to each run to uniquely identify it from other <code class="language-plaintext highlighter-rouge">napkin run</code> invocations. Along with <code class="language-plaintext highlighter-rouge">GUID</code> of the execution, Napkin stores date and time when particular <code class="language-plaintext highlighter-rouge">run</code> command was issued to Napkin.</p> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history</span> <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin history [-s|--spec-file SPEC_YAML] 
                       [-a|--app-name APPLICATION-NAME] 
                       [-Q|--metadata-connection-string URI] COMMAND
@@ -102,13 +220,14 @@ Available commands:
   <a href="#list">list</a>                     Lists all previous Napkin runs
   <a href="#show">show</a>                     Displays Napkin run by ID. Uses latest run if ID
                            wasn't provided
-  <a href="#gantt">gantt</a>                    Exports Napkin into a gantt chart. Uses latest run if
-                           ID wasn't provided
+  <a href="#gantt">gantt</a>                    Exports Napkin run into a gantt chart. Uses latest
+                           run if ID wasn't provided
 
 Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><a name="napkin--s,--spec-file"></a></p> <ul> <li>
@@ -137,6 +256,7 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><a name="napkin-history-LIMIT"></a></p> <ul> <li>
@@ -151,6 +271,7 @@ Global options:
   Displays Napkin run by ID. Uses latest run if ID wasn't provided
 
 Available options:
+  <a href="#napkin-history-GUID">GUID</a>                     GUID of the Napkin run
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
 Global options:
@@ -166,6 +287,7 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><code class="language-plaintext highlighter-rouge">napkin history show</code> command shows individual table statuses, start and finish execution timestamps, number of affected rows.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history </span>show 7a554ca7-61dc-4884-9d06-a4614c9e2827
@@ -182,7 +304,7 @@ Global options:
 </code></pre></div></div> <p><a name="napkin-history-GUID"></a></p> <ul> <li>
 <code class="language-plaintext highlighter-rouge">GUID</code> parameter allows you to specify exact Napkin run to obtain information from. To see list of all runs, try <a href="#list"><code class="language-plaintext highlighter-rouge">napkin history list</code></a> command.</li> </ul> <p>If <code class="language-plaintext highlighter-rouge">GUID</code> parameter is omitted, <code class="language-plaintext highlighter-rouge">napkin history show</code> defaults it to the “last Napkin execution” (the same as in <code class="language-plaintext highlighter-rouge">git show</code>).</p> <h3 id="gantt">Gantt</h3> <p><code class="language-plaintext highlighter-rouge">napkin history gantt</code> command allows to export metadata about particular Napkin execution into a human-readable form with help of <a href="https://www.highcharts.com" target="_blank" rel="noopener noreferrer">Highcharts</a> HTML library.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history </span>gantt <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin history gantt [GUID] [-o|--output-dir DIR]
-  Exports Napkin into a gantt chart. Uses latest run if ID wasn't provided
+  Exports Napkin run into a gantt chart. Uses latest run if ID wasn't provided
 
 Available options:
   GUID                     GUID of the Napkin run
@@ -202,12 +324,13 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><a name="napkin-history--o,--output-dir"></a></p> <ul> <li>
 <code class="language-plaintext highlighter-rouge">-o</code>, <code class="language-plaintext highlighter-rouge">--output-dir</code> parameter points Napkin to the directory, which should be used for exporting HTML file with a Gantt chart. By default, current working directory will be used.</li> </ul> <p><code class="language-plaintext highlighter-rouge">napkin history gantt</code> command exports metadata of the specified Napkin run to the <code class="language-plaintext highlighter-rouge">DIR</code> directory in the form of Gantt chart (HTML page).</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history </span>gantt 7a554ca7-61dc-4884-9d06-a4614c9e2827 <span class="nt">-o</span> data/
 </code></pre></div></div> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Gantt chart generated: data/gantt_napkin_7a554ca7-61dc-4884-9d06-a4614c9e2827.html
-</code></pre></div></div> <p>For example:</p> <iframe src="/user-manual/gantt.html" width="100%" height="650"></iframe> <p>If <code class="language-plaintext highlighter-rouge">GUID</code> parameter is omitted, <code class="language-plaintext highlighter-rouge">napkin history gantt</code> defaults it to the “last Napkin execution” (the same as in <code class="language-plaintext highlighter-rouge">git show</code>).</p> <h2 id="validate">Validate</h2> <p><code class="language-plaintext highlighter-rouge">napkin validate</code> command allows to check the whole spec for:</p> <ul> <li>Napkin’s ability to correctly parse and process all the sql files.</li> <li>Napkin’s ability to compile and execute parts of the specs defined in Haskell.</li> <li>Validity of the built-in and user-defined <a href="/user-manual/preprocessors">preprocessors</a>.</li> <li>Validity of the settings inside <a href="/user-manual/yaml-reference">spec.yaml</a> file.</li> <li>Correctness of <a href="/user-manual/mustache">mustache interpolation</a> instructions.</li> <li>Absence of dependency loops across table definitions.</li> </ul> <p>It is a good idea to check for the spec validness before committing the changes to the source code repository (git), so that other team members will not be surprised that <code class="language-plaintext highlighter-rouge">napkin run</code> is unable for do it’s job.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin validate <span class="nt">--help</span>
+</code></pre></div></div> <p>For example:</p> <iframe style="border: none;" src="/user-manual/gantt.html" width="100%" height="650"></iframe> <p>If <code class="language-plaintext highlighter-rouge">GUID</code> parameter is omitted, <code class="language-plaintext highlighter-rouge">napkin history gantt</code> defaults it to the “last Napkin execution” (the same as in <code class="language-plaintext highlighter-rouge">git show</code>).</p> <h2 id="validate">Validate</h2> <p><code class="language-plaintext highlighter-rouge">napkin validate</code> command allows to check the whole spec for:</p> <ul> <li>Napkin’s ability to correctly parse and process all the sql files.</li> <li>Napkin’s ability to compile and execute parts of the specs defined in Haskell.</li> <li>Validity of the built-in and user-defined <a href="/user-manual/preprocessors">preprocessors</a>.</li> <li>Validity of the settings inside <a href="/user-manual/yaml-reference">spec.yaml</a> file.</li> <li>Correctness of <a href="/user-manual/mustache">mustache interpolation</a> instructions.</li> <li>Absence of dependency loops across table definitions.</li> </ul> <p>It is a good idea to check for the spec validness before committing the changes to the source code repository (git), so that other team members will not be surprised that <code class="language-plaintext highlighter-rouge">napkin run</code> is unable for do it’s job.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin validate <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin validate [-s|--spec-file SPEC_YAML] [-i|--interactive] 
                        [-r|--rolling] [-S|--strict-mustache] 
                        [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE]
@@ -228,6 +351,7 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><a name="napkin-validate--i,--interactive"></a></p> <ul> <li>In <code class="language-plaintext highlighter-rouge">-i</code>, <code class="language-plaintext highlighter-rouge">--interactive</code> mode, Napkin constantly monitors all the files and folders, mentioned in <a href="/user-manual/yaml-reference">spec.yaml</a> file automatically re-validates the spec on any change. It is convenient to have <code class="language-plaintext highlighter-rouge">napkin validate --interactive</code> process opened in a separate window, while you are working on the SQL files or the <a href="/user-manual/yaml-reference">spec.yaml</a> definition. <a name="napkin-validate--r,--rolling"></a>
@@ -259,6 +383,7 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><a name="napkin-dump--o,--output-dir"></a></p> <ul> <li>
@@ -362,7 +487,7 @@ Global options:
     <span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">12</span><span class="p">;</span>
     <span class="mi">9</span> <span class="o">-&gt;</span> <span class="mi">10</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></div></div> <p>In PDF format, this diagram looks like that:</p> <iframe src="/user-manual/cli-reference/dependency_graph.pdf" width="100%" height="650"></iframe> <h2 id="haddock">Haddock</h2> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin haddock <span class="nt">--help</span>
+</code></pre></div></div> <p>In PDF format, this diagram looks like that:</p> <iframe style="border: none;" src="/user-manual/cli-reference/dependency_graph.pdf" width="100%" height="650"></iframe> <h2 id="haddock">Haddock</h2> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin haddock <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin haddock 
   Opens web page with Napkin haddocks
 
@@ -373,11 +498,12 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p>Napkin is written in Haskell and currently exposes all internal APIs for external use (as it allows meta-programming, expressing SQL statements programmatically, etc.).</p> <p>Links to the Napkin Haskell API documentation for each individual version can be found <a href="/haddock/">here</a>.</p> <p>You can always “ask” Napkin CLI for the exact link to the API reference for the currently installed version. It will open a browser with an API docs for the exact git commit SHA Napkin was built from.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin haddock <span class="nt">--log-level</span> Debug
 </code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Opening</span> <span class="s">"http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/haddock/git-hash/a8811868647ccc54e5c716e1a2781fe1c8b2ef9b/index.html"</span> <span class="no">URL</span> <span class="n">in</span> <span class="n">the</span> <span class="n">browser</span>
-</code></pre></div></div> <iframe src="https://soostone-napkin-public.s3.us-east-1.amazonaws.com/haddock/git-hash/a8811868647ccc54e5c716e1a2781fe1c8b2ef9b/index.html" width="100%" height="650"></iframe> <h2 id="docs">Docs</h2> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin docs <span class="nt">--help</span>
+</code></pre></div></div> <iframe style="border: none;" src="https://soostone-napkin-public.s3.us-east-1.amazonaws.com/haddock/git-hash/a8811868647ccc54e5c716e1a2781fe1c8b2ef9b/index.html" width="100%" height="650"></iframe> <h2 id="docs">Docs</h2> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin docs <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin docs 
   Opens web page with Napkin tutorial
 
@@ -388,6 +514,7 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p>As well as for <a href="#haddock">Haddock</a> API reference, Napkin CLI can be asked for a link to this documentation site.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin docs <span class="nt">--log-level</span> Debug
@@ -397,19 +524,21 @@ Global options:
   Stores YAML schema in a file
 
 Available options:
+  <a href="#napkin-yaml-schema-OUTPUT">OUTPUT</a>                   Name of the file to put generated yaml schema
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
 Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p>Many modern text editors and IDEs have (either native or through plugins) support for YAML Schema to enhance the process of editing complex YAML files. Napkin provides a way to export YAML schema to an external file - so it is possible to configure your editor properly.</p> <p>In addition, if your editor or plugin supports that feature, you can point it to the <a href="http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/schema/schema.json" target="_blank" rel="noopener noreferrer">web link</a> with a latest YAML schema. YAML schemas for previous releases can be found <a href="http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com#schema/" target="_blank" rel="noopener noreferrer">here</a>.</p> <p><a name="napkin-yaml-schema-OUTPUT"></a></p> <ul> <li>
 <code class="language-plaintext highlighter-rouge">OUTPUT</code> parameter is a path to a file to put generate yaml schema for the <a href="/user-manual/yaml-reference">spec.yaml</a> config.</li> </ul> <p>For example:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin yaml-schema <span class="nv">$HOME</span>/napkin.schema
 </code></pre></div></div> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Saving YAML schema to a file: /Users/user/napkin.schema
 </code></pre></div></div> <h2 id="hie-bios">Hie-Bios</h2> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin hie-bios <span class="nt">--help</span>
-</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin hie-bios [-s|--spec-file SPEC_YAML] [GHC_OPTIONS...]
+</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin hie-bios [-s|--spec-file SPEC_YAML] [GHC_OPTIONS]
   Used by Haskell Language Server
 
 Available options:
@@ -422,9 +551,10 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
-</pre></div> <p><code class="language-plaintext highlighter-rouge">napkin hie-bios</code> provides support for advanced <a href="/ide#metaprogramming-haskell-language-server">meta-programming</a> with Napkin.</p> <p><a href="https://haskell-language-server.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">Haskell Language Server</a> <a href="https://github.com/haskell/hie-bios/blob/1875bff093983a0506f80e214eda27e7419da3bc/src/HIE/Bios/Cradle.hs#L838" target="_blank" rel="noopener noreferrer">sets</a> <code class="language-plaintext highlighter-rouge">HIE_BIOS_OUTPUT</code> environment variable, which is used by Napkin as a file name to write all inferred and <a href="#napkin-hie-bios-HIE_BIOS_OUTPUT">user-supplied</a> options to. For debug purposes, Napkin defaults file location to <code class="language-plaintext highlighter-rouge">hie-bios.txt</code> in the current working directory.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">HIE_BIOS_OUTPUT</span><span class="o">=</span>/dev/tty napkin hie-bios <span class="nt">-s</span> specs/spec.yaml
+</pre></div> <p><code class="language-plaintext highlighter-rouge">napkin hie-bios</code> provides support for advanced <a href="/ide#metaprogramming-haskell-language-server">meta-programming</a> with Napkin. This command is not supposed to be used directly by the user.</p> <p><a href="https://haskell-language-server.readthedocs.io/en/latest/" target="_blank" rel="noopener noreferrer">Haskell Language Server</a> <a href="https://github.com/haskell/hie-bios/blob/1875bff093983a0506f80e214eda27e7419da3bc/src/HIE/Bios/Cradle.hs#L838" target="_blank" rel="noopener noreferrer">sets</a> <code class="language-plaintext highlighter-rouge">HIE_BIOS_OUTPUT</code> environment variable, which is used by Napkin as a file name to write all inferred and <a href="#napkin-hie-bios-HIE_BIOS_OUTPUT">user-supplied</a> options to. For debug purposes, Napkin defaults file location to <code class="language-plaintext highlighter-rouge">hie-bios.txt</code> in the current working directory.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">HIE_BIOS_OUTPUT</span><span class="o">=</span>/dev/tty napkin hie-bios <span class="nt">-s</span> specs/spec.yaml
 </code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">...</span>
 <span class="o">-</span><span class="kn">package</span>
 <span class="nn">containers</span>
@@ -463,6 +593,7 @@ Global options:
   <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
   <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
                            Notice, Warning, Error, Critical, Alert, Emergency.
+                           (default: Info)
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p>Napkin can print current version, release data and exact git commit on it was built.</p> <p>For example:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin version
