@@ -133,9 +133,9 @@ Available options:
   <a href="#napkin-run--p,--show-progress">-p,--show-progress</a>       Show a progress bar if the terminal supports it
   <a href="#napkin-run--r,--dry-run">-r,--dry-run</a>             Simulate run and report which tables would've been
                            updated
-  <a href="#napkin-run---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
-  <a href="#napkin-run---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
-  <a href="#napkin-run---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
+  <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
+  <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
+  <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
   -q,--sql-dir DIR         Directory containing SQL files
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
@@ -196,10 +196,10 @@ Table selectors and SELECTOR types
 <code class="language-plaintext highlighter-rouge">--force-with-downstream</code> <a name="napkin-run---enable"></a>
 </li> <li>
 <code class="language-plaintext highlighter-rouge">--enable</code> <a name="napkin-run---skip"></a>
-</li> <li><code class="language-plaintext highlighter-rouge">--skip</code></li> </ul> <h3 id="meta-arguments">Meta arguments</h3> <p><a name="napkin-run---arg"></a></p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">--arg ARG=VALUE</code> <a name="napkin-run---arg-json"></a>
+</li> <li><code class="language-plaintext highlighter-rouge">--skip</code></li> </ul> <h3 id="meta-arguments">Meta arguments</h3> <p><a name="napkin---arg"></a></p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">--arg ARG=VALUE</code> <a name="napkin---arg-json"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--arg-json</code> <a name="napkin-run---arg-file"></a>
+<code class="language-plaintext highlighter-rouge">--arg-json</code> <a name="napkin---arg-file"></a>
 </li> <li><code class="language-plaintext highlighter-rouge">--arg-file</code></li> </ul> <h2 id="history">History</h2> <p>Set of <code class="language-plaintext highlighter-rouge">napkin history</code> commands allows to display information from Napkin’s metadata database in various forms.</p> <p>When using Napkin frequently, it might be handy to know:</p> <ul> <li>When Napkin was executed last time</li> <li>What are the statuses of the tables</li> <li>How many records were updated in each table</li> <li>etc.</li> </ul> <p>Napkin assigns a <code class="language-plaintext highlighter-rouge">GUID</code> identifier to each run to uniquely identify it from other <code class="language-plaintext highlighter-rouge">napkin run</code> invocations. Along with <code class="language-plaintext highlighter-rouge">GUID</code> of the execution, Napkin stores date and time when particular <code class="language-plaintext highlighter-rouge">run</code> command was issued to Napkin.</p> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history</span> <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin history [-s|--spec-file SPEC_YAML] 
                       [-a|--app-name APPLICATION-NAME] 
@@ -344,9 +344,9 @@ Available options:
   <a href="#napkin-validate--i,--interactive">-i,--interactive</a>         Watches for changed files and constantly revalidates
   <a href="#napkin-validate--r,--rolling">-r,--rolling</a>             Does not clear the screen in live validation mode
   <a href="#napkin-validate--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
-  --arg ARG=VALUE          Argument to be passed to spec
-  --arg-json JSON          Spec arguments encoded as JSON object
-  --arg-file FILE          Spec arguments stored in JSON file
+  <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
+  <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
+  <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
 Global options:
@@ -374,9 +374,9 @@ Available options:
   <a href="#napkin-dump--f,--force">-f,--force</a>               Force write to destination directory
   <a href="#napkin-dump--i,--generate-inserts">-i,--generate-inserts</a>    Generate inserts for tables instead of simply dumping
                            the query
-  --arg ARG=VALUE          Argument to be passed to spec
-  --arg-json JSON          Spec arguments encoded as JSON object
-  --arg-file FILE          Spec arguments stored in JSON file
+  <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
+  <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
+  <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
   -e,--exclude-unmanaged-tables
                            Show only managed tables in the DOT graph exclusively
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
