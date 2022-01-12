@@ -9,17 +9,19 @@
 <li class="nav-list-item "><a href="https://soostone.github.io/install#cachix" class="nav-list-link">Cachix</a></li>
 </ul>
 </li>
-<li class="nav-list-item"><a href="https://soostone.github.io/fundamentals/" class="nav-list-link">Fundamentals</a></li>
 <li class="nav-list-item"><a href="https://soostone.github.io/tutorial/" class="nav-list-link">Tutorial</a></li>
+<li class="nav-list-item"><a href="https://soostone.github.io/fundamentals/" class="nav-list-link">Fundamentals</a></li>
 <li class="nav-list-item"><a href="https://soostone.github.io/tips-and-tricks/" class="nav-list-link">Tips and Tricks</a></li>
 <li class="nav-list-item active">
 <a href="#" class="nav-list-expander"><svg viewbox="0 0 24 24"><use xlink:href="#svg-arrow-right"></use></svg></a><a href="https://soostone.github.io/user-manual/" class="nav-list-link">User Manual</a><ul class="nav-list ">
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link">Spec YAML reference</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/db-connection" class="nav-list-link">Connecting to the database</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/docker" class="nav-list-link">Docker</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/haskell" class="nav-list-link">Haskell API</a></li>
 <li class="nav-list-item active"><a href="https://soostone.github.io/user-manual/cli-reference" class="nav-list-link active">CLI reference</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/meta-arguments" class="nav-list-link">Meta arguments</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/multi-environment" class="nav-list-link">Multi-environment pipelines in a team setting</a></li>
-<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache</a></li>
-<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/yaml-reference" class="nav-list-link">Spec YAML reference</a></li>
+<li class="nav-list-item "><a href="https://soostone.github.io/user-manual/mustache" class="nav-list-link">Mustache Interpolation</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/devcontainer" class="nav-list-link">Devcontainer</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/preprocessors" class="nav-list-link">Preprocessors</a></li>
 <li class="nav-list-item "><a href="https://soostone.github.io/user-manual/github-actions" class="nav-list-link">Running as a scheduled job on GitHub Actions</a></li>
@@ -50,7 +52,7 @@ Init:
   generate-spec            Generates a Napkin spec from a directory of SQL files
 
 Execute:
-  run                      Runs Napkin specs
+  <a href="#run">run</a>                      Runs Napkin specs
   <a href="#history">history</a>                  Set of commands to work with Napkin previous runs
   auth                     Authenticates with Google BigQuery
 
@@ -145,60 +147,60 @@ Global options:
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 
-[1mTable selectors and SELECTOR types[0m
+Table selectors and SELECTOR types
   
   Table selectors allow performing partial spec runs. This can be useful during
   spec development. All options are applied in sequence to the execution plan.
-  <a href="#napkin-run---skip-all">--skip-all</a>, --force-all, --only, and --force-only options can be specified as
+  --skip-all, --force-all, --only, and --force-only options can be specified as
   a first table selector only. --only, --force-only, --skip, --enable, --force,
   and --force-with-downstream options accept a SELECTOR, which can be one of:
     * unprocessed table name, as it was defined in the spec,
-      e.g. [1m--skip spec:marketing_analytics[0m,
+      e.g. --skip spec:marketing_analytics,
     * processed table name after all preprocessors have been applied,
-      e.g. [1m--skip db:development.john_marketing_analytics[0m,
-    * table tag, e.g. [1m--enable tag:marketing[0m.
+      e.g. --skip db:development.john_marketing_analytics,
+    * table tag, e.g. --enable tag:marketing.
   Table names can be filtered using three matchers:
-    * literal table name, e.g. [1m--skip spec:marketing_analytics[0m,
+    * literal table name, e.g. --skip spec:marketing_analytics,
     * table name pattern - an asterisk can be used as a wildcard at the
       beginning or at the end of each table name segment,
-      e.g. [1m--force spec:prod_*.marketing_*[0m,
+      e.g. --force spec:prod_*.marketing_*,
     * table name regex - regex has to be surrounded with /,
-      e.g. [1m--force spec:/^marketing.*/[0m,
+      e.g. --force spec:/^marketing.*/,
   Please refer to the User Manual for further reference.
   
   Example:
     napkin run --only tag:marketing --enable spec:sales_totals --skip spec:marketing_mailing_*
 </pre></div> <p><a name="napkin-run--u,--uri"></a></p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">-u</code>, <code class="language-plaintext highlighter-rouge">--uri URI</code> Connection URI to create a database connection <a name="napkin-run---credentials-db"></a>
+<code class="language-plaintext highlighter-rouge">-u</code>, <code class="language-plaintext highlighter-rouge">--uri URI</code> <a name="napkin-run---credentials-db"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--credentials-db CREDENTIALS-DB-PATH</code> Path to database connection credentials directory <a name="napkin-run---callback-http-port"></a>
+<code class="language-plaintext highlighter-rouge">--credentials-db</code> <a name="napkin-run---callback-http-port"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--callback-http-port CALLBACK_HTTP_PORT</code> Network port number for the napkin Auth server <a name="napkin-run--C,--credentials-file"></a>
+<code class="language-plaintext highlighter-rouge">--callback-http-port</code> <a name="napkin-run--C,--credentials-file"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">-C</code>, <code class="language-plaintext highlighter-rouge">--credentials-file FILE</code>Path to database connection credentials file</li> </ul> <p><a name="napkin-run--p,--show-progress"></a></p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">-p</code>, <code class="language-plaintext highlighter-rouge">--show-progress</code> Show a progress bar if the terminal supports it <a name="napkin-run--r,--dry-run"></a>
+<code class="language-plaintext highlighter-rouge">-C</code>, <code class="language-plaintext highlighter-rouge">--credentials-file</code> <a name="napkin-run--p,--show-progress"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">-r</code>, <code class="language-plaintext highlighter-rouge">--dry-run</code> Simulate run and report which tables would’ve been updated</li> </ul> <h3 id="table-selectors">Table selectors</h3> <p><a name="napkin-run---skip-all"></a></p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">--skip-all</code> Table selector: Skip all tables, use other options to enable selected tables <a name="napkin-run---force-all"></a>
+<code class="language-plaintext highlighter-rouge">-p</code>, <code class="language-plaintext highlighter-rouge">--show-progress</code> <a name="napkin-run--r,--dry-run"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--force-all</code> Table selector: Force-enable update of all tables, use other options to skip selected tables <a name="napkin-run---only"></a>
+<code class="language-plaintext highlighter-rouge">-r</code>, <code class="language-plaintext highlighter-rouge">--dry-run</code>
+</li> </ul> <h3 id="table-selectors">Table selectors</h3> <p><a name="napkin-run---skip-all"></a></p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">--skip-all</code> <a name="napkin-run---force-all"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--only SELECTOR</code> Table selector: Disable all tables except specified <a name="napkin-run---force-only"></a>
+<code class="language-plaintext highlighter-rouge">--force-all</code> <a name="napkin-run---only"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--force-only SELECTOR</code> Table selector: Disable all tables except specified which will be forced <a name="napkin-run---force"></a>
+<code class="language-plaintext highlighter-rouge">--only</code> <a name="napkin-run---force-only"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--force SELECTOR</code> Table selector: Force table update <a name="napkin-run---force-with-downstream"></a>
+<code class="language-plaintext highlighter-rouge">--force-only</code> <a name="napkin-run---force"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--force-with-downstream SELECTOR</code> Table selector: Force table update, force downstream tables too <a name="napkin-run---enable"></a>
+<code class="language-plaintext highlighter-rouge">--force</code> <a name="napkin-run---force-with-downstream"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--enable SELECTOR</code> Table selector: Don’t skip or force table, use the update strategy as specified in the Spec file <a name="napkin-run---skip"></a>
+<code class="language-plaintext highlighter-rouge">--force-with-downstream</code> <a name="napkin-run---enable"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--skip SELECTOR</code> Table selector: Skip table update</li> </ul> <h3 id="meta-arguments">Meta arguments</h3> <p><a name="napkin-run---arg"></a></p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">--arg ARG=VALUE</code> Argument to be passed to spec <a name="napkin-run---arg-json"></a>
+<code class="language-plaintext highlighter-rouge">--enable</code> <a name="napkin-run---skip"></a>
+</li> <li><code class="language-plaintext highlighter-rouge">--skip</code></li> </ul> <h3 id="meta-arguments">Meta arguments</h3> <p><a name="napkin-run---arg"></a></p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">--arg ARG=VALUE</code> <a name="napkin-run---arg-json"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">--arg-json JSON</code> Spec arguments encoded as JSON object <a name="napkin-run---arg-file"></a>
-</li> <li>
-<code class="language-plaintext highlighter-rouge">--arg-file FILE</code> Spec arguments stored in JSON file</li> </ul> <h2 id="history">History</h2> <p>Set of <code class="language-plaintext highlighter-rouge">napkin history</code> commands allows to display information from Napkin’s metadata database in various forms.</p> <p>When using Napkin frequently, it might be handy to know:</p> <ul> <li>When Napkin was executed last time</li> <li>What are the statuses of the tables</li> <li>How many records were updated in each table</li> <li>etc.</li> </ul> <p>Napkin assigns a <code class="language-plaintext highlighter-rouge">GUID</code> identifier to each run to uniquely identify it from other <code class="language-plaintext highlighter-rouge">napkin run</code> invocations. Along with <code class="language-plaintext highlighter-rouge">GUID</code> of the execution, Napkin stores date and time when particular <code class="language-plaintext highlighter-rouge">run</code> command was issued to Napkin.</p> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history</span> <span class="nt">--help</span>
+<code class="language-plaintext highlighter-rouge">--arg-json</code> <a name="napkin-run---arg-file"></a>
+</li> <li><code class="language-plaintext highlighter-rouge">--arg-file</code></li> </ul> <h2 id="history">History</h2> <p>Set of <code class="language-plaintext highlighter-rouge">napkin history</code> commands allows to display information from Napkin’s metadata database in various forms.</p> <p>When using Napkin frequently, it might be handy to know:</p> <ul> <li>When Napkin was executed last time</li> <li>What are the statuses of the tables</li> <li>How many records were updated in each table</li> <li>etc.</li> </ul> <p>Napkin assigns a <code class="language-plaintext highlighter-rouge">GUID</code> identifier to each run to uniquely identify it from other <code class="language-plaintext highlighter-rouge">napkin run</code> invocations. Along with <code class="language-plaintext highlighter-rouge">GUID</code> of the execution, Napkin stores date and time when particular <code class="language-plaintext highlighter-rouge">run</code> command was issued to Napkin.</p> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history</span> <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin history [-s|--spec-file SPEC_YAML] 
                       [-a|--app-name APPLICATION-NAME] 
                       [-Q|--metadata-connection-string URI] COMMAND
@@ -375,7 +377,7 @@ Available options:
   --arg ARG=VALUE          Argument to be passed to spec
   --arg-json JSON          Spec arguments encoded as JSON object
   --arg-file FILE          Spec arguments stored in JSON file
-  <a href="#napkin-dump--e,--exclude-unmanaged-tables">-e,--exclude-unmanaged-tables</a>
+  -e,--exclude-unmanaged-tables
                            Show only managed tables in the DOT graph exclusively
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
@@ -502,7 +504,7 @@ Global options:
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p>Napkin is written in Haskell and currently exposes all internal APIs for external use (as it allows meta-programming, expressing SQL statements programmatically, etc.).</p> <p>Links to the Napkin Haskell API documentation for each individual version can be found <a href="/haddock/">here</a>.</p> <p>You can always “ask” Napkin CLI for the exact link to the API reference for the currently installed version. It will open a browser with an API docs for the exact git commit SHA Napkin was built from.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin haddock <span class="nt">--log-level</span> Debug
-</code></pre></div></div> <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Opening</span> <span class="s">"http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/haddock/git-hash/a8811868647ccc54e5c716e1a2781fe1c8b2ef9b/index.html"</span> <span class="no">URL</span> <span class="n">in</span> <span class="n">the</span> <span class="n">browser</span>
+</code></pre></div></div> <p class="text-delta text-center">output</p> <div class="language-java text-wrap highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Opening</span> <span class="s">"http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/haddock/git-hash/a8811868647ccc54e5c716e1a2781fe1c8b2ef9b/index.html"</span> <span class="no">URL</span> <span class="n">in</span> <span class="n">the</span> <span class="n">browser</span>
 </code></pre></div></div> <iframe style="border: none;" src="https://soostone-napkin-public.s3.us-east-1.amazonaws.com/haddock/git-hash/a8811868647ccc54e5c716e1a2781fe1c8b2ef9b/index.html" width="100%" height="650"></iframe> <h2 id="docs">Docs</h2> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin docs <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin docs 
   Opens web page with Napkin tutorial

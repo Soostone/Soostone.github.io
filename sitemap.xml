@@ -28,6 +28,9 @@
 <loc>https://soostone.github.io/haddock/</loc>
 </url>
 <url>
+<loc>https://soostone.github.io/user-manual/haskell</loc>
+</url>
+<url>
 <loc>https://soostone.github.io/install#homebrew</loc>
 </url>
 <url>
@@ -47,6 +50,9 @@
 </url>
 <url>
 <loc>https://soostone.github.io/</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/user-manual/meta-arguments</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/multi-environment</loc>

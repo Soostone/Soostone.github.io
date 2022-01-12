@@ -1561,6 +1561,10 @@ html body .side-bar .site-nav::-webkit-scrollbar { display: none; }
 
 html body .width-ruler { width: 800px; display: none; }
 
+@media (min-width: 50rem) { html.search-active .main { position: relative; } }
+
+.text-wrap pre { white-space: pre-wrap; }
+
 button.js-copy { position: relative; float: right; }
 
 .site-super-header, .site-super-footer { position: relative; background-color: #192a40; font-family: "Baloo 2", Helvetica, sans-serif; height: 94px; font-size: 20px; color: #fff; }
