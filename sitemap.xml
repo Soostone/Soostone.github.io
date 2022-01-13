@@ -28,7 +28,7 @@
 <loc>https://soostone.github.io/haddock/</loc>
 </url>
 <url>
-<loc>https://soostone.github.io/user-manual/haskell</loc>
+<loc>https://soostone.github.io/metaprogramming/haskell</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/install#homebrew</loc>
@@ -38,6 +38,9 @@
 </url>
 <url>
 <loc>https://soostone.github.io/fundamentals/</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/metaprogramming</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/install/</loc>
@@ -52,9 +55,6 @@
 <loc>https://soostone.github.io/</loc>
 </url>
 <url>
-<loc>https://soostone.github.io/user-manual/meta-arguments</loc>
-</url>
-<url>
 <loc>https://soostone.github.io/user-manual/multi-environment</loc>
 </url>
 <url>
@@ -65,6 +65,12 @@
 </url>
 <url>
 <loc>https://soostone.github.io/user-manual/preprocessors</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/metaprogramming/repl</loc>
+</url>
+<url>
+<loc>https://soostone.github.io/user-manual/spec-arguments</loc>
 </url>
 <url>
 <loc>https://soostone.github.io/tips-and-tricks/</loc>
