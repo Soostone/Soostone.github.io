@@ -1567,7 +1567,7 @@ html body .width-ruler { width: 1000px; display: none; }
 
 button.js-copy { position: relative; float: right; }
 
-.site-super-header, .site-super-footer { position: relative; background-color: #192a40; font-family: "Baloo 2", Helvetica, sans-serif; height: 94px; font-size: 20px; color: #fff; }
+.site-super-header, .site-super-footer { position: relative; background-color: #192a40; font-family: "Baloo 2", Helvetica, sans-serif; height: 94px; font-size: 18px; color: #fff; }
 
 @media (min-width: 20rem) { .site-super-header, .site-super-footer { display: none; } }
 
@@ -1579,7 +1579,7 @@ button.js-copy { position: relative; float: right; }
 
 .site-super-header .super-nav-box .site-buttons, .site-super-footer .super-nav-box .site-buttons { float: right; }
 
-.site-super-header .super-nav-box .link-button, .site-super-footer .super-nav-box .link-button { margin: 0; border-radius: 16px; color: #fff; background: #192a40; font-size: 20px; display: inline-block; padding: 8px 16px; transition: background-color 400ms ease, opacity 400ms ease-in-out; }
+.site-super-header .super-nav-box .link-button, .site-super-footer .super-nav-box .link-button { margin: 0; border-radius: 16px; color: #fff; background: #192a40; font-size: 18px; display: inline-block; padding: 8px 16px; transition: background-color 400ms ease, opacity 400ms ease-in-out; }
 
 .site-super-header .super-nav-box .link-button:hover, .site-super-footer .super-nav-box .link-button:hover { background-color: rgba(255, 255, 255, 0.2); }
 
@@ -1619,7 +1619,7 @@ button.js-copy { position: relative; float: right; }
 
 .site-super-footer .super-nav-box .media-bar .media-pad .inline-icon.heart { background-image: url(/assets/images/heart-vector.svg); background-position: 50% 50%; background-size: 20px; color: #475667; }
 
-.site-super-footer .super-nav-box .copyright { margin-top: 50px; font-size: 16.6666666667px; }
+.site-super-footer .super-nav-box .copyright { margin-top: 50px; font-size: 15px; }
 
 .site-super-footer .super-nav-box .copyright .left { float: left; padding-left: 60px; }
 
