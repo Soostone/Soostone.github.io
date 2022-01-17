@@ -223,7 +223,7 @@
   },"37": {
     "doc": "Fundamentals",
     "title": "Getting started",
-    "content": "There are a few preliminaries for this tutorial: we assume you’re running Linux or macOS. You need to install Napkin. If you are running Linux, you also need to install SQLite for this tutorial. Windows users can use Docker or Devcontainer setup that will bring all necessary tools. With the preliminaries out of the way, we are ready to proceed with bootstrapping our first Napkin data pipeline. ",
+    "content": "There are a few preliminaries for this tutorial: we assume you’re running Linux or macOS. You need to install Napkin. If you are running Linux, you also need to install SQLite for this tutorial. Windows users can use Docker or Devcontainer setup that will bring all necessary tools. With the preliminaries out of the way, we are ready to proceed with bootstrapping our first Napkin data pipeline. In a hurry? Clone a completed project . In addition to the instructions, we provide a completed project as a Git repository. ",
     "url": "https://soostone.github.io/fundamentals/#getting-started",
     "relUrl": "/fundamentals/#getting-started"
   },"38": {
