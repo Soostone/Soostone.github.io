@@ -1,99 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url>
-<loc>https://soostone.github.io/install#cachix</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/changelog/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/metaprogramming/custom-hooks/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/db-connection/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/devcontainer/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/install#docker</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/docker/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/getting-started/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/github-actions/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/haddock/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/metaprogramming/haskell/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/install#homebrew</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/ide/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/fundamentals/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/metaprogramming/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/install/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/cli-reference/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/multi-environment/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/mustache/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/install#native</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/preprocessors/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/metaprogramming/repl/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/spec-arguments/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/tips-and-tricks/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/cachix/versions/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/yaml-reference/</loc>
-</url>
-<url>
-<loc>https://soostone.github.io/fundamentals/dependency_graph.pdf</loc>
-<lastmod>1970-01-01T00:00:01+00:00</lastmod>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/cli-reference/dependency_graph.pdf</loc>
-<lastmod>1970-01-01T00:00:01+00:00</lastmod>
-</url>
-<url>
-<loc>https://soostone.github.io/user-manual/gantt.html</loc>
-<lastmod>1970-01-01T00:00:01+00:00</lastmod>
-</url>
+  
+  
+    <url>
+      <loc>https://soostone.github.io/changelog/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/metaprogramming/custom-hooks/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/db-connection/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/devcontainer/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/docker/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/getting-started/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/github-actions/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/haddock/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/metaprogramming/haskell/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/ide/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/cli-reference/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/fundamentals/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/install/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/metaprogramming/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/multi-environment/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/mustache/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/preprocessors/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/metaprogramming/repl/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/spec-arguments/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/tips-and-tricks/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/cachix/versions/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/yaml-reference/</loc>
+    </url>
+  
 </urlset>
