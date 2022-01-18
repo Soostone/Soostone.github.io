@@ -3,11 +3,55 @@
   
   
     <url>
+      <loc>https://soostone.github.io/cachix/versions/</loc>
+    </url>
+  
+    <url>
       <loc>https://soostone.github.io/changelog/</loc>
     </url>
   
     <url>
+      <loc>https://soostone.github.io/fundamentals/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/getting-started/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/haddock/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/install/</loc>
+    </url>
+  
+    <url>
       <loc>https://soostone.github.io/metaprogramming/custom-hooks/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/metaprogramming/haskell/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/metaprogramming/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/metaprogramming/repl/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/tips-and-tricks/</loc>
+    </url>
+  
+    <url>
+      <loc>https://soostone.github.io/user-manual/cli-reference/</loc>
     </url>
   
     <url>
@@ -23,19 +67,7 @@
     </url>
   
     <url>
-      <loc>https://soostone.github.io/getting-started/</loc>
-    </url>
-  
-    <url>
       <loc>https://soostone.github.io/user-manual/github-actions/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/haddock/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/metaprogramming/haskell/</loc>
     </url>
   
     <url>
@@ -44,26 +76,6 @@
   
     <url>
       <loc>https://soostone.github.io/user-manual/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/user-manual/cli-reference/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/fundamentals/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/install/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/metaprogramming/</loc>
     </url>
   
     <url>
@@ -79,19 +91,7 @@
     </url>
   
     <url>
-      <loc>https://soostone.github.io/metaprogramming/repl/</loc>
-    </url>
-  
-    <url>
       <loc>https://soostone.github.io/user-manual/spec-arguments/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/tips-and-tricks/</loc>
-    </url>
-  
-    <url>
-      <loc>https://soostone.github.io/cachix/versions/</loc>
     </url>
   
     <url>
