@@ -77,6 +77,31 @@
 <span class="c1">## Location of SQL files when referenced in Spec.</span>
 <span class="na">sql_folder</span><span class="pi">:</span> <span class="s">../sql</span> <span class="c1"># optional, this is a default value</span>
 
+<span class="c1">## SQL dialect to use when parsing queries</span>
+<span class="na">parser_dialect</span><span class="pi">:</span> <span class="s">napkin.bigquery</span>
+<span class="c1"># napkin.* family of dialects will parse SQL then convert to Napkin intermediate representation.</span>
+<span class="c1"># This enables Napkin optimization features, however some SQL features are not available.</span>
+<span class="c1"># Queries parsed that way will be rendered accordingly to db backend syntax – this can be used to convert queries (e.g. parse as BigQuery, run with Postgres).</span>
+  <span class="c1"># parser_dialect: napkin.bigquery</span>
+  <span class="c1"># parser_dialect: napkin.postgres</span>
+  <span class="c1"># parser_dialect: napkin.sqlite</span>
+  <span class="c1"># parser_dialect: napkin.ansi2011</span>
+<span class="c1"># generic.* family of dialects will parse SQL, but will not convert into Napkin intermediate representation.</span>
+<span class="c1"># This provides is provides more compatibility with SQL features.</span>
+<span class="c1"># Queries parsed that way will be rendered accordingly to db backend dialect – this can be used to convert queries (e.g. parse as BigQuery, run with Postgres).</span>
+  <span class="c1"># parser_dialect: generic.bigquery</span>
+  <span class="c1"># parser_dialect: generic.postgres</span>
+  <span class="c1"># parser_dialect: generic.sqlite</span>
+  <span class="c1"># parser_dialect: generic.ansi2011</span>
+<span class="c1"># Use parser based on Postgres SQL grammar.</span>
+<span class="c1"># Postgres-specific features (such as -&gt;&gt; JSON operator) can be used with in this mode.</span>
+<span class="c1"># Queries parsed that way will be always rendered according to Postgres dialect.</span>
+  <span class="c1"># parser_dialect: postgres</span>
+<span class="c1"># Consider queries as a plain text. Use this only if other fail.</span>
+<span class="c1"># WARNING: dependency discovery as well as table renaming will not work with raw queries</span>
+  <span class="c1"># parser_dialect: raw</span>
+
+
 <span class="c1">## Location of Haskell files when referenced in Spec.</span>
 <span class="na">haskell_folder</span><span class="pi">:</span> <span class="s">../haskell</span> <span class="c1"># optional, this is a default value</span>
 
@@ -184,6 +209,9 @@
           <span class="na">step</span><span class="pi">:</span> <span class="m">2</span>
       <span class="na">write_disposition</span><span class="pi">:</span> <span class="s">append</span>
       <span class="na">clustering</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">clustering_column</span><span class="pi">]</span>
+
+    <span class="c1"># Parser dialect to use for parsing queries for that table. See comments on the global attribute.</span>
+    <span class="na">parser_dialect</span><span class="pi">:</span> <span class="s">napkin.bigquery</span>
 
     <span class="c1"># Table tags, can be used to selectively enable or disable table execution with CLI flags during development</span>
     <span class="na">tags</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">foo</span><span class="pi">,</span> <span class="nv">bar</span><span class="pi">,</span> <span class="nv">baz</span><span class="pi">]</span>
@@ -333,4 +361,5 @@
       <span class="c1"># custom hook with arguments</span>
       <span class="pi">-</span> <span class="na">ACME.custom_hook</span><span class="pi">:</span>
           <span class="na">target</span><span class="pi">:</span> <span class="s">artists_hashes</span>
+
 </code></pre></div></div> </div> </div> <div class="search-overlay"></div> </div> <div class="site-super-footer"> <div class="super-nav-box"> <div class="site-logo"></div> <div class="site-buttons"> <div class="table-wrapper"><table> <tr> <td> <a class="link-button active" href="/">Documentation</a> </td> <td> <a class="link-button" href="https://napkinweb.webflow.io/usecases" target="_blank" rel="noopener noreferrer">Use Cases</a> </td> <td> <span class="gradient-border"> <a class="link-button" href="/install/">Get Napkin</a> </span> </td> </tr> <tr> <td> <a class="link-button" href="https://napkinweb.webflow.io/community" target="_blank" rel="noopener noreferrer">Community</a> </td> <td> <a class="link-button" href="https://napkinweb.webflow.io/about" target="_blank" rel="noopener noreferrer">About Napkin</a> </td> </tr> <tr> <td> <a class="link-button" href="https://napkinweb.webflow.io/features" target="_blank" rel="noopener noreferrer">Features</a> </td> <td> <a class="link-button" href="https://napkinweb.webflow.io/contact" target="_blank" rel="noopener noreferrer">Contact</a> </td> </tr> </table></div> </div> <div class="media-bar"> <div class="media-pad"><a href="#" class="inline-icon facebook"></a></div> <div class="media-pad"><a href="#" class="inline-icon twitter"></a></div> <div class="media-pad"><a href="#" class="inline-icon linked-in"></a></div> </div> <div class="copyright"> <div class="left"> Copyright 2022 © </div> <div class="right"> Made with <span class="heart"> </span> in NYC </div> </div> </div> </div> <script type="text/javascript" src="/assets/js/copy.js"></script> </body> </html>

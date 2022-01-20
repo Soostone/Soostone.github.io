@@ -418,10 +418,10 @@ Global options:
 </code></pre></div></div> <p>With <code class="language-plaintext highlighter-rouge">--interactive</code> mode, Napkin constantly monitors for the changes in all files mentioned in the <a href="/user-manual/yaml-reference/">spec.yaml</a> and re-validates as soon as it sees a change.</p> <p><a href="https://asciinema.org/a/8pbkK83DuAbhzE8w1OsWO9l0d" target="_blank" rel="noopener noreferrer"><img src="https://asciinema.org/a/8pbkK83DuAbhzE8w1OsWO9l0d.svg" alt="asciicast"></a></p> <h2 id="dump">Dump</h2> <p>Besides knowing that your spec is “OK” (by using <code class="language-plaintext highlighter-rouge">napkin validate</code> command), Napkin also provides a way to see SQL queries, which Napkin would execute on a real database engine in by using <code class="language-plaintext highlighter-rouge">napkin run</code> command.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin dump [-s|--spec-file SPEC_YAML] 
                    [--override /json/pointer={"json": "value"}] 
-                   [-o|--output-dir DIR] [-f|--force] [-i|--generate-inserts] 
-                   [-S|--strict-mustache] 
                    [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE] 
-                   [-e|--exclude-unmanaged-tables]
+                   [-o|--output-dir DIR] [-f|--force] [-i|--generate-inserts] 
+                   [-e|--exclude-unmanaged-tables] [-S|--strict-mustache] 
+                   [--use-spec-names]
   Performs a dry run and stores queries for inspection
 
 Available options:
@@ -430,16 +430,17 @@ Available options:
   <a href="#napkin---override">--override</a> /json/pointer={"json": "value"}
                            Set arbitrary JSON pointer (RFC 6901) in YAML spec
                            with the new value
+  <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
+  <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
+  <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
   <a href="#napkin-dump--o,--output-dir">-o,--output-dir</a> DIR      Directory containing OUTPUT files (default: "dump")
   <a href="#napkin-dump--f,--force">-f,--force</a>               Force write to destination directory
   <a href="#napkin-dump--i,--generate-inserts">-i,--generate-inserts</a>    Generate inserts for tables instead of simply dumping
                            the query
-  <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
-  <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
-  <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
-  <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
   -e,--exclude-unmanaged-tables
                            Show only managed tables in the DOT graph exclusively
+  <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
+  --use-spec-names         Use unprocessed table names as filenames
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
 Global options:
