@@ -440,7 +440,7 @@ Available options:
   -e,--exclude-unmanaged-tables
                            Show only managed tables in the DOT graph exclusively
   <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
-  --use-spec-names         Use unprocessed table names as filenames
+  <a href="#napkin-dump---use-spec-names">--use-spec-names</a>         Use unprocessed table names as filenames
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
 Global options:
@@ -456,8 +456,8 @@ Global options:
 <code class="language-plaintext highlighter-rouge">-f</code>, <code class="language-plaintext highlighter-rouge">--force</code> flag is used to indicate, that it is OK for Napkin to override target directory. <a name="napkin-dump--e,--exclude-unmanaged-tables"></a>
 </li> <li>By default, Napkin will add both managed and unmanaged tabled into a dependency diagram. <code class="language-plaintext highlighter-rouge">-e</code>, <code class="language-plaintext highlighter-rouge">--exclude-unmanaged-tables</code> flag forces Napkin to only include managed tables. <a name="napkin-dump--i,--generate-inserts"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">-i</code>, <code class="language-plaintext highlighter-rouge">--generate-inserts</code> flag forces Napkin to generate SQL queries in form of <code class="language-plaintext highlighter-rouge">INSERT INTO __TABLE_NAME__ SELECT ...</code> instead of default <code class="language-plaintext highlighter-rouge">SELECT ...</code>
-</li> </ul> <p>Usually <code class="language-plaintext highlighter-rouge">napkin dump</code> command will create following directory structure:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">-o</span> dump
+<code class="language-plaintext highlighter-rouge">-i</code>, <code class="language-plaintext highlighter-rouge">--generate-inserts</code> flag forces Napkin to generate SQL queries in form of <code class="language-plaintext highlighter-rouge">INSERT INTO __TABLE_NAME__ SELECT ...</code> instead of default <code class="language-plaintext highlighter-rouge">SELECT ...</code> <a name="napkin-dump---use-spec-names"></a>
+</li> <li>with <code class="language-plaintext highlighter-rouge">--use-spec-names</code> Napkin will use original table names (as declared in <a href="/user-manual/yaml-reference/">spec.yaml</a>) for the file names in dump output. Otherwise, file names are equal to the table names after applying <a href="/user-manual/preprocessors/">preprocessors</a>.</li> </ul> <p>Usually <code class="language-plaintext highlighter-rouge">napkin dump</code> command will create following directory structure:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">-o</span> dump
 </code></pre></div></div> <p class="text-delta text-center">output</p> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dump
 ├── 01_update_daily.sql
 ├── 02_update_on_upstream.sql
