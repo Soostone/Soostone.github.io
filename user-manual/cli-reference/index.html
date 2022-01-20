@@ -90,23 +90,26 @@ Version:
 </li> </ul> </li> <li>
 <code class="language-plaintext highlighter-rouge">-h</code>, <code class="language-plaintext highlighter-rouge">--help</code> - Displays traditional help message screen for each command. It is usually “safe” to append <code class="language-plaintext highlighter-rouge">--help</code> to any Napkin command to know more about options it supports. Napkin will also display the <code class="language-plaintext highlighter-rouge">--help</code> screen when it meets the unfamiliar option.</li> </ul> <h2 id="run">Run</h2> <p><code class="language-plaintext highlighter-rouge">napkin run</code> is used to execute Specs. It provides a handful of options that enable you to adjust how the spec is going to be executed. In a summary, you can:</p> <ul> <li>perform a partial run that will execute only a subset of defined tables,</li> <li>perform a dry-run and inspect the execution plan,</li> <li>pass spec arguments,</li> <li>enable CLI UI,</li> <li>override database connection settings.</li> </ul> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin run <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin run [-s|--spec-file SPEC_YAML] 
+                  [--override /json/pointer={"json": "value"}] 
                   [-Q|--metadata-connection-string URI] [-u|--uri URI] 
                   [-a|--app-name APPLICATION-NAME] 
                   [--credentials-db CREDENTIALS-DB-PATH] 
                   [--callback-http-port CALLBACK_HTTP_PORT] 
-                  [-C|--credentials-file FILE] 
+                  [-S|--strict-mustache] [-C|--credentials-file FILE] 
                   [--skip-all | --force-all | --only SELECTOR | 
                     --force-only SELECTOR] 
                   [--force SELECTOR | --force-with-downstream SELECTOR | 
                     --enable SELECTOR | --skip SELECTOR] [-p|--show-progress] 
                   [-r|--dry-run] 
-                  [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE] 
-                  [-q|--sql-dir DIR]
+                  [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE]
   Runs Napkin specs
 
 Available options:
   <a href="#napkin--s,--spec-file">-s,--spec-file</a> SPEC_YAML Path to the spec yaml file
                            (default: "specs/spec.yaml")
+  <a href="#napkin---override">--override</a> /json/pointer={"json": "value"}
+                           Set arbitrary JSON pointer (RFC 6901) in YAML spec
+                           with the new value
   <a href="#napkin--Q,--metadata-connection-string">-Q,--metadata-connection-string</a> URI
                            An optional alternate connection string for tracking
                            napkin operations. Currently supports SQLite3 and
@@ -124,6 +127,7 @@ Available options:
                            Path to database connection credentials directory
   <a href="#napkin-run---callback-http-port">--callback-http-port</a> CALLBACK_HTTP_PORT
                            Network port number for the napkin Auth server
+  <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
   <a href="#napkin-run--C,--credentials-file">-C,--credentials-file</a> FILE
                            Path to database connection credentials file
   <a href="#napkin-run---skip-all">--skip-all</a>               Table selector: Skip all tables, use other options to
@@ -142,7 +146,6 @@ Available options:
   <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
   <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
   <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
-  -q,--sql-dir DIR         Directory containing SQL files
   <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
 Global options:
@@ -279,7 +282,9 @@ Global options:
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><a name="napkin--s,--spec-file"></a></p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">-s</code>, <code class="language-plaintext highlighter-rouge">--spec-file</code> as usual, allows to specify the path to the <a href="/user-manual/yaml-reference/">spec.yaml</a> file. <a name="napkin--a,--app-name"></a>
+<code class="language-plaintext highlighter-rouge">-s</code>, <code class="language-plaintext highlighter-rouge">--spec-file</code> as usual, allows to specify the path to the <a href="/user-manual/yaml-reference/">spec.yaml</a> file. <a name="napkin---override"></a>
+</li> <li>
+<code class="language-plaintext highlighter-rouge">--override</code> allows to override any values in the <a href="/user-manual/yaml-reference/">spec.yaml</a> file according to the <a href="https://datatracker.ietf.org/doc/html/rfc6901" target="_blank" rel="noopener noreferrer">JSON pointer</a> specification. Can be helpful in cases, where you need to only override several values from <code class="language-plaintext highlighter-rouge">spec.yaml</code> for a particular run. <a name="napkin--a,--app-name"></a>
 </li> <li>
 <code class="language-plaintext highlighter-rouge">-a</code>, <code class="language-plaintext highlighter-rouge">--app-name</code> allows to override <code class="language-plaintext highlighter-rouge">app-name</code> parameter from the <a href="/user-manual/yaml-reference/">spec.yaml</a> file. <a name="napkin--Q,--metadata-connection-string"></a>
 </li> <li>
@@ -379,17 +384,21 @@ Global options:
 <code class="language-plaintext highlighter-rouge">-o</code>, <code class="language-plaintext highlighter-rouge">--output-dir</code> parameter points Napkin to the directory, which should be used for exporting HTML file with a Gantt chart. By default, current working directory will be used.</li> </ul> <p><code class="language-plaintext highlighter-rouge">napkin history gantt</code> command exports metadata of the specified Napkin run to the <code class="language-plaintext highlighter-rouge">DIR</code> directory in the form of Gantt chart (HTML page).</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin <span class="nb">history </span>gantt 7a554ca7-61dc-4884-9d06-a4614c9e2827 <span class="nt">-o</span> data/
 </code></pre></div></div> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Gantt chart generated: data/gantt_napkin_7a554ca7-61dc-4884-9d06-a4614c9e2827.html
 </code></pre></div></div> <p>For example:</p> <iframe style="border: none;" src="/user-manual/gantt.html" width="100%" height="650"></iframe> <p>If <code class="language-plaintext highlighter-rouge">GUID</code> parameter is omitted, <code class="language-plaintext highlighter-rouge">napkin history gantt</code> defaults it to the “last Napkin execution” (the same as in <code class="language-plaintext highlighter-rouge">git show</code>).</p> <h2 id="validate">Validate</h2> <p><code class="language-plaintext highlighter-rouge">napkin validate</code> command allows to check the whole spec for:</p> <ul> <li>Napkin’s ability to correctly parse and process all the sql files.</li> <li>Napkin’s ability to compile and execute parts of the specs defined in Haskell.</li> <li>Validity of the built-in and user-defined <a href="/user-manual/preprocessors/">preprocessors</a>.</li> <li>Validity of the settings inside <a href="/user-manual/yaml-reference/">spec.yaml</a> file.</li> <li>Correctness of <a href="/user-manual/mustache/">mustache interpolation</a> instructions.</li> <li>Absence of dependency loops across table definitions.</li> </ul> <p>It is a good idea to check for the spec validness before committing the changes to the source code repository (git), so that other team members will not be surprised that <code class="language-plaintext highlighter-rouge">napkin run</code> is unable for do it’s job.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin validate <span class="nt">--help</span>
-</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin validate [-s|--spec-file SPEC_YAML] [-i|--interactive] 
-                       [-r|--rolling] [-S|--strict-mustache] 
+</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin validate [-s|--spec-file SPEC_YAML] 
+                       [--override /json/pointer={"json": "value"}] 
+                       [-i|--interactive] [-r|--rolling] [-S|--strict-mustache] 
                        [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE]
   Validates YAML spec file
 
 Available options:
   <a href="#napkin--s,--spec-file">-s,--spec-file</a> SPEC_YAML Path to the spec yaml file
                            (default: "specs/spec.yaml")
+  <a href="#napkin---override">--override</a> /json/pointer={"json": "value"}
+                           Set arbitrary JSON pointer (RFC 6901) in YAML spec
+                           with the new value
   <a href="#napkin-validate--i,--interactive">-i,--interactive</a>         Watches for changed files and constantly revalidates
   <a href="#napkin-validate--r,--rolling">-r,--rolling</a>             Does not clear the screen in live validation mode
-  <a href="#napkin-validate--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
+  <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
   <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
   <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
   <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
@@ -403,12 +412,14 @@ Global options:
   <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
                            Json. (default: Simple)
 </pre></div> <p><a name="napkin-validate--i,--interactive"></a></p> <ul> <li>In <code class="language-plaintext highlighter-rouge">-i</code>, <code class="language-plaintext highlighter-rouge">--interactive</code> mode, Napkin constantly monitors all the files and folders, mentioned in <a href="/user-manual/yaml-reference/">spec.yaml</a> file automatically re-validates the spec on any change. It is convenient to have <code class="language-plaintext highlighter-rouge">napkin validate --interactive</code> process opened in a separate window, while you are working on the SQL files or the <a href="/user-manual/yaml-reference/">spec.yaml</a> definition. <a name="napkin-validate--r,--rolling"></a>
-</li> <li>By default, <code class="language-plaintext highlighter-rouge">--interactive</code> mode clears the screen before each validation cycle. To switch that feature off, you can use <code class="language-plaintext highlighter-rouge">-r</code>, <code class="language-plaintext highlighter-rouge">--rolling</code> mode, in which Napkin will constantly append validation status and error messages (in any) to the end of the output. <a name="napkin-validate--S,--strict-mustache"></a>
+</li> <li>By default, <code class="language-plaintext highlighter-rouge">--interactive</code> mode clears the screen before each validation cycle. To switch that feature off, you can use <code class="language-plaintext highlighter-rouge">-r</code>, <code class="language-plaintext highlighter-rouge">--rolling</code> mode, in which Napkin will constantly append validation status and error messages (in any) to the end of the output. <a name="napkin--S,--strict-mustache"></a>
 </li> <li>Napkin has number of strict mustache validation checks, which are not enabled by default. Use <code class="language-plaintext highlighter-rouge">-S</code>, <code class="language-plaintext highlighter-rouge">--strict-mustache</code> flag to enable additional checks (see <a href="/user-manual/mustache/">mustache interpolation</a> for details).</li> </ul> <p>Without <code class="language-plaintext highlighter-rouge">--interactive</code> mode, napkin will print the single <code class="language-plaintext highlighter-rouge">OK</code> message to the terminal and exit with 0 exit code.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin validate <span class="nt">-s</span> specs/spec.yaml
 </code></pre></div></div> <p class="text-delta text-center">output</p> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OK
 </code></pre></div></div> <p>With <code class="language-plaintext highlighter-rouge">--interactive</code> mode, Napkin constantly monitors for the changes in all files mentioned in the <a href="/user-manual/yaml-reference/">spec.yaml</a> and re-validates as soon as it sees a change.</p> <p><a href="https://asciinema.org/a/8pbkK83DuAbhzE8w1OsWO9l0d" target="_blank" rel="noopener noreferrer"><img src="https://asciinema.org/a/8pbkK83DuAbhzE8w1OsWO9l0d.svg" alt="asciicast"></a></p> <h2 id="dump">Dump</h2> <p>Besides knowing that your spec is “OK” (by using <code class="language-plaintext highlighter-rouge">napkin validate</code> command), Napkin also provides a way to see SQL queries, which Napkin would execute on a real database engine in by using <code class="language-plaintext highlighter-rouge">napkin run</code> command.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">--help</span>
-</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin dump [-s|--spec-file SPEC_YAML] [-o|--output-dir DIR] [-f|--force]
-                   [-i|--generate-inserts] 
+</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin dump [-s|--spec-file SPEC_YAML] 
+                   [--override /json/pointer={"json": "value"}] 
+                   [-o|--output-dir DIR] [-f|--force] [-i|--generate-inserts] 
+                   [-S|--strict-mustache] 
                    [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE] 
                    [-e|--exclude-unmanaged-tables]
   Performs a dry run and stores queries for inspection
@@ -416,10 +427,14 @@ Global options:
 Available options:
   <a href="#napkin--s,--spec-file">-s,--spec-file</a> SPEC_YAML Path to the spec yaml file
                            (default: "specs/spec.yaml")
+  <a href="#napkin---override">--override</a> /json/pointer={"json": "value"}
+                           Set arbitrary JSON pointer (RFC 6901) in YAML spec
+                           with the new value
   <a href="#napkin-dump--o,--output-dir">-o,--output-dir</a> DIR      Directory containing OUTPUT files (default: "dump")
   <a href="#napkin-dump--f,--force">-f,--force</a>               Force write to destination directory
   <a href="#napkin-dump--i,--generate-inserts">-i,--generate-inserts</a>    Generate inserts for tables instead of simply dumping
                            the query
+  <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
   <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
   <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
   <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
