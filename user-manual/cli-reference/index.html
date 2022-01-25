@@ -36,7 +36,7 @@
 <li class="nav-list-item"><a href="https://soostone.github.io/haddock/" class="nav-list-link">API Reference</a></li>
 <li class="nav-list-item"><a href="https://soostone.github.io/changelog/" class="nav-list-link">Changelog</a></li>
 </ul> </nav> </div> <div class="site-super-header"> <div class="super-nav-box"> <div class="site-logo"></div> <div class="site-buttons"> <a class="link-button active" href="/">Documentation</a> <a class="link-button" href="https://napkinweb.webflow.io/community" target="_blank" rel="noopener noreferrer">Community</a> <a class="link-button" href="https://napkinweb.webflow.io/features" target="_blank" rel="noopener noreferrer">Features</a> <a class="link-button" href="https://napkinweb.webflow.io/usecases" target="_blank" rel="noopener noreferrer">Use Cases</a> <span class="gradient-border"> <a class="link-button" href="/install/">Install</a> </span> </div> </div> </div> <div class="width-ruler"></div> <div class="main" id="top"> <div id="main-header" class="main-header"> <div class="search"> <div class="search-input-wrap"> <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search " aria-label="Search " autocomplete="off"> <label for="search-input" class="search-label"><svg viewbox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label> </div> <div id="search-results" class="search-results"></div> </div> </div> <div id="main-content-wrap" class="main-content-wrap"> <nav aria-label="Breadcrumb" class="breadcrumb-nav"> <ol class="breadcrumb-nav-list"> <li class="breadcrumb-nav-list-item"><a href="https://soostone.github.io/user-manual/">User Manual</a></li> <li class="breadcrumb-nav-list-item"><span>CLI reference</span></li> </ol> </nav> <div id="main-content" class="main-content" role="main"> <ul id="markdown-toc"> <li>
-<a href="#napkin" id="markdown-toc-napkin">Napkin</a> <ul> <li><a href="#init-and-spec-templates" id="markdown-toc-init-and-spec-templates">Init and spec templates</a></li> <li>
+<a href="#napkin" id="markdown-toc-napkin">Napkin</a> <ul> <li><a href="#init" id="markdown-toc-init">Init</a></li> <li>
 <a href="#run" id="markdown-toc-run">Run</a> <ul> <li><a href="#cli-ui" id="markdown-toc-cli-ui">CLI UI</a></li> <li><a href="#dry-runs" id="markdown-toc-dry-runs">Dry runs</a></li> <li>
 <a href="#partial-spec-runs" id="markdown-toc-partial-spec-runs">Partial spec runs</a> <ul> <li><a href="#table-selectors" id="markdown-toc-table-selectors">Table selectors</a></li> <li><a href="#example-use-cases" id="markdown-toc-example-use-cases">Example use cases</a></li> </ul> </li> <li><a href="#meta-arguments" id="markdown-toc-meta-arguments">Meta arguments</a></li> <li><a href="#other-options" id="markdown-toc-other-options">Other options</a></li> </ul> </li> <li>
 <a href="#history" id="markdown-toc-history">History</a> <ul> <li><a href="#list" id="markdown-toc-list">List</a></li> <li><a href="#show" id="markdown-toc-show">Show</a></li> <li><a href="#gantt" id="markdown-toc-gantt">Gantt</a></li> </ul> </li> <li><a href="#validate" id="markdown-toc-validate">Validate</a></li> <li><a href="#dump" id="markdown-toc-dump">Dump</a></li> <li>
@@ -55,7 +55,7 @@ Available options:
 
 Init:
   <a href="#init">init</a>                     Generates Napkin project from a template
-  <a href="#templates">templates</a>                Lists embedded Napkin templates
+  templates                Lists embedded Napkin templates
   generate-spec            Generates a Napkin spec from a directory of SQL files
 
 Execute:
@@ -89,7 +89,7 @@ Version:
 <a href="http://soostone-napkin-public.s3-website.us-east-1.amazonaws.com/haddock/git-hash/4cb2d92a627f4ddf6d00be2d48329be847536a7d/Napkin-Logging.html#v:simpleFormat" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">Simple</code></a> log format is a simplified version of Katip’s <code class="language-plaintext highlighter-rouge">bracketFormat</code>.</li> <li>
 <a href="https://github.com/Soostone/katip/blob/62d2f9beabc7d0d16340eb192941de306127bfbd/katip/src/Katip/Scribes/Handle.hs#L138-L144" target="_blank" rel="noopener noreferrer"><code class="language-plaintext highlighter-rouge">Json</code></a> log format uses Katip’s <code class="language-plaintext highlighter-rouge">jsonFormat</code>. <a name="napkin--h,--help"></a>
 </li> </ul> </li> <li>
-<code class="language-plaintext highlighter-rouge">-h</code>, <code class="language-plaintext highlighter-rouge">--help</code> - Displays traditional help message screen for each command. It is usually “safe” to append <code class="language-plaintext highlighter-rouge">--help</code> to any Napkin command to know more about options it supports. Napkin will also display the <code class="language-plaintext highlighter-rouge">--help</code> screen when it meets the unfamiliar option.</li> </ul> <p><a name="init"></a> <a name="templates"></a></p> <h2 id="init-and-spec-templates">Init and spec templates</h2> <p>Napkin project is a folder with a set of various files including a spec file in YAML format having lots of fields.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin init <span class="nt">--help</span>
+<code class="language-plaintext highlighter-rouge">-h</code>, <code class="language-plaintext highlighter-rouge">--help</code> - Displays traditional help message screen for each command. It is usually “safe” to append <code class="language-plaintext highlighter-rouge">--help</code> to any Napkin command to know more about options it supports. Napkin will also display the <code class="language-plaintext highlighter-rouge">--help</code> screen when it meets the unfamiliar option.</li> </ul> <h2 id="init">Init</h2> <p>Napkin project is a folder with a set of various files including a spec file in YAML format having lots of fields.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin init <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin init [-t|--template TPL_REF] [-p|--parameter KEY=VALUE] 
                    [-n|--project-name PROJECT_NAME] [-f|--force] 
                    [-c|--current-dir] [-g|--init-git-repo]
@@ -102,6 +102,9 @@ Available options:
                                or local path/url or :&lt;embedded template name&gt;
                            (default: :basic)
   <a href="#napkin-init--p,--parameter">-p,--parameter</a> KEY=VALUE Set custom template parameter
+  -n,--project-name PROJECT_NAME
+                           Name of the project to create
+                           (default: "napkin-project")
   <a href="#napkin-init--f,--force">-f,--force</a>               Overwrite existing files in case of name collision
                            with files from a template
   <a href="#napkin-init--c,--current-dir">-c,--current-dir</a>         Use current directory for the project
@@ -122,36 +125,16 @@ You can use custom templates from github, gitlab and bitbucket.
 mustache syntax is used for content description.
 Template variables are resolved with process environment variables
 and -p parameters override them.
-
-Example:
-  napkin init
-</pre></div> <p><a name="napkin-init--n,--project-name"></a></p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">-n</code>, <code class="language-plaintext highlighter-rouge">--project-name</code> TODO + BUG (CLI should display this option on the help screen) <a name="napkin-init--t,--template"></a>
+</pre></div> <p><a name="napkin-init--n,--project-name"></a></p> <ul> <li>With <code class="language-plaintext highlighter-rouge">-n</code>, or <code class="language-plaintext highlighter-rouge">--project-name</code> you can specify the name of the project to create. By default, Napkin will try to create a new directory with this name. <a name="napkin-init--t,--template"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">-t</code>, <code class="language-plaintext highlighter-rouge">--template</code> TODO <a name="napkin-init--p,--parameter"></a>
+<code class="language-plaintext highlighter-rouge">-t</code>, <code class="language-plaintext highlighter-rouge">--template</code> allows to specify the template (builtin or external) for the Napkin to use. <a name="napkin-init--p,--parameter"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">-p</code>, <code class="language-plaintext highlighter-rouge">--parameter</code> TODO <a name="napkin-init--f,--force"></a>
+<code class="language-plaintext highlighter-rouge">-p</code>, <code class="language-plaintext highlighter-rouge">--parameter</code> option allows to override variables within the template with custom values. <a name="napkin-init--f,--force"></a>
 </li> <li>
-<code class="language-plaintext highlighter-rouge">-f</code>, <code class="language-plaintext highlighter-rouge">--force</code> TODO <a name="napkin-init--c,--current-dir"></a>
-</li> <li>
-<code class="language-plaintext highlighter-rouge">-c</code>, <code class="language-plaintext highlighter-rouge">--current-dir</code> TODO <a name="napkin-init--g,--init-git-repo"></a>
-</li> <li>
-<code class="language-plaintext highlighter-rouge">-g</code>, <code class="language-plaintext highlighter-rouge">--init-git-repo</code> TODO</li> </ul> <p>If you start a project from scratch then <a href="#init">init</a> command could save a few seconds by generating minimum working set and setting up a GIT repo.</p> <p>A generated project is based on a <a href="https://github.com/commercialhaskell/stack-templates/wiki" target="_blank" rel="noopener noreferrer">hsfiles</a> template. Napkin has a builtin <code class="language-plaintext highlighter-rouge">:basic</code> template, but you can define your own templates and supply an url to a repo with them on github e.g. Template file is a list of <a href="https://github.com/mustache/spec" target="_blank" rel="noopener noreferrer">mustache</a> snippets for every file in a project tree.</p> <p>For example, following command will create napkin project with name <code class="language-plaintext highlighter-rouge">napkinFromScratch</code> from <code class="language-plaintext highlighter-rouge">:basic</code> template:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin init <span class="nt">-n</span> napkinFromScratch <span class="nt">-t</span> :basic
-</code></pre></div></div> <p>To list of all built-in templates, run <code class="language-plaintext highlighter-rouge">napkin templates</code></p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin templates <span class="nt">--help</span>
-</code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin templates 
-  Lists embedded Napkin templates
-
-Available options:
-  <a href="#napkin--h,--help">-h,--help</a>                Show this help text
-
-Global options:
-  <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
-  <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
-                           Notice, Warning, Error, Critical, Alert, Emergency.
-                           (default: Info)
-  <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
-                           Json. (default: Simple)
-</pre></div> <h2 id="run">Run</h2> <p><code class="language-plaintext highlighter-rouge">napkin run</code> is used to execute Specs. It provides a handful of options that enable you to adjust how the spec is going to be executed. In a summary, you can:</p> <ul> <li>perform a partial run that will execute only a subset of defined tables,</li> <li>perform a dry-run and inspect the execution plan,</li> <li>pass spec arguments,</li> <li>enable CLI UI,</li> <li>override database connection settings.</li> </ul> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin run <span class="nt">--help</span>
+<code class="language-plaintext highlighter-rouge">-f</code>, <code class="language-plaintext highlighter-rouge">--force</code> flag will force Napkin to override target directory (see <a href="#napkin-init--n,--project-name"><code class="language-plaintext highlighter-rouge">--project-name</code></a> option) if it already exists or files created in the current directory in case of <a href="#napkin-init--c,--current-dir"><code class="language-plaintext highlighter-rouge">--current-dir</code></a> was specified. <a name="napkin-init--c,--current-dir"></a>
+</li> <li>With <code class="language-plaintext highlighter-rouge">-c</code>, <code class="language-plaintext highlighter-rouge">--current-dir</code> option, Napkin will use current working directory to write new files into. <a name="napkin-init--g,--init-git-repo"></a>
+</li> <li>With <code class="language-plaintext highlighter-rouge">-g</code>, <code class="language-plaintext highlighter-rouge">--init-git-repo</code>, Napkin will additionally execute <code class="language-plaintext highlighter-rouge">git init</code> command in the directory used to created a new project.</li> </ul> <p>If you start a project from scratch then <a href="#init">init</a> command could save a few seconds by generating minimum working set and setting up a GIT repo.</p> <p>A generated project is based on a <a href="https://github.com/commercialhaskell/stack-templates/wiki" target="_blank" rel="noopener noreferrer">hsfiles</a> template. Napkin has a builtin <code class="language-plaintext highlighter-rouge">:basic</code> template, but you can define your own templates and supply an url to a repo with them on github e.g. Template file is a list of <a href="https://github.com/mustache/spec" target="_blank" rel="noopener noreferrer">mustache</a> snippets for every file in a project tree.</p> <p>For example, following command will create napkin project with name <code class="language-plaintext highlighter-rouge">napkinFromScratch</code> from <code class="language-plaintext highlighter-rouge">:basic</code> template:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin init <span class="nt">-n</span> napkinFromScratch <span class="nt">-t</span> :basic
+</code></pre></div></div> <h2 id="run">Run</h2> <p><code class="language-plaintext highlighter-rouge">napkin run</code> is used to execute Specs. It provides a handful of options that enable you to adjust how the spec is going to be executed. In a summary, you can:</p> <ul> <li>perform a partial run that will execute only a subset of defined tables,</li> <li>perform a dry-run and inspect the execution plan,</li> <li>pass spec arguments,</li> <li>enable CLI UI,</li> <li>override database connection settings.</li> </ul> <p>Lets review the CLI command:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin run <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin run [-s|--spec-file SPEC_YAML] 
                   [--override /json/pointer={"json": "value"}] 
                   [-Q|--metadata-connection-string URI] [-u|--uri URI] 
@@ -223,7 +206,7 @@ Table selectors and SELECTOR types
   
   Table selectors allow performing partial spec runs. This can be useful during
   spec development. All options are applied in sequence to the execution plan.
-  <a href="#napkin-run---skip-all">--skip-all</a>, --force-all, --only, and --force-only options can be specified as
+  --skip-all, --force-all, --only, and --force-only options can be specified as
   a first table selector only. --only, --force-only, --skip, --enable, --force,
   and --force-with-downstream options accept a SELECTOR, which can be one of:
     * unprocessed table name, as it was defined in the spec,
