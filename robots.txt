@@ -1,1 +1,1 @@
-Sitemap: https://soostone.github.io/sitemap.xml
+Sitemap: https://docs.napkin.run/sitemap.xml

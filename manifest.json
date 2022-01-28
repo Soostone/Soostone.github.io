@@ -7,17 +7,17 @@
   "orientation": "landscape",
   "icons": [
     {
-      "src": "https://soostone.github.io/assets/images/touch-icon/logo-70.png",
+      "src": "https://docs.napkin.run/assets/images/touch-icon/logo-70.png",
       "type": "image/png",
       "sizes": "70x70"
     },
     {
-      "src": "https://soostone.github.io/assets/images/touch-icon/logo-196.png",
+      "src": "https://docs.napkin.run/assets/images/touch-icon/logo-196.png",
       "type": "image/png",
       "sizes": "196x196"
     },
     {
-      "src": "https://soostone.github.io/assets/images/touch-icon/logo-310.png",
+      "src": "https://docs.napkin.run/assets/images/touch-icon/logo-310.png",
       "type": "image/png",
       "sizes": "310x310"
     }
