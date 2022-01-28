@@ -55,7 +55,6 @@ Available options:
 
 Init:
   <a href="#init">init</a>                     Generates Napkin project from a template
-  templates                Lists embedded Napkin templates
   generate-spec            Generates a Napkin spec from a directory of SQL files
 
 Execute:
@@ -120,11 +119,10 @@ Global options:
                            Json. (default: Simple)
 
 Generates Napkin project from a template.
-Napkin contains embedded set of templates starting with ":".
+Napkin contains following embedded templates: :basic
 You can use custom templates from github, gitlab and bitbucket.
-mustache syntax is used for content description.
-Template variables are resolved with process environment variables
-and -p parameters override them.
+Mustache syntax is used for values interpolation.
+Template variables are resolved with process environment variables and -p parameters override them.
 </pre></div> <p><a name="napkin-init--n,--project-name"></a></p> <ul> <li>With <code class="language-plaintext highlighter-rouge">-n</code>, or <code class="language-plaintext highlighter-rouge">--project-name</code> you can specify the name of the project to create. By default, Napkin will try to create a new directory with this name. <a name="napkin-init--t,--template"></a>
 </li> <li>
 <code class="language-plaintext highlighter-rouge">-t</code>, <code class="language-plaintext highlighter-rouge">--template</code> allows to specify the template (builtin or external) for the Napkin to use. <a name="napkin-init--p,--parameter"></a>
