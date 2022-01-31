@@ -187,7 +187,19 @@
             <span class="na">write_disposition</span><span class="pi">:</span> <span class="s">append</span>
             <span class="na">clustering</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">clustering_column</span><span class="pi">]</span>
         <span class="c1"># target_type: view # create view instead of table</span>
+        <span class="c1"># target_type: materialized_view # create view instead of table</span>
 
+        <span class="c1"># target_type: # backend specific materialized view options</span>
+        <span class="c1">#   materialized_view:</span>
+        <span class="c1">#     timescale:</span>
+        <span class="c1">#       continuous:</span>
+        <span class="c1">#         create_group_indexes: false</span>
+        <span class="c1">#         materialized_only: false</span>
+        <span class="c1">#         aggregate_policy:</span>
+        <span class="c1">#           start_offset: 3 hours</span>
+        <span class="c1">#           end_offset: 1 hour</span>
+        <span class="c1">#           schedule_interval: 1 hour</span>
+        <span class="c1">#         retention_policy: 1 year</span>
         <span class="na">vars</span><span class="pi">:</span> <span class="c1"># Variables for Mustache templating, defaults to none</span>
           <span class="na">foo</span><span class="pi">:</span> <span class="s">bar</span>
           <span class="na">baz</span><span class="pi">:</span> <span class="s">boo</span>
