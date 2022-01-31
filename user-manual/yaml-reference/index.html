@@ -175,8 +175,19 @@
       <span class="c1"># This table should be created with a SQL query stored in a file</span>
       <span class="na">sql_file</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">some_query.sql</span> <span class="c1"># SQL file location relative to sql_dir</span>
-        <span class="na">target_type</span><span class="pi">:</span> <span class="s">table</span> <span class="c1"># default</span>
+        <span class="na">target_type</span><span class="pi">:</span>
+          <span class="na">table</span><span class="pi">:</span> <span class="c1"># default</span>
+          <span class="c1"># Backend specific table options, optional</span>
+            <span class="na">partitioning</span><span class="pi">:</span> <span class="c1"># Big Query options</span>
+              <span class="na">column</span><span class="pi">:</span> <span class="s">partitioning_column</span>
+              <span class="na">range</span><span class="pi">:</span>
+                <span class="na">start</span><span class="pi">:</span> <span class="m">1</span>
+                <span class="na">end</span><span class="pi">:</span> <span class="m">100</span>
+                <span class="na">step</span><span class="pi">:</span> <span class="m">2</span>
+            <span class="na">write_disposition</span><span class="pi">:</span> <span class="s">append</span>
+            <span class="na">clustering</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">clustering_column</span><span class="pi">]</span>
         <span class="c1"># target_type: view # create view instead of table</span>
+
         <span class="na">vars</span><span class="pi">:</span> <span class="c1"># Variables for Mustache templating, defaults to none</span>
           <span class="na">foo</span><span class="pi">:</span> <span class="s">bar</span>
           <span class="na">baz</span><span class="pi">:</span> <span class="s">boo</span>
@@ -198,17 +209,6 @@
     <span class="c1"># Typically, Napkin will discover all dependencies automatically, so it does not have to be used. You can double-check dependencies discovered with dump command</span>
     <span class="na">hidden_deps</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="s">ignored_dependency</span>
-
-    <span class="c1"># Backend specific table options, optional</span>
-    <span class="na">table_options</span><span class="pi">:</span> <span class="c1"># Big Query options</span>
-      <span class="na">partitioning</span><span class="pi">:</span>
-        <span class="na">column</span><span class="pi">:</span> <span class="s">partitioning_column</span>
-        <span class="na">range</span><span class="pi">:</span>
-          <span class="na">start</span><span class="pi">:</span> <span class="m">1</span>
-          <span class="na">end</span><span class="pi">:</span> <span class="m">100</span>
-          <span class="na">step</span><span class="pi">:</span> <span class="m">2</span>
-      <span class="na">write_disposition</span><span class="pi">:</span> <span class="s">append</span>
-      <span class="na">clustering</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">clustering_column</span><span class="pi">]</span>
 
     <span class="c1"># Parser dialect to use for parsing queries for that table. See comments on the global attribute.</span>
     <span class="na">parser_dialect</span><span class="pi">:</span> <span class="s">napkin.bigquery</span>
@@ -240,8 +240,6 @@
       <span class="c1"># This table should be created with a SQL query inlined in the YAML file</span>
       <span class="na">sql_query</span><span class="pi">:</span>
         <span class="na">query</span><span class="pi">:</span> <span class="s">SELECT * FROM some_table</span>
-        <span class="na">target_type</span><span class="pi">:</span> <span class="s">table</span> <span class="c1"># default</span>
-        <span class="c1"># target_type: view # create view instead of table</span>
 
   <span class="na">incremental_by_time_table</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
