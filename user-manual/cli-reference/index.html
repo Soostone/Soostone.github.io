@@ -462,77 +462,73 @@ Global options:
 </code></pre></div></div> <p class="text-delta text-center">output</p> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OK
 </code></pre></div></div> <p>With <code class="language-plaintext highlighter-rouge">--interactive</code> mode, Napkin constantly monitors for the changes in all files mentioned in the <a href="/user-manual/yaml-reference/">spec.yaml</a> and re-validates as soon as it sees a change.</p> <p><a href="https://asciinema.org/a/8pbkK83DuAbhzE8w1OsWO9l0d" target="_blank" rel="noopener noreferrer"><img src="https://asciinema.org/a/8pbkK83DuAbhzE8w1OsWO9l0d.svg" alt="asciicast"></a></p> <h2 id="dump">Dump</h2> <p>Besides knowing that your spec is “OK” (by using <code class="language-plaintext highlighter-rouge">napkin validate</code> command), Napkin also provides a way to see SQL queries, which Napkin would execute on a real database engine in by using <code class="language-plaintext highlighter-rouge">napkin run</code> command.</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">--help</span>
 </code></pre></div></div> <div class="highlighter-rouge"><pre>Usage: napkin dump [-s|--spec-file SPEC_YAML] 
-                   [--override /json/pointer={"json": "value"}] 
-                   [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE] 
-                   [-o|--output-dir DIR] [-f|--force] [-i|--generate-inserts] 
-                   [-e|--exclude-unmanaged-tables] [-S|--strict-mustache] 
-                   [--use-spec-names]
-  Performs a dry run and stores queries for inspection
+                  <a href="#napkin-dump-"></a> [--override /json/pointer={"json": "value"}] 
+                  <a href="#napkin-dump-"></a> [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE] 
+                  <a href="#napkin-dump-"></a> [-o|--output-dir DIR] [-f|--force] 
+                  <a href="#napkin-dump-"></a> [-e|--exclude-unmanaged-tables] [-S|--strict-mustache] 
+                  <a href="#napkin-dump-"></a> [--use-spec-names]
+ <a href="#napkin-dump-"></a> Performs a dry run and stores queries for inspection
 
 Available options:
-  <a href="#napkin--s,--spec-file">-s,--spec-file</a> SPEC_YAML Path to the spec yaml file
-                           (default: "specs/spec.yaml")
-  <a href="#napkin---override">--override</a> /json/pointer={"json": "value"}
-                           Set arbitrary JSON pointer (RFC 6901) in YAML spec
-                           with the new value
-  <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
-  <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
-  <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
-  <a href="#napkin-dump--o,--output-dir">-o,--output-dir</a> DIR      Directory containing OUTPUT files (default: "dump")
-  <a href="#napkin-dump--f,--force">-f,--force</a>               Force write to destination directory
-  <a href="#napkin-dump--i,--generate-inserts">-i,--generate-inserts</a>    Generate inserts for tables instead of simply dumping
-                           the query
-  <a href="#napkin-dump--e,--exclude-unmanaged-tables">-e,--exclude-unmanaged-tables</a>
-                           Show only managed tables in the DOT graph exclusively
-  <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
-  <a href="#napkin-dump---use-spec-names">--use-spec-names</a>         Use unprocessed table names as filenames
-  <a href="#napkin--h,--help">-h,--help</a>                Show this help text
+ <a href="#napkin-dump-"></a> <a href="#napkin--s,--spec-file">-s,--spec-file</a> SPEC_YAML Path to the spec yaml file
+                          <a href="#napkin-dump-"></a> (default: "specs/spec.yaml")
+ <a href="#napkin-dump-"></a> <a href="#napkin---override">--override</a> /json/pointer={"json": "value"}
+                          <a href="#napkin-dump-"></a> Set arbitrary JSON pointer (RFC 6901) in YAML spec
+                          <a href="#napkin-dump-"></a> with the new value
+ <a href="#napkin-dump-"></a> <a href="#napkin---arg">--arg</a> ARG=VALUE          Argument to be passed to spec
+ <a href="#napkin-dump-"></a> <a href="#napkin---arg-json">--arg-json</a> JSON          Spec arguments encoded as JSON object
+ <a href="#napkin-dump-"></a> <a href="#napkin---arg-file">--arg-file</a> FILE          Spec arguments stored in JSON file
+ <a href="#napkin-dump-"></a> <a href="#napkin-dump--o,--output-dir">-o,--output-dir</a> DIR      Directory containing OUTPUT files (default: "dump")
+ <a href="#napkin-dump-"></a> <a href="#napkin-dump--f,--force">-f,--force</a>               Force write to destination directory
+ <a href="#napkin-dump-"></a> <a href="#napkin-dump--e,--exclude-unmanaged-tables">-e,--exclude-unmanaged-tables</a>
+                          <a href="#napkin-dump-"></a> Show only managed tables in the DOT graph exclusively
+ <a href="#napkin-dump-"></a> <a href="#napkin--S,--strict-mustache">-S,--strict-mustache</a>     Strict mustache validation mode
+ <a href="#napkin-dump-"></a> --use-spec-names         Use unprocessed table names as filenames
+ <a href="#napkin-dump-"></a> <a href="#napkin--h,--help">-h,--help</a>                Show this help text
 
 Global options:
-  <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
-  <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
-                           Notice, Warning, Error, Critical, Alert, Emergency.
-                           (default: Info)
-  <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
-                           Json. (default: Simple)
+ <a href="#napkin-dump-"></a> <a href="#napkin--v,--verbose">-v,--verbose</a>             Print debug log
+ <a href="#napkin-dump-"></a> <a href="#napkin--l,--log-level">-l,--log-level</a> LOG_LEVEL Log severity level. Possible values: Debug, Info,
+                          <a href="#napkin-dump-"></a> Notice, Warning, Error, Critical, Alert, Emergency.
+                          <a href="#napkin-dump-"></a> (default: Info)
+ <a href="#napkin-dump-"></a> <a href="#napkin---log-format">--log-format</a> LOG_FORMAT  Log line format. Possible values: Simple, Server,
+                          <a href="#napkin-dump-"></a> Json. (default: Simple)
 </pre></div> <p><a name="napkin-dump--o,--output-dir"></a></p> <ul> <li>
 <code class="language-plaintext highlighter-rouge">-o</code>, <code class="language-plaintext highlighter-rouge">--output-dir</code> parameter is used to specify output directory to put SQL files into. Directory will also contain dependency diagram (in form of <code class="language-plaintext highlighter-rouge">.dot</code> and <code class="language-plaintext highlighter-rouge">.pdf</code> files) between the tables. <a name="napkin-dump--f,--force"></a>
 </li> <li>
 <code class="language-plaintext highlighter-rouge">-f</code>, <code class="language-plaintext highlighter-rouge">--force</code> flag is used to indicate, that it is OK for Napkin to override target directory. <a name="napkin-dump--e,--exclude-unmanaged-tables"></a>
-</li> <li>By default, Napkin will add both managed and unmanaged tabled into a dependency diagram. <code class="language-plaintext highlighter-rouge">-e</code>, <code class="language-plaintext highlighter-rouge">--exclude-unmanaged-tables</code> flag forces Napkin to only include managed tables. <a name="napkin-dump--i,--generate-inserts"></a>
-</li> <li>
-<code class="language-plaintext highlighter-rouge">-i</code>, <code class="language-plaintext highlighter-rouge">--generate-inserts</code> flag forces Napkin to generate SQL queries in form of <code class="language-plaintext highlighter-rouge">INSERT INTO __TABLE_NAME__ SELECT ...</code> instead of default <code class="language-plaintext highlighter-rouge">SELECT ...</code> <a name="napkin-dump---use-spec-names"></a>
+</li> <li>By default, Napkin will add both managed and unmanaged tabled into a dependency diagram. <code class="language-plaintext highlighter-rouge">-e</code>, <code class="language-plaintext highlighter-rouge">--exclude-unmanaged-tables</code> flag forces Napkin to only include managed tables. <a name="napkin-dump---use-spec-names"></a>
 </li> <li>with <code class="language-plaintext highlighter-rouge">--use-spec-names</code> Napkin will use original table names (as declared in <a href="/user-manual/yaml-reference/">spec.yaml</a>) for the file names in dump output. Otherwise, file names are equal to the table names after applying <a href="/user-manual/preprocessors/">preprocessors</a>.</li> </ul> <p>Usually <code class="language-plaintext highlighter-rouge">napkin dump</code> command will create following directory structure:</p> <p class="text-delta text-center">shell</p> <div class="language-sh copyable highlighter-rouge"><div class="highlight"><pre class="highlight"><code>napkin dump <span class="nt">-o</span> dump
 </code></pre></div></div> <p class="text-delta text-center">output</p> <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dump
-├── 01_update_daily.sql
-├── 02_update_on_upstream.sql
-├── 03_random.sql
-├── 04_first_run_at.sql
-├── 05_total_sales_by_year.sql
-├── 06_long_to_wide.1.sql
-├── 06_long_to_wide.2.sql
-├── 07_day_totals_2.create_1.sql
-├── 07_day_totals_2.update_1.sql
-├── 08_day_totals_1.create_1.sql
-├── 08_day_totals_1.create_2.sql
-├── 08_day_totals_1.update_1.sql
-├── 09_day_totals.create_1.sql
-├── 09_day_totals.create_2.sql
-├── 09_day_totals.update_1.sql
-├── 10_artist_hex.sql
-├── 11_popular_tracks_for_pink_floyd.sql
-├── 12_artist_track_count_view.sql
-├── 13_artist_track_count.sql
-├── 14_artist_track_count_2.sql
-├── 15_artist_album_count_via_mustache_2.sql
-├── 16_artist_album_count_via_mustache.sql
-├── 17_artist_album_count.sql
 ├── MANIFEST.txt
-├── dependency_graph.dot
-└── dependency_graph.pdf
-</code></pre></div></div> <div class="premonition note"> <i class="premonition pn-note"></i> <div class="content"> <p>Some source sql files, like <code class="language-plaintext highlighter-rouge">day_totals.sql</code> will produce multiple output files:</p> <ul> <li>
-<code class="language-plaintext highlighter-rouge">09_day_totals.create_1.sql</code>, <code class="language-plaintext highlighter-rouge">09_day_totals.create_2.sql</code> – queries Napkin would execute in order to create <code class="language-plaintext highlighter-rouge">day_totals</code> table is it is not exists yet.</li> <li>
-<code class="language-plaintext highlighter-rouge">09_day_totals.update_1.sql</code> – query Napkin would execute in order to update already existing <code class="language-plaintext highlighter-rouge">day_totals</code> table.</li> </ul> </div> </div> <p>Along with output SQL files, <code class="language-plaintext highlighter-rouge">napkin dump</code> command also generates dependency diagram between the tables in <a href="https://graphviz.org" target="_blank" rel="noopener noreferrer">Graphviz</a> format:</p> <p class="text-delta text-center">graph</p> <div class="language-dot highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">digraph</span> <span class="p">{</span>
+├─ artist_album_count
+│ ├─ 1.sql
+│ └─ program.log
+├─ artist_album_count_via_mustache
+│ ├─ 1.sql
+│ └─ program.log
+├─ day_totals_1
+│ ├─ create
+│ │ ├─ 3.sql
+│ │ └─ program.log
+│ └─ update
+│    ├─ 3.sql
+│    ├─ 4.sql
+│    ├─ 5.sql
+│    └─ program.log
+├─ dependency_graph.dot
+├─ dependency_graph.pdf
+├─ dump.json
+├─ long_to_wide
+│ ├─ 1.sql
+│ ├─ 2.sql
+│ └─ program.log
+└─ popular_tracks_for_pink_floyd
+  ├─ 1.sql
+  └─ program.log
+</code></pre></div></div> <div class="premonition note"> <i class="premonition pn-note"></i> <div class="content"> <p>Some source sql folders, like <code class="language-plaintext highlighter-rouge">day_totals_1</code> will produce multiple execution paths:</p> <ul> <li>
+<code class="language-plaintext highlighter-rouge">create</code> folder with a single <code class="language-plaintext highlighter-rouge">sql</code> file – query, which Napkin would execute in order to create <code class="language-plaintext highlighter-rouge">day_totals_1</code> table is it is not exist yet.</li> <li>
+<code class="language-plaintext highlighter-rouge">update</code> folder with number of <code class="language-plaintext highlighter-rouge">sql</code> files in it – queries Napkin would execute in order to update already existing <code class="language-plaintext highlighter-rouge">day_totals_1</code> table.</li> </ul> </div> </div> <p>Along with output SQL files, <code class="language-plaintext highlighter-rouge">napkin dump</code> command also generates dependency diagram between the tables in <a href="https://graphviz.org" target="_blank" rel="noopener noreferrer">Graphviz</a> format:</p> <p class="text-delta text-center">graph</p> <div class="language-dot highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">digraph</span> <span class="p">{</span>
     <span class="mi">1</span> <span class="o">[</span><span class="n">label</span><span class="p">=</span><span class="nv">Album</span>
       <span class="p">,</span><span class="n">shape</span><span class="p">=</span><span class="nv">box</span>
       <span class="p">,</span><span class="n">style</span><span class="p">=</span><span class="nv">dotted</span><span class="o">]</span><span class="p">;</span>
