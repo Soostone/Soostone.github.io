@@ -55,7 +55,6 @@ Available options:
 
 Init:
   <a href="#init">init</a>                     Generates Napkin project from a template
-  generate-spec            Generates a Napkin spec from a directory of SQL files
 
 Execute:
   <a href="#run">run</a>                      Runs Napkin specs
@@ -144,8 +143,8 @@ Template variables are resolved with process environment variables and -p parame
                   [--skip-all | --force-all | --only SELECTOR | 
                     <a href="#napkin-run---force-only">--force-only</a> SELECTOR] 
                   [--force SELECTOR | --force-with-downstream SELECTOR | 
-                    <a href="#napkin-run---enable">--enable</a> SELECTOR | --skip SELECTOR] [-p|--show-progress] 
-                  [-r|--dry-run] 
+                    --force-with-upstream SELECTOR | --enable SELECTOR | 
+                    <a href="#napkin-run---skip">--skip</a> SELECTOR] [-p|--show-progress] [-r|--dry-run] 
                   [--arg ARG=VALUE | --arg-json JSON | --arg-file FILE]
   Runs Napkin specs
 
@@ -183,6 +182,8 @@ Available options:
   <a href="#napkin-run---force">--force</a> SELECTOR         Table selector: Force table update
   <a href="#napkin-run---force-with-downstream">--force-with-downstream</a> SELECTOR
                            Table selector: Force table update, force downstream tables too
+  --force-with-upstream SELECTOR
+                           Table selector: Force table update, force upstream tables too
   <a href="#napkin-run---enable">--enable</a> SELECTOR        Table selector: Don't skip or force table, use the update strategy as specified in the Spec file
   <a href="#napkin-run---skip">--skip</a> SELECTOR          Table selector: Skip table update
   <a href="#napkin-run--p,--show-progress">-p,--show-progress</a>       Show a progress bar if the terminal supports it

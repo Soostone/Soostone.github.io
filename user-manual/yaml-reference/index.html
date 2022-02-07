@@ -162,12 +162,14 @@
       <span class="na">on_existing</span><span class="pi">:</span> <span class="s">overwrite</span> <span class="c1"># default, replace namespace even if it was specified explicitly</span>
       <span class="c1"># on_existing: keep_original # keep original namespace if it has been specified explicitly in the Spec</span>
 
+  <span class="c1"># - autodiscover # autodiscover sql files in sql_dir and add them as trivial tables</span>
+
   <span class="c1"># Custom preprocessor with some arguments (Haskell symbol)</span>
-  <span class="pi">-</span> <span class="na">ACME.Preprocessors.example</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">ACME.preprocessor</span><span class="pi">:</span>
       <span class="na">some</span><span class="pi">:</span> <span class="s">arguments</span>
 
   <span class="c1"># Custom preprocessor without arguments (Haskell symbol)</span>
-  <span class="pi">-</span> <span class="s">ACME.Preprocessors.example</span>
+  <span class="pi">-</span> <span class="s">ACME.preprocessor</span>
 
 <span class="c1">## Tables that are managed by Napkin</span>
 <span class="na">tables</span><span class="pi">:</span>
@@ -259,7 +261,7 @@
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="c1"># This table should be updated with incremental by time strategy. Please refer to the user manual for details</span>
       <span class="na">incremental_by_time</span><span class="pi">:</span>
-        <span class="na">source</span><span class="pi">:</span> <span class="s">incremental_query.sql</span> <span class="c1"># SQL file location relative to sql_dir</span>
+        <span class="na">source</span><span class="pi">:</span> <span class="s">some_query_with_cutoff.sql</span> <span class="c1"># SQL file location relative to sql_dir</span>
         <span class="na">timestamp_column</span><span class="pi">:</span> <span class="s">column_foo</span> <span class="c1"># Column that contains timestamp</span>
         <span class="na">start_day</span><span class="pi">:</span> <span class="s">2021-01-01</span> <span class="c1"># Starting date, used when table is created from scratch</span>
         <span class="na">lookback_days</span><span class="pi">:</span> <span class="m">14</span> <span class="c1"># Last N days slice to be updated during subsequent runts</span>
@@ -271,7 +273,7 @@
     <span class="na">create_action</span><span class="pi">:</span>
     <span class="c1"># This table should be updated with incremental by time strategy. Please refer to the user manual for details</span>
       <span class="na">incremental_by_pk</span><span class="pi">:</span>
-        <span class="na">source</span><span class="pi">:</span> <span class="s">incremental_pk.sql</span> <span class="c1"># SQL file location relative to sql_dir</span>
+        <span class="na">source</span><span class="pi">:</span> <span class="s">some_query_with_cutoff.sql</span> <span class="c1"># SQL file location relative to sql_dir</span>
         <span class="na">pk</span><span class="pi">:</span> <span class="pi">[</span><span class="nv">column_foo</span><span class="pi">]</span>
         <span class="na">start_day</span><span class="pi">:</span> <span class="s">2021-01-01</span>
         <span class="na">lookback_days</span><span class="pi">:</span> <span class="m">14</span>
@@ -291,7 +293,7 @@
   <span class="na">all_hooks</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
-        <span class="na">source</span><span class="pi">:</span> <span class="s">some.sql</span>
+        <span class="na">source</span><span class="pi">:</span> <span class="s">some_query.sql</span>
 
     <span class="c1"># Example of all hooks available, can be used as pre_hooks as well</span>
     <span class="na">post_hooks</span><span class="pi">:</span>
@@ -409,7 +411,7 @@
   <span class="na">connection_pool</span><span class="pi">:</span> <span class="m">100</span>
 
 <span class="na">tables</span><span class="pi">:</span>
-  <span class="na">some_table</span><span class="pi">:</span>
+  <span class="na">timescale_continuous_aggregate</span><span class="pi">:</span>
     <span class="na">create_action</span><span class="pi">:</span>
       <span class="na">sql_file</span><span class="pi">:</span>
         <span class="na">source</span><span class="pi">:</span> <span class="s">some_query.sql</span>
@@ -424,6 +426,34 @@
                   <span class="na">end_offset</span><span class="pi">:</span> <span class="s">1 hour</span>
                   <span class="na">schedule_interval</span><span class="pi">:</span> <span class="s">1 hour</span>
                 <span class="na">retention_policy</span><span class="pi">:</span> <span class="s">1 year</span> <span class="c1"># optional</span>
+
+  <span class="na">indexes_for_table</span><span class="pi">:</span>
+    <span class="na">create_action</span><span class="pi">:</span>
+      <span class="na">sql_file</span><span class="pi">:</span>
+        <span class="na">source</span><span class="pi">:</span> <span class="s">some_query.sql</span>
+        <span class="na">target_type</span><span class="pi">:</span>
+          <span class="na">table</span><span class="pi">:</span>
+            <span class="na">indexes</span><span class="pi">:</span> <span class="c1"># add indexes to the table after it's created</span>
+              <span class="pi">-</span> <span class="s">a ASC, b DESC, c ASC NULLS FIRST</span> <span class="c1"># columns/expressions used in index</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">foo</span> <span class="c1"># index name, optional</span>
+                <span class="na">columns</span><span class="pi">:</span> <span class="s">a ASC, b DESC, c ASC NULLS FIRST</span>  <span class="c1"># columns/expressions used in index</span>
+                <span class="na">unique</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># optional, creates unique index</span>
+                <span class="na">concurrent</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># optional, index will be created concurrently</span>
+                <span class="na">where</span><span class="pi">:</span> <span class="s">d IS NOT NULL</span> <span class="c1"># optional, allows to create partial index</span>
+
+  <span class="na">indexes_for_materialized_view</span><span class="pi">:</span>
+    <span class="na">create_action</span><span class="pi">:</span>
+      <span class="na">sql_file</span><span class="pi">:</span>
+        <span class="na">source</span><span class="pi">:</span> <span class="s">some_query.sql</span>
+        <span class="na">target_type</span><span class="pi">:</span>
+          <span class="na">materialized_view</span><span class="pi">:</span>
+            <span class="na">indexes</span><span class="pi">:</span> <span class="c1"># add indexes to the table after it's created</span>
+              <span class="pi">-</span> <span class="s">a ASC, b DESC, c ASC NULLS FIRST</span> <span class="c1"># columns/expressions used in index</span>
+              <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">foo</span> <span class="c1"># index name, optional</span>
+                <span class="na">columns</span><span class="pi">:</span> <span class="s">a ASC, b DESC, c ASC NULLS FIRST</span>  <span class="c1"># columns/expressions used in index</span>
+                <span class="na">unique</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># optional, creates unique index</span>
+                <span class="na">concurrent</span><span class="pi">:</span> <span class="no">true</span> <span class="c1"># optional, index will be created concurrently</span>
+                <span class="na">where</span><span class="pi">:</span> <span class="s">d IS NOT NULL</span> <span class="c1"># optional, allows to create partial index</span>
 
 </code></pre></div></div> <h3 id="redshift">Redshift</h3> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># yaml-language-server: $schema=http://napkin-public-storage-bucket.s3-website.us-east-1.amazonaws.com/schema/schema.json</span>
 
