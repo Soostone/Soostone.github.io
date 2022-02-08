@@ -385,7 +385,7 @@
   },"64": {
     "doc": "Tips and Tricks",
     "title": "Running only a single table in a spec",
-    "content": "It’s very common when iteratively working on a given table to update it repeatedly and in isolation. Disable all tables, force-update any table with word “uplift” in it: . shell . napkin run -s specs/myspec1.yaml -D -f '.*(uplift).*' . Notice the pattern is a proper Regular Expression. ",
+    "content": "It’s very common when iteratively working on a given table to update it repeatedly and in isolation. Disable all tables, force-update any table with word “uplift” in it: . shell . napkin run -s specs/myspec1.yaml --force-only 'spec:/.*uplift.*/' . Notice the pattern is a proper Regular Expression. Please, consult with User Manual for more details on that feature. ",
     "url": "https://docs.napkin.run/tips-and-tricks/#running-only-a-single-table-in-a-spec",
     "relUrl": "/tips-and-tricks/#running-only-a-single-table-in-a-spec"
   },"65": {
